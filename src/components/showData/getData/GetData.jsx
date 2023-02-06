@@ -9,7 +9,7 @@ const GetData = () => {
   useEffect(() => {
     dispatch(GetMockDataThunk());
   }, [JSON.stringify(data)]);
-
+  console.log('-------getdata', data);
   return (
     <>
       {data.map((item, index) => (
