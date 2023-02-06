@@ -10,6 +10,37 @@ const CodeOutput = () => {
     dispatch(GetCodeMockDataThunk());
   }, [JSON.stringify(data)]);
 
+  // const data = [
+  //   {
+  //     codeOrder: 1,
+  //     mainCode: '123',
+  //     codeName: '123',
+  //     StatColumn: '123',
+  //     StatValue: '123',
+  //   },
+  //   {
+  //     codeOrder: 2,
+  //     mainCode: '234',
+  //     codeName: '234',
+  //     StatColumn: '234',
+  //     StatValue: '234',
+  //   },
+  //   {
+  //     codeOrder: 3,
+  //     mainCode: '345',
+  //     codeName: '345',
+  //     StatColumn: '345',
+  //     StatValue: '345',
+  //   },
+  //   {
+  //     codeOrder: 4,
+  //     mainCode: '',
+  //     codeName: '',
+  //     StatColumn: '',
+  //     StatValue: '',
+  //   },
+  // ];
+
   return (
     <Wrap>
       {data.map((item, index) => (
@@ -36,10 +67,12 @@ const CodeOutput = () => {
 
 const Wrap = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 const ListBox = styled.div`
   display: flex;
   justify-content: flex-start;
+  flex-direction: row;
 `;
 const ListDiv = styled.div`
   display: flex;
@@ -48,5 +81,6 @@ const ListDiv = styled.div`
   min-width: 80px;
   width: 80px;
   border: 1px solid black;
+  background-color: white;
 `;
 export default CodeOutput;

@@ -3,26 +3,41 @@ import styled from 'styled-components';
 import CodeInput from '../../components/codeInput/CodeInput';
 import CodeOutput from '../../components/codeOutput/CodeOutput';
 import CodeTitle from '../../components/codeTitle/CodeTitle';
+import { useNavigate } from 'react-router-dom';
 
 const CodeReportPage = () => {
+  const navigate = useNavigate();
   return (
-    <Wrap>
-      <InputBox>
-        <CodeTitle btn={true}></CodeTitle>
-        <CodeInput />
-      </InputBox>
-      <OutputBox>
-        <CodeTitle btn={false}></CodeTitle>
-        <CodeOutput />
-      </OutputBox>
-    </Wrap>
+    <>
+      <MovePageDiv>
+        <button onClick={() => navigate('/')}>라인업페이지로 이동</button>
+      </MovePageDiv>
+      <Wrap>
+        <InputBox>
+          <CodeTitle btn={true}></CodeTitle>
+          <CodeInput />
+        </InputBox>
+        <OutputBox>
+          <CodeTitle btn={false}></CodeTitle>
+          <CodeOutput />
+        </OutputBox>
+      </Wrap>
+    </>
   );
 };
 
+const MovePageDiv = styled.div`
+  display: flex;
+  height: 20px;
+  padding: 20px;
+  align-items: center;
+  button {
+  }
+`;
 const Wrap = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 50px;
+  margin-top: 10px;
 `;
 const InputBox = styled.div`
   display: flex;

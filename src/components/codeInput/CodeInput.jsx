@@ -99,6 +99,7 @@ const ListDiv = styled.div`
   min-width: 80px;
   width: 80px;
   border: 1px solid black;
+  background-color: white;
 
   input {
     width: 100%;

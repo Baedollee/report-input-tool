@@ -1,12 +1,15 @@
 import React from 'react';
-import CodeReportPage from './pages/codeReportPage/CodeReportPage';
-import ReportInput from './pages/reportInputPage/ReportInput';
+import { Route, Routes } from 'react-router-dom';
+import Main from '../src/pages/reportInputPage/ReportInput';
+import CodeReportPage from '../src/pages/codeReportPage/CodeReportPage';
 
 function App() {
   return (
     <>
-      {/* <ReportInput /> */}
-      <CodeReportPage />
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/codeReport' element={<CodeReportPage />} />
+      </Routes>
     </>
   );
 }

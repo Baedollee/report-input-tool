@@ -15,6 +15,7 @@ const CodeTitle = ({ btn }) => {
       ) : (
         <BlockDiv></BlockDiv>
       )} */}
+
       <TableBox>
         <TableDiv>#</TableDiv>
         <TableDiv>코드</TableDiv>
