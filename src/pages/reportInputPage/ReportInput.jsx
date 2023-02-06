@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReportTitle from '../../components/reportTitle/ReportTitle';
 import ReportContent from '../../components/reportContent/ReportContent';
-import ShowData from '../../components/showData/ShowData';
+import ShowData from '../../components/reportShowData/ReportShowData';
 
 const ReportInput = () => {
   return (

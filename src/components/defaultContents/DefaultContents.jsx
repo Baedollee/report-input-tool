@@ -9,10 +9,10 @@ const DefaultContents = () => {
   const data1 = defaultMockData;
   const postData = {
     competitionCode: '22-23V',
-    gender: '남자',
+    gender: 'M',
     gameCode: '22-23VMENR3-123',
-    homeAway: '홈',
-    teamId: 'teamId',
+    homeAway: 'home',
+    teamId: 'AAAAA',
     teamName: '대한항공',
     startingReserve: '',
     participantId: 'CCCCC',
@@ -39,17 +39,73 @@ const DefaultContents = () => {
   return (
     <Wrap>
       <ItemBox>
-        {data1.map((item, index) => (
+        {/* {data1.map((item, index) => (
           <ListDiv length={item.length} key={`${item}_${index}`}>
             {item}
           </ListDiv>
-        ))}
+        ))} */}
         {/* <ListForm> */}
+        <ListDiv>
+          <input
+            type='text'
+            name='competitionCode'
+            value={inputText.competitionCode}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='gender'
+            value={inputText.gender}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='gameCode'
+            value={inputText.gameCode}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='homeAway'
+            value={inputText.homeAway}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='teamId'
+            value={inputText.teamId}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='teamName'
+            value={inputText.teamName}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
         <ListDiv>
           <input
             type='text'
             name='startingReserve'
             value={inputText.startingReserve}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='participantId'
+            value={inputText.participantId}
             onChange={onChangeHandler}
           />
         </ListDiv>
@@ -69,7 +125,6 @@ const DefaultContents = () => {
             onChange={onChangeHandler}
           />
         </ListDiv>
-
         <ListDiv>
           <input
             type='text'

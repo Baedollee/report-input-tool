@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import ShowData from '../showData/ShowData';
+import ShowData from '../reportShowData/ReportShowData';
 import DefaultContents from '../defaultContents/DefaultContents';
 
 const ReportContent = () => {
   return (
-    <Wrap>
+    <WrapDiv>
       <DefaultContents />
-      <ShowData />
-    </Wrap>
+    </WrapDiv>
   );
 };
-const Wrap = styled.div`
+const WrapDiv = styled.div`
   display: flex;
   flex-direction: row;
 `;
