@@ -24,7 +24,7 @@ export const GetMockDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     console.log('get', payload);
     try {
-      const response = await axios.post('/api/startlist/insertLineup');
+      const response = await axios.post('/api/play/selectPlayerList');
       return thunkApi.fulfillWithValue(response.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
