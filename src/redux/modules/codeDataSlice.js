@@ -22,7 +22,7 @@ export const MockCodeDataThunk = createAsyncThunk(
 export const GetCodeMockDataThunk = createAsyncThunk(
   'MockCodeDataThunk/get',
   async (payload, thunkApi) => {
-    // console.log('get', payload);
+    console.log('get', payload);
     try {
       const response = await axios.get('/api/code/selectActionCodeList');
       console.log('서버 get data', response);
