@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { MockDataThunk } from '../../../redux/modules/dataSlice';
-import { defaultMockData, mock } from '../../../static/MockData';
+import { MockDataThunk } from '../../redux/modules/dataSlice';
+import { defaultMockData } from '../../static/MockData';
 
 const DefaultContents = () => {
   const dispatch = useDispatch();

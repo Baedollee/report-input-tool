@@ -6,13 +6,11 @@ import ShowData from '../../components/showData/ShowData';
 
 const ReportInput = () => {
   return (
-    <>
-      <WrapDiv>
-        <ReportTitle />
-        <ReportContent />
-        <ShowData />
-      </WrapDiv>
-    </>
+    <WrapDiv>
+      <ReportTitle />
+      <ReportContent />
+      <ShowData />
+    </WrapDiv>
   );
 };
 

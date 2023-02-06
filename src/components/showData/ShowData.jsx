@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import GetData from './getData/GetData';
+import GetData from '../getData/GetData';
 
 const ShowData = () => {
   return (

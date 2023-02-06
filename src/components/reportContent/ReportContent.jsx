@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import DefaultContents from '../showData/defaultContents/DefaultContents';
 import ShowData from '../showData/ShowData';
+import DefaultContents from '../defaultContents/DefaultContents';
 
 const ReportContent = () => {
   return (
