@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import api from '../../shared/Api';
 
 const initialState = {
@@ -9,7 +10,7 @@ export const MockDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     console.log('', payload);
     try {
-      const response = await api.post('', payload);
+      const response = await axios.post('/api/startlist/insertLineup', payload);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
