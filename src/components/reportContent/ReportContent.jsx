@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import DefaultContents from '../DefaultContents';
+import DefaultContents from '../showData/defaultContents/DefaultContents';
+import ShowData from '../showData/ShowData';
 
 const ReportContent = () => {
   return (
@@ -8,6 +9,7 @@ const ReportContent = () => {
       <Wrap>
         <DefaultContents />
       </Wrap>
+      <ShowData />
     </>
   );
 };

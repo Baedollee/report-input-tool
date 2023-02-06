@@ -1,17 +1,31 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import api from '../../shared/Api';
+// import api from '../../shared/Api';
 
 const initialState = {
   dataList: [],
+  getDataList: [],
 };
 export const MockDataThunk = createAsyncThunk(
   'MockDataThunk/post',
   async (payload, thunkApi) => {
-    console.log('', payload);
+    console.log('post', payload);
     try {
       const response = await axios.post('/api/startlist/insertLineup', payload);
       return thunkApi.fulfillWithValue(response);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
+export const GetMockDataThunk = createAsyncThunk(
+  'MockDataThunk/get',
+  async (payload, thunkApi) => {
+    console.log('get', payload);
+    try {
+      const response = await axios.post('/api/startlist/insertLineup');
+      return thunkApi.fulfillWithValue(response.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
@@ -25,9 +39,15 @@ const playerSlice = createSlice({
   extraReducers: {
     [MockDataThunk.fulfilled]: (state, action) => {
       console.log(action);
-      state.dataList = [action.payload, ...state.dataList];
+      state.dataList = [...action.payload, state.dataList];
     },
     [MockDataThunk.rejected]: (state, action) => {
+      console.log(action);
+    },
+    [GetMockDataThunk.fulfilled]: (state, action) => {
+      state.getDataList = action.payload;
+    },
+    [GetMockDataThunk.rejected]: (state, action) => {
       console.log(action);
     },
   },
