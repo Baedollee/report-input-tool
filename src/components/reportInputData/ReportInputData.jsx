@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { MockDataThunk } from '../../redux/modules/dataSlice';
-import { defaultMockData } from '../../static/MockData';
 
 const DefaultContents = () => {
   const dispatch = useDispatch();
-  const data1 = defaultMockData;
   const postData = {
     competitionCode: '22-23V',
     gender: 'M',
@@ -38,12 +36,12 @@ const DefaultContents = () => {
 
   return (
     <Wrap>
-      <ItemBox>
+      <ListBox>
         {/* {data1.map((item, index) => (
-          <ListDiv length={item.length} key={`${item}_${index}`}>
-            {item}
-          </ListDiv>
-        ))} */}
+            <ListDiv length={item.length} key={`${item}_${index}`}>
+              {item}
+            </ListDiv>
+          ))} */}
         {/* <ListForm> */}
         <ListDiv>
           <input
@@ -141,7 +139,7 @@ const DefaultContents = () => {
             onChange={onChangeHandler}
           />
         </ListDiv>
-      </ItemBox>
+      </ListBox>
       {/* </ListForm> */}
       <BottomBox>
         <ClickBtn onClick={onSubmitHandler}>+</ClickBtn>
@@ -153,24 +151,31 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const ItemBox = styled.div`
+const ListBox = styled.div`
   display: flex;
+  flex-direction: row;
 `;
 const ListDiv = styled.div`
   display: flex;
   flex-direction: row;
   border: 1px solid black;
-  justify-content: center;
   /* width: ${(props) => (props.length > 3 ? '100px' : '60px')}; */
   width: 100px;
+  min-width: 100px;
   height: 20px;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  display: inline-block;
+  display: inline-block; */
+  input {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const BottomBox = styled.div`
   display: flex;
+  flex-direction: row;
   width: 100%;
   justify-content: center;
 `;

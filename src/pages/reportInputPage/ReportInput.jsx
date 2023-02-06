@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReportTitle from '../../components/reportTitle/ReportTitle';
-import ReportContent from '../../components/reportContent/ReportContent';
-import ShowData from '../../components/reportShowData/ReportShowData';
+import ReportInputData from '../../components/reportInputData/ReportInputData';
+import ReportShowData from '../../components/reportShowData/ReportShowData';
 
 const ReportInput = () => {
   return (
     <WrapDiv>
       <ReportTitle />
-      <ReportContent />
-      <ShowData />
+      <ReportInputData />
+      <ReportShowData />
     </WrapDiv>
   );
 };
