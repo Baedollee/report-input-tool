@@ -37,60 +37,70 @@ const DefaultContents = () => {
   // }, []);
 
   return (
-    <>
-      {data1.map((item, index) => (
-        <ListDiv length={item.length} key={`${item}_${index}`}>
-          {item}
+    <Wrap>
+      <ItemBox>
+        {data1.map((item, index) => (
+          <ListDiv length={item.length} key={`${item}_${index}`}>
+            {item}
+          </ListDiv>
+        ))}
+        {/* <ListForm> */}
+        <ListDiv>
+          <input
+            type='text'
+            name='startingReserve'
+            value={inputText.startingReserve}
+            onChange={onChangeHandler}
+          />
         </ListDiv>
-      ))}
-      {/* <ListForm> */}
-      <ListDiv>
-        <input
-          type='text'
-          name='startingReserve'
-          value={inputText.startingReserve}
-          onChange={onChangeHandler}
-        />
-      </ListDiv>
-      <ListDiv>
-        <input
-          type='number'
-          name='startingOrder'
-          value={inputText.startingOrder}
-          onChange={onChangeHandler}
-        />
-      </ListDiv>
-      <ListDiv>
-        <input
-          type='text'
-          name='participantName'
-          value={inputText.participantName}
-          onChange={onChangeHandler}
-        />
-      </ListDiv>
+        <ListDiv>
+          <input
+            type='number'
+            name='startingOrder'
+            value={inputText.startingOrder}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='participantName'
+            value={inputText.participantName}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
 
-      <ListDiv>
-        <input
-          type='text'
-          name='participantPosition'
-          value={inputText.participantPosition}
-          onChange={onChangeHandler}
-        />
-      </ListDiv>
-      <ListDiv>
-        <input
-          type='text'
-          name='participantBIB'
-          value={inputText.participantBIB}
-          onChange={onChangeHandler}
-        />
-      </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='participantPosition'
+            value={inputText.participantPosition}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+        <ListDiv>
+          <input
+            type='text'
+            name='participantBIB'
+            value={inputText.participantBIB}
+            onChange={onChangeHandler}
+          />
+        </ListDiv>
+      </ItemBox>
       {/* </ListForm> */}
-      <button onClick={onSubmitHandler}>+</button>
-    </>
+      <BottomBox>
+        <ClickBtn onClick={onSubmitHandler}>+</ClickBtn>
+      </BottomBox>
+    </Wrap>
   );
 };
-
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const ItemBox = styled.div`
+  display: flex;
+`;
 const ListDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -104,8 +114,16 @@ const ListDiv = styled.div`
   white-space: nowrap;
   display: inline-block;
 `;
-const ListForm = styled.form`
+const BottomBox = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+const ClickBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  width: 100px;
 `;
 
 export default DefaultContents;

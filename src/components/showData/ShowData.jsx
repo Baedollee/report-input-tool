@@ -4,11 +4,9 @@ import GetData from './getData/GetData';
 
 const ShowData = () => {
   return (
-    <>
-      <Wrap>
-        <GetData />
-      </Wrap>
-    </>
+    <Wrap>
+      <GetData />
+    </Wrap>
   );
 };
 const Wrap = styled.div`

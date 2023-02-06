@@ -5,12 +5,10 @@ import ShowData from '../showData/ShowData';
 
 const ReportContent = () => {
   return (
-    <>
-      <Wrap>
-        <DefaultContents />
-      </Wrap>
+    <Wrap>
+      <DefaultContents />
       <ShowData />
-    </>
+    </Wrap>
   );
 };
 const Wrap = styled.div`

@@ -31,7 +31,6 @@ const GetData = () => {
 
 const Wrap = styled.div`
   display: flex;
-  flex-direction: row;
 `;
 const ListDiv = styled.div`
   display: flex;
