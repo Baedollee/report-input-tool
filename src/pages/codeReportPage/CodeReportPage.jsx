@@ -44,13 +44,11 @@ const InputBox = styled.div`
   width: 50%;
   flex-direction: column;
   justify-content: center;
-  background-color: blue;
 `;
 const OutputBox = styled.div`
   display: flex;
   width: 50%;
   justify-content: center;
   flex-direction: column;
-  background-color: red;
 `;
 export default CodeReportPage;
