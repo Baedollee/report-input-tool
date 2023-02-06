@@ -12,8 +12,8 @@ const CodeInput = () => {
     codeOrder: 1,
     mainCode: '',
     codeName: '',
-    StatColumn: '',
-    StatValue: '',
+    statColumn: '',
+    statValue: '',
   };
   const [codeInputText, setCodeInputText] = useState(codePostData);
 
@@ -58,16 +58,16 @@ const CodeInput = () => {
         <ListDiv>
           <input
             type='text'
-            name='StatColumn'
-            value={codeInputText.StatColumn}
+            name='statColumn'
+            value={codeInputText.statColumn}
             onChange={onChangeHandler}
           />
         </ListDiv>
         <ListDiv>
           <input
             type='text'
-            name='StatValue'
-            value={codeInputText.StatValue}
+            name='statValue'
+            value={codeInputText.statValue}
             onChange={onChangeHandler}
           />
         </ListDiv>

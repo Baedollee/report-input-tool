@@ -9,9 +9,10 @@ const initialState = {
 export const MockCodeDataThunk = createAsyncThunk(
   'MockCodeDataThunk/post',
   async (payload, thunkApi) => {
-    console.log('post', payload);
+    console.log('코드 포스트 post', payload);
     try {
-      const response = await axios.post('/api/startlist/insertLineup', payload);
+      const response = await axios.post('/api/code/insertCode', payload);
+      console.log('코드 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

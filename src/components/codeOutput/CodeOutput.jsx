@@ -5,9 +5,7 @@ import { GetCodeMockDataThunk } from '../../redux/modules/codeDataSlice';
 
 const CodeOutput = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.codeData.getCodeDataList).sort(
-    (a, b) => a.codeOrder - b.codeOrder
-  );
+  const data = useSelector((state) => state.codeData.getCodeDataList);
   useEffect(() => {
     dispatch(GetCodeMockDataThunk());
   }, [JSON.stringify(data)]);
