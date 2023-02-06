@@ -22,7 +22,7 @@ const CodeTitle = ({ btn }) => {
         <TableDiv>코드 이름</TableDiv>
         <TableDiv>통계 컬럼</TableDiv>
         <TableDiv>통계 값</TableDiv>
-        <TableDiv>수정 삭제</TableDiv>
+        <TableDiv>시간</TableDiv>
         <TableDiv>등록</TableDiv>
       </TableBox>
     </TableWrap>

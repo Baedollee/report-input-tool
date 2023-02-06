@@ -26,7 +26,7 @@ export const GetCodeMockDataThunk = createAsyncThunk(
     try {
       const response = await axios.get('/api/code/selectActionCodeList');
       console.log('서버 get data', response);
-      return thunkApi.fulfillWithValue(response.data);
+      return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }

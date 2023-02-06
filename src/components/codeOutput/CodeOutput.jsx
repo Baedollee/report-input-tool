@@ -51,10 +51,11 @@ const CodeOutput = () => {
           <ListDiv>{item.StatColumn}</ListDiv>
           <ListDiv>{item.StatValue}</ListDiv>
           <ListDiv>
-            <div>
+            {/* <div>
               <button>수정</button>
               <button>삭제</button>
-            </div>
+            </div> */}
+            {item.createTime}
           </ListDiv>
           <ListDiv>
             <button>등록</button>
