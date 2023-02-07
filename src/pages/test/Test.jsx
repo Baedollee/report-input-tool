@@ -1,28 +1,40 @@
-import React, { useState } from 'react';
-import SortedWords from './SortedWords';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const Test = () => {
-  const [words, setWords] = useState([]);
-  const [word, setWord] = useState('');
+  const [count, setCount] = useState(0);
 
-  const handleClick = () => {
-    setWords([...words, word]);
-    setWord('');
+  // useEffect(() => {
+  //   console.log(`you clicked ${count} times`);
+  // }, [count]);
+
+  const incrementCount = useCallback(() => {
+    setCount((count) => count + 1);
+  }, []);
+
+  useEffect(() => {
+    incrementCount();
+
+    console.log('useEffect', count);
+  }, [incrementCount]);
+
+  console.log(count);
+  const loadJson = () => {
+    return fetch('www.naver.com').then((response) => {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        throw new Error(response.status);
+      }
+    });
   };
+  // loadJson('no-such-user.json').catch(alert);
 
   return (
-    <>
-      <h1>React Hooks : useMemo</h1>
-      <div>
-        <SortedWords word={words} />
-      </div>
-      <input
-        value={word}
-        onChange={({ target: { value } }) => setWord(value)}
-        placeholder='word'
-      />
-      <button onClick={handleClick}>+</button>
-    </>
+    <div>
+      <p>you cliked {count} times</p>
+      <button onClick={incrementCount}> Click</button>
+      <button onClick={loadJson}>async click</button>
+    </div>
   );
 };
 
