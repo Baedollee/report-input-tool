@@ -2,7 +2,7 @@ import { debounce } from 'lodash';
 import React from 'react';
 import { useCallback } from 'react';
 
-const useDebounce = () => {
+const UseDebounce = () => {
   const handleSearch = useCallback(
     debounce(async (params) => {
       try {

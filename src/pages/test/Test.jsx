@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import HandleImageCompression from './handleImageCompression/HandleImageCompression';
 
 const Test = () => {
   const [count, setCount] = useState(0);
@@ -20,7 +21,7 @@ const Test = () => {
   console.log(count);
   const loadJson = () => {
     return fetch('www.naver.com').then((response) => {
-      if (response.status == 200) {
+      if (response.status === 200) {
         return response.json();
       } else {
         throw new Error(response.status);
@@ -34,6 +35,7 @@ const Test = () => {
       <p>you cliked {count} times</p>
       <button onClick={incrementCount}> Click</button>
       <button onClick={loadJson}>async click</button>
+      <HandleImageCompression />
     </div>
   );
 };
