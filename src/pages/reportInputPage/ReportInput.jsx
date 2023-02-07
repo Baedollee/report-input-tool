@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReportTitle from '../../components/reportTitle/ReportTitle';
-import ReportInputData from '../../components/reportInputData/ReportInputData';
-import ReportShowData from '../../components/reportShowData/ReportShowData';
+import ReportTitle from '../../components/report/reportTitle/ReportTitle';
+import ReportInputData from '../../components/report/reportInputData/ReportInputData';
+import ReportShowData from '../../components/report/reportShowData/ReportShowData';
 
 const ReportInput = () => {
   return (

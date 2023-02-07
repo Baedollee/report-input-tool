@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { MockDataThunk } from '../../redux/modules/dataSlice';
+import { MockDataThunk } from '../../../redux/modules/dataSlice';
 
 const DefaultContents = () => {
   const dispatch = useDispatch();

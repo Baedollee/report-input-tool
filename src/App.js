@@ -7,11 +7,11 @@ import Test from 'pages/test/Test';
 function App() {
   return (
     <>
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
-      </Routes>
-      {/* <Test /> */}
+      </Routes> */}
+      <Test />
     </>
   );
 }
