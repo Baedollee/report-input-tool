@@ -91,6 +91,8 @@ const LeftTable = () => {
     dispatch(onSelect(selectRow));
   }, [selectRow]);
 
+  const getRowId = (params) => params.rowsData.participantOrder;
+
   //   useEffect(() => {
   //     dispatch(GetEntryDataThunk());
   //   }, [rowsData]);
@@ -112,21 +114,24 @@ const LeftTable = () => {
             apiRef={apiRef}
             rows={rowsData}
             columns={columns}
+            getRowId={(row) => row.participantOrder}
             checkboxSelection
             // onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
             onSelectionModelChange={(ids) => {
+              //   console.log('-------', ids);
               const selectedIDs = new Set(ids);
               const selectedRows = rowsData.filter((row) =>
-                selectedIDs.has(row.id)
+                // console.log(row.participantOrder)
+                selectedIDs.has(row.participantOrder)
               );
               setSelectRow(selectedRows);
             }}
-            initialState={{
-              pinnedColumns: {
-                left: [GRID_CHECKBOX_SELECTION_COL_DEF.field],
-                right: ['actions'],
-              },
-            }}
+            // initialState={{
+            //   pinnedColumns: {
+            //     left: [GRID_CHECKBOX_SELECTION_COL_DEF.field],
+            //     right: ['actions'],
+            //   },
+            // }}
           />
         </div>
       </LeftBoxDiv>

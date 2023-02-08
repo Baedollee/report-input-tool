@@ -4,9 +4,9 @@ import axios from 'axios';
 const initialState = {
   entryList: [
     {
-      id: 1,
+      participantOrder: 1,
       participantId: 'AAAA',
-      createdTime: 'null',
+      createdTime: null,
       participantBIB: '11',
       participantName: '수지',
       participantPosition: 'OH',
@@ -17,7 +17,7 @@ const initialState = {
       // startingReserve: '선발',
     },
     {
-      id: 2,
+      participantOrder: 2,
       participantId: 'BBBB',
       createdTime: 'null',
       participantBIB: '22',
@@ -30,7 +30,7 @@ const initialState = {
       // startingReserve: '선발',
     },
     {
-      id: 3,
+      participantOrder: 3,
       participantId: 'CCCC',
       createdTime: 'null',
       participantBIB: '33',
