@@ -114,6 +114,7 @@ const LeftTable = () => {
             apiRef={apiRef}
             rows={rowsData}
             columns={columns}
+            // 행 아이디 정의 하는 것
             getRowId={(row) => row.participantOrder}
             checkboxSelection
             // onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
