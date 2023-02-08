@@ -95,6 +95,13 @@ const LeftTable = () => {
   //     dispatch(GetEntryDataThunk());
   //   }, [rowsData]);
 
+  //   const onRowsSelectionHandler = (ids) => {
+  //     const selectedRowsData = ids.map((id) =>
+  //       rowsData.find((row) => row.id === id)
+  //     );
+  //     console.log(selectedRowsData);
+  //   };
+
   console.log(selectData);
   return (
     <>
@@ -106,11 +113,11 @@ const LeftTable = () => {
             rows={rowsData}
             columns={columns}
             checkboxSelection
+            // onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
             onSelectionModelChange={(ids) => {
               const selectedIDs = new Set(ids);
-              const selectedRows = rowsData.filter(
-                (row) => selectedIDs.has(Number(row.participantId))
-                // console.log('111111', Number(row.participantId))
+              const selectedRows = rowsData.filter((row) =>
+                selectedIDs.has(row.id)
               );
               setSelectRow(selectedRows);
             }}

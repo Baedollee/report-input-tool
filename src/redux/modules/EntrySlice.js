@@ -5,7 +5,7 @@ const initialState = {
   entryList: [
     {
       id: 1,
-      participantId: '1',
+      participantId: 'AAAA',
       createdTime: 'null',
       participantBIB: '11',
       participantName: '수지',
@@ -18,7 +18,7 @@ const initialState = {
     },
     {
       id: 2,
-      participantId: '2',
+      participantId: 'BBBB',
       createdTime: 'null',
       participantBIB: '22',
       participantName: '아이유',
@@ -31,7 +31,7 @@ const initialState = {
     },
     {
       id: 3,
-      participantId: '3',
+      participantId: 'CCCC',
       createdTime: 'null',
       participantBIB: '33',
       participantName: '설현',
