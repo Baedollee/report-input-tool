@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import HandleImageCompression from './handleImageCompression/HandleImageCompression';
+import { TestView } from './testCheckBox/TestCheckBox';
+import TestUseEffect from './testUseEffect/TestUseEffect';
 
-const Test = () => {
+const TestPage = () => {
   const [count, setCount] = useState(0);
 
   // useEffect(() => {
@@ -32,12 +34,14 @@ const Test = () => {
 
   return (
     <div>
-      <p>you cliked {count} times</p>
+      {/* <p>you cliked {count} times</p>
       <button onClick={incrementCount}> Click</button>
       <button onClick={loadJson}>async click</button>
-      <HandleImageCompression />
+      <HandleImageCompression /> */}
+      {/* <TestUseEffect /> */}
+      <TestView />
     </div>
   );
 };
 
-export default Test;
+export default TestPage;

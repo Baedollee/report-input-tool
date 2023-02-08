@@ -2,7 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Main from 'pages/reportInputPage/ReportInput';
 import CodeReportPage from 'pages/codeReportPage/CodeReportPage';
-import Test from 'pages/test/Test';
+import TestPage from 'pages/testPage/TestPage';
+import EntryPage from './pages/entryPage/EntryPage';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
       </Routes> */}
-      <Test />
+      {/* <TestPage /> */}
+      <EntryPage />
     </>
   );
 }
