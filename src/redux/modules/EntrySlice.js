@@ -79,7 +79,7 @@ export const GetEntryDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     console.log('엔드리 get', payload);
     try {
-      const response = await axios.get('');
+      const response = await axios.get('/api/team/selectTeamroster');
       console.log('서버 get data', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {

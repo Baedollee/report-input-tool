@@ -82,7 +82,7 @@ const LeftTable = () => {
   const selectData = useSelector((state) => state.entrySlice.selectList);
   const [selectRow, setSelectRow] = useState([]);
 
-  //   const apiRef = useGridApiRef();
+  const apiRef = useGridApiRef();
 
   useEffect(() => {
     dispatch(onSelect(selectRow));
@@ -99,7 +99,7 @@ const LeftTable = () => {
         <div>팀선수명단</div>
         <div style={{ height: 400, width: '100%' }}>
           <DataGridPro
-            // apiRef={apiRef}
+            apiRef={apiRef}
             rows={rowsData}
             columns={columns}
             checkboxSelection
