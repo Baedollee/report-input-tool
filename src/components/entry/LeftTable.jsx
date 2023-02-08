@@ -83,6 +83,9 @@ const LeftTable = () => {
   const [selectRow, setSelectRow] = useState([]);
 
   const apiRef = useGridApiRef();
+  useEffect(() => {
+    dispatch(GetEntryDataThunk());
+  }, []);
 
   useEffect(() => {
     dispatch(onSelect(selectRow));
