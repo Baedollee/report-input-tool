@@ -1,51 +1,122 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import {
+  DataGridPro,
+  GridColumns,
+  GridRowsProp,
+  GridActionsCellItem,
+  GRID_CHECKBOX_SELECTION_COL_DEF,
+} from '@mui/x-data-grid-pro';
+import { entrySlice, onSelect } from 'redux/modules/EntrySlice';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  randomCreatedDate,
+  randomTraderName,
+  randomEmail,
+  randomUpdatedDate,
+} from '@mui/x-data-grid-generator';
 import styled from 'styled-components';
+import { GetLineUpListDataThunk } from '../../redux/modules/EntrySlice';
 
 const RightTable = () => {
+  const columns = [
+    {
+      field: 'participantId',
+      headerName: '참가자고유번호',
+      width: 100,
+      editable: false,
+    },
+
+    { field: 'createdTime', headerName: '시간', width: 20, editable: true },
+    {
+      field: 'participantBIB',
+      headerName: '등번호',
+      width: 60,
+      editable: true,
+    },
+    {
+      field: 'participantName',
+      headerName: '선수이름',
+      // type: 'number',
+      width: 80,
+      editable: false,
+    },
+    {
+      field: 'participantPosition',
+      headerName: '포지션',
+      // type: 'date',
+      width: 60,
+      editable: false,
+    },
+    {
+      field: 'role',
+      headerName: '역할',
+      // type: 'dateTime',
+      width: 40,
+      editable: false,
+    },
+    {
+      field: 'teamId',
+      headerName: '팀고유번호',
+      // type: 'dateTime',
+      width: 80,
+      editable: false,
+    },
+    {
+      field: 'teamName',
+      headerName: '팀명',
+      type: 'dateTime',
+      width: 80,
+      editable: false,
+    },
+  ];
+  const dispatch = useDispatch();
+  const rowsData = useSelector((state) => state.entrySlice.lineUpList);
+  const [selectRow, setSelectRow] = useState([]);
+
+  useEffect(() => {
+    dispatch(onSelect(selectRow));
+  }, [selectRow]);
+
+  //   useEffect(() => {
+  //     dispatch(GetLineUpListDataThunk());
+  //   }, [rowsData]);
+
+  //   console.log(rowsData);
   return (
     <>
       <RightBoxDiv>
-        <p>출전선수(라인업)</p>
-        <TableWrap>
-          <tr>
-            <td>선수명</td>
-            <td>선수번호</td>
-            <td>배번</td>
-            <td>포지션</td>
-            <td>신분</td>
-          </tr>
-          <tr>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-          </tr>
-          <tr>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-          </tr>
-        </TableWrap>
+        <div>출전선수</div>
+        <div style={{ height: 400, width: '100%' }}>
+          <DataGridPro
+            rows={rowsData}
+            columns={columns}
+            checkboxSelection
+            onSelectionModelChange={(ids) => {
+              const selectedIDs = new Set(ids);
+              const selectedRows = rowsData.filter((row) =>
+                selectedIDs.has(row.id)
+              );
+              setSelectRow(selectedRows);
+            }}
+            initialState={{
+              pinnedColumns: {
+                left: [GRID_CHECKBOX_SELECTION_COL_DEF.field],
+                right: ['actions'],
+              },
+            }}
+          />
+        </div>
       </RightBoxDiv>
     </>
   );
 };
 
 const RightBoxDiv = styled.div`
-  display: flex;
   width: 45%;
   flex-direction: column;
-`;
-const TableWrap = styled.table`
-  border-spacing: 0;
-  border: 1px solid black;
-  td {
-    width: 200px;
-    border: 1px solid black;
-  }
 `;
 
 export default RightTable;

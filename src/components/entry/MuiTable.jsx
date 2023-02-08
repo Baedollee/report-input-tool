@@ -19,13 +19,13 @@ import {
 } from '@mui/x-data-grid-generator';
 
 export const MuiTable = () => {
-  const data = useSelector((state) => state.entrySlice.entryList);
+  const rowsData = useSelector((state) => state.entrySlice.entryList);
 
-  console.log(data);
+  console.log(rowsData);
   return (
     <div style={{ height: 400, width: '80%' }}>
       <DataGridPro
-        rows={rows}
+        rows={rowsData}
         columns={columns}
         checkboxSelection
         //     initialState={{
@@ -94,49 +94,4 @@ const columns = [
   //       <GridActionsCellItem icon={<DeleteIcon />} label='Delete' />,
   //     ],
   //   },
-];
-
-const rows = [
-  {
-    id: 1,
-    // name: randomTraderName(),
-    participantId: 'AAAAA',
-    createdTime: 'null',
-    email: randomEmail(),
-    age: 25,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: 2,
-    name: randomTraderName(),
-    email: randomEmail(),
-    age: 36,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: 3,
-    name: randomTraderName(),
-    email: randomEmail(),
-    age: 19,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: 4,
-    name: randomTraderName(),
-    email: randomEmail(),
-    age: 28,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: 5,
-    name: randomTraderName(),
-    email: randomEmail(),
-    age: 23,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
 ];
