@@ -95,7 +95,7 @@ const LeftTable = () => {
   //     dispatch(GetEntryDataThunk());
   //   }, [rowsData]);
 
-  //   console.log(selectData);
+  console.log(selectData);
   return (
     <>
       <LeftBoxDiv>
@@ -108,8 +108,9 @@ const LeftTable = () => {
             checkboxSelection
             onSelectionModelChange={(ids) => {
               const selectedIDs = new Set(ids);
-              const selectedRows = rowsData.filter((row) =>
-                selectedIDs.has(row.id)
+              const selectedRows = rowsData.filter(
+                (row) => selectedIDs.has(Number(row.participantId))
+                // console.log('111111', Number(row.participantId))
               );
               setSelectRow(selectedRows);
             }}
