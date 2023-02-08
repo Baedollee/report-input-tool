@@ -1,4 +1,5 @@
 import LeftTable from 'components/entry/LeftTable';
+import { MuiTable } from 'components/entry/MuiTable';
 import RightTable from 'components/entry/RightTable';
 import React from 'react';
 import styled from 'styled-components';
@@ -11,7 +12,8 @@ const EntryPage = () => {
         <button>왼쪽</button>
         <button>오른쪽</button>
       </MiddleBoxDiv>
-      <RightTable />
+      {/* <RightTable /> */}
+      <MuiTable />
     </WrapDiv>
   );
 };

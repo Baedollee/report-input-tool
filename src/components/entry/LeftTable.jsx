@@ -1,7 +1,9 @@
 import React from 'react';
+import { teamPlayerListMockData } from 'static/MockData';
 import styled from 'styled-components';
 
 const LeftTable = () => {
+  const mockList = teamPlayerListMockData;
   return (
     <>
       <LeftBoxDiv>
@@ -14,13 +16,16 @@ const LeftTable = () => {
             <td>포지션</td>
             <td>신분</td>
           </tr>
-          <tr>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-            <td>배성열</td>
-          </tr>
+          {mockList.map((item, index) => (
+            <tr key={`${item}_${index}`}>
+              <td>{item.participantName}</td>
+              <td>{item.participantId}</td>
+              <td>{item.participantBIB}</td>
+              <td>{item.participantPosition}</td>
+              <td>{item.startingReserve}</td>
+            </tr>
+          ))}
+
           <tr>
             <td>배성열</td>
             <td>배성열</td>

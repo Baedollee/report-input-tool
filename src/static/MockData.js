@@ -28,3 +28,39 @@ export const mock = {
   position: 'op',
   playerNumber: '11',
 };
+
+export const teamPlayerListMockData = [
+  {
+    participantId: '1',
+    createdTime: null,
+    participantBIB: '11',
+    participantName: '레오',
+    participantPosition: 'OH',
+    role: 'Player',
+    teamId: 'KAL',
+    teamName: '대한항공',
+    // participantPosition: 'OP',
+    // startingReserve: '선발',
+  },
+  {
+    participantName: '차지환',
+    participantId: '2',
+    participantBIB: '22',
+    participantPosition: 'OH',
+    startingReserve: '선발',
+  },
+  {
+    participantName: '박승수',
+    participantId: '3',
+    participantBIB: '33',
+    participantPosition: 'OP',
+    startingReserve: '선발',
+  },
+  {
+    participantName: '링컨',
+    participantId: '4',
+    participantBIB: '44',
+    participantPosition: 'OP',
+    startingReserve: '선발',
+  },
+];
