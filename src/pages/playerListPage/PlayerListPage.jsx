@@ -1,97 +1,65 @@
-import React, { useState } from 'react';
-import BootstrapTable from 'react-bootstrap-table-next';
-import cellEditFactory from 'react-bootstrap-table2-editor';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import LeftTable from 'components/entry/LeftTable';
+import RightTable from 'components/entry/RightTable';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  DeleteLineUpListDataThunk,
+  EntryDataThunk,
+  LineUpListDataThunk,
+  onReset,
+} from 'redux/modules/EntrySlice';
+import styled from 'styled-components';
+import { DeleteEntryDataThunk } from '../../redux/modules/EntrySlice';
 
 const PlayerListPage = () => {
-  const products = [
-    { id: '1', name: 'item', price: '2000' },
-    { id: '2', name: 'item', price: '2000' },
-    { id: '3', name: 'item', price: '2000' },
-  ];
-  const columns = [
-    {
-      dataField: 'id',
-      text: 'Product ID',
-      sort: true,
-    },
-    {
-      dataField: 'name',
-      text: 'Product Name',
-      editable: false,
-      sort: true,
-    },
-    {
-      dataField: 'price',
-      text: 'Product Price',
-      sort: true,
-    },
-  ];
-  const defaultSorted = [
-    {
-      dataField: 'name',
-      order: 'desc',
-    },
-  ];
+  const dispatch = useDispatch();
+  const selectList = useSelector((state) => state.entrySlice.selectList);
+  console.log('page', selectList);
 
-  const [selectList, setSelectList] = useState([]);
-
-  const handleBtnClick = () => {
-    if (!selectList.includes(2)) {
-      setSelectList([...selectList, 2]);
-    } else {
-      setSelectList(selectList.filter((x) => x !== 2));
-    }
+  const onClickLinUpHandler = async () => {
+    await dispatch(LineUpListDataThunk(selectList));
+    await dispatch(DeleteEntryDataThunk(selectList));
+    await dispatch(onReset());
   };
-  const handleOnSelect = (row, isSelect) => {
-    if (isSelect) {
-      setSelectList([...selectList, row]);
-    } else {
-      setSelectList(selectList.filter((x) => x.id !== row.id));
-    }
+  const onClickEntryHandler = async () => {
+    await dispatch(EntryDataThunk(selectList));
+    await dispatch(DeleteLineUpListDataThunk(selectList));
+    await dispatch(onReset());
   };
-
-  const handleOnSelectAll = (isSelect, rows) => {
-    // console.log('1111', rows, isSelect);
-    const ids = rows.map((r) => r);
-    if (isSelect) {
-      setSelectList(ids);
-    } else {
-      setSelectList([]);
-    }
-  };
-
-  console.log(selectList);
-  const selectRow = {
-    mode: 'checkbox',
-    clickToSelect: true,
-    clickToEdit: true,
-    bgColor: 'skyblue',
-    onSelect: handleOnSelect,
-    onSelectAll: handleOnSelectAll,
-  };
-  const cellEdit = {
-    mode: 'click',
-  };
-
   return (
-    <>
-      <div>
-        <button onClick={handleBtnClick}>버튼 클릭</button>
-      </div>
-      <BootstrapTable
-        bootstrap4
-        keyField='id'
-        data={products}
-        columns={columns}
-        selectRow={selectRow}
-        defaultSorted={defaultSorted}
-        cellEdit={cellEditFactory({ mode: 'dbclick' })}
-        striped
-        hover
-        condensed
-      />
-    </>
+    <WrapDiv>
+      <LeftTable />
+      <MiddleBoxDiv>
+        <button onClick={onClickLinUpHandler}>선발추가</button>
+        <button onClick={onClickEntryHandler}>벤치추가</button>
+      </MiddleBoxDiv>
+      <RightTable />
+    </WrapDiv>
   );
 };
+
+const WrapDiv = styled.div`
+  display: flex;
+  height: 100vh;
+  padding: 10px;
+  flex-direction: row;
+`;
+
+const MiddleBoxDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 10%;
+  gap: 10px;
+  button {
+    width: 70px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    background-color: orange;
+    color: white;
+    font-weight: 700;
+  }
+`;
+
 export default PlayerListPage;

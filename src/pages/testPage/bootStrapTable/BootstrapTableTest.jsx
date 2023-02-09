@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BootstrapTableTest = () => {
   const products = [
@@ -15,7 +16,7 @@ const BootstrapTableTest = () => {
       text: 'Product ID',
       sort: true,
       headerStyle: (column, colIndex) => {
-        console.log(colIndex);
+        // console.log(colIndex);
         // if (column) return { backgroundColor: 'yellow' };
       },
     },
@@ -65,7 +66,6 @@ const BootstrapTableTest = () => {
     }
   };
 
-  console.log(selectList);
   const selectRow = {
     mode: 'checkbox',
     clickToSelect: true,
@@ -73,12 +73,22 @@ const BootstrapTableTest = () => {
     bgColor: 'skyblue',
     onSelect: handleOnSelect,
     onSelectAll: handleOnSelectAll,
+    //   headerColumnStyle: (status) => {
+    //   return textAlign: 'center';
+    // },
   };
   const cellEdit = {
     mode: 'click',
   };
   const rowStyle = (row, rowIndex) => {
     console.log(row, rowIndex);
+    return {
+      color: 'black',
+      fontSize: '20px',
+      borderColor: 'red',
+      borderWidth: 10,
+      // bordered: true,
+    };
   };
 
   return (
@@ -95,7 +105,8 @@ const BootstrapTableTest = () => {
         defaultSorted={defaultSorted}
         cellEdit={cellEditFactory({ mode: 'dbclick' })}
         bordered={true}
-        striped
+        // hover={true}
+        // striped
         rowStyle={rowStyle}
         // condensed
       />

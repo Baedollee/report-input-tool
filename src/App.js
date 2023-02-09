@@ -16,8 +16,8 @@ function App() {
       </Routes> */}
       {/* <TestPage /> */}
       {/* <EntryPage /> */}
-      {/* <PlayerListPage /> */}
-      <BootstrapTableTest />
+      <PlayerListPage />
+      {/* <BootstrapTableTest /> */}
     </>
   );
 }
