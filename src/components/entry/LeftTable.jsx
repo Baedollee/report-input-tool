@@ -21,9 +21,10 @@ const LeftTable = () => {
       headerStyle: (column, colIndex) => {
         if (column)
           return {
-            width: '100px',
+            width: 'auto',
             fontSize: 10,
             textAlign: 'center',
+            margin: 'auto',
           };
       },
     },
@@ -33,7 +34,13 @@ const LeftTable = () => {
       editable: true,
       sort: true,
       headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
+        if (column)
+          return {
+            width: 'auto',
+            fontSize: 10,
+            textAlign: 'center',
+            justifyContent: 'center',
+          };
       },
     },
     {
@@ -42,7 +49,13 @@ const LeftTable = () => {
       editable: true,
       sort: true,
       headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
+        if (column)
+          return {
+            width: 'auto',
+            fontSize: 10,
+            textAlign: 'center',
+            justifyContent: 'center',
+          };
       },
     },
     {
@@ -104,7 +117,6 @@ const LeftTable = () => {
   };
 
   const handleOnSelectAll = (isSelect, rows) => {
-    // console.log('1111', rows, isSelect);
     const ids = rows.map((r) => r);
     if (isSelect) {
       setSelectList(ids);
@@ -153,7 +165,6 @@ const LeftTable = () => {
   //     dispatch(GetLineUpListDataThunk());
   //   }, [rowsData]);
 
-  //   console.log(rowsData);
   return (
     <>
       <RightBoxDiv>

@@ -21,7 +21,7 @@ const RightTable = () => {
       headerStyle: (column, colIndex) => {
         if (column)
           return {
-            width: '100px',
+            width: 'auto',
             fontSize: 10,
             textAlign: 'center',
           };
@@ -121,7 +121,6 @@ const RightTable = () => {
   };
 
   const handleOnSelectAll = (isSelect, rows) => {
-    // console.log('1111', rows, isSelect);
     const ids = rows.map((r) => r);
     if (isSelect) {
       setSelectList(ids);
