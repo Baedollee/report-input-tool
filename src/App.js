@@ -4,6 +4,8 @@ import Main from 'pages/reportInputPage/ReportInput';
 import CodeReportPage from 'pages/codeReportPage/CodeReportPage';
 import TestPage from 'pages/testPage/TestPage';
 import EntryPage from './pages/entryPage/EntryPage';
+import PlayerListPage from 'pages/playerListPage/PlayerListPage';
+import BootstrapTableTest from 'pages/testPage/bootStrapTable/BootstrapTableTest';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
         <Route path='/codeReport' element={<CodeReportPage />} />
       </Routes> */}
       {/* <TestPage /> */}
-      <EntryPage />
+      {/* <EntryPage /> */}
+      {/* <PlayerListPage /> */}
+      <BootstrapTableTest />
     </>
   );
 }
