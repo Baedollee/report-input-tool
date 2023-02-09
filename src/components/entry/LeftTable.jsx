@@ -10,7 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const LeftTable = () => {
   const dispatch = useDispatch();
   const rowsData = useSelector((state) => state.entrySlice.lineUpList);
-  const [selectList, setSelectList] = useState([]);
+  const selectData = useSelector((state) => state.entrySlice.leftSelectList);
+  const [selectList, setSelectList] = useState(selectData);
 
   const columns = [
     {
@@ -156,6 +157,17 @@ const LeftTable = () => {
   const columnStyle = (column, columnIndex) => {
     console.log(column, columnIndex);
   };
+  // const beforeSaveCell = (oldValue, newValue, row, column, done) => {
+  //   console.log('----', oldValue);
+  //   setTimeout(() => {
+  //     if (alert('변경하시겠습니까?')) {
+  //       done(true);
+  //     } else {
+  //       done(false);
+  //     }
+  //   }, 0);
+  //   return { async: true };
+  // };
 
   useEffect(() => {
     dispatch(onSelect(selectList));

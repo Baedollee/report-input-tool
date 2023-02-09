@@ -26,6 +26,8 @@ const PlayerListPage = () => {
     await dispatch(DeleteLineUpListDataThunk(selectList));
     await dispatch(onReset());
   };
+
+  useEffect(() => {});
   return (
     <WrapDiv>
       <LeftTable />

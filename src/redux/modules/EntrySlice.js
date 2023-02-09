@@ -58,7 +58,8 @@ const initialState = {
       // startingReserve: '선발',
     },
   ],
-  selectList: [],
+  leftSelectList: [],
+  RightSelectList: [],
 };
 
 export const EntryDataThunk = createAsyncThunk(
@@ -141,7 +142,7 @@ const entrySlice = createSlice({
   initialState,
   reducers: {
     onSelect: (state, action) => {
-      //   console.log(state, action);
+      console.log('1111111', action);
       state.selectList = action.payload;
     },
     onReset: (state, action) => {

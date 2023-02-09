@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const RightTable = () => {
   const dispatch = useDispatch();
   const rowsData = useSelector((state) => state.entrySlice.entryList);
-  const selectData = useSelector((state) => state.entrySlice.selectList);
-  const [selectList, setSelectList] = useState([]);
+  const selectData = useSelector((state) => state.entrySlice.RightSelectList);
+  const [selectList, setSelectList] = useState(selectData);
 
   const columns = [
     {
@@ -186,7 +186,7 @@ const RightTable = () => {
           columns={columns}
           selectRow={selectRow}
           defaultSorted={defaultSorted}
-          cellEdit={cellEditFactory({ mode: 'dbclick' })}
+          cellEdit={cellEditFactory({ mode: 'dbclick', blurToSave: true })}
           bordered={true}
           hover
           // striped
