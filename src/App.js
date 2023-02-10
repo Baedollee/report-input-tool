@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import Main from 'pages/reportInputPage/ReportInput';
 import CodeReportPage from 'pages/codeReportPage/CodeReportPage';
 import TestPage from 'pages/testPage/TestPage';
-import EntryPage from './pages/entryPage/EntryPage';
 import PlayerListPage from 'pages/playerListPage/PlayerListPage';
 import BootstrapTableTest from 'pages/testPage/bootStrapTable/BootstrapTableTest';
 import HitMapTestPage from 'pages/hitmapTestPage/HitMapTestPage';
@@ -11,11 +10,12 @@ import HitMapTestPage from 'pages/hitmapTestPage/HitMapTestPage';
 function App() {
   return (
     <>
-      <Routes>
+      {/* 초기 라인업 코드입력 페이지 */}
+      {/* <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
-      </Routes>
-      {/* <EntryPage /> */}
+      </Routes> */}
+
       {/* 공부페이지 */}
       {/* <TestPage /> */}
 
