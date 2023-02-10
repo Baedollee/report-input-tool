@@ -32,11 +32,11 @@ const PlayerListPage = () => {
         (other) => other.participantOrder === item.participantOrder
       );
     });
-
     await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(LineUpListDataThunk(copyArr));
     await dispatch(onReset());
   };
+
   const onClickEntryHandler = async () => {
     const copyArr = [...leftSelectList];
     for (let i = 0; i < copyArr.length; i++) {
@@ -47,7 +47,6 @@ const PlayerListPage = () => {
         (other) => other.participantOrder === item.participantOrder
       );
     });
-
     await dispatch(EntryDataThunk(copyArr));
     await dispatch(DeleteEntryDataThunk(leftSelectList));
     await dispatch(onChange([...changeStatus, ...copyArr]));

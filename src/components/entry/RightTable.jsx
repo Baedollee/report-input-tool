@@ -119,7 +119,8 @@ const RightTable = () => {
   //   }
   // });
 
-  const handleOnSelect = (row, isSelect, index) => {
+  const handleOnSelect = (row, isSelect, index, a) => {
+    console.log('12312321321', a);
     if (isSelect) {
       setSelectList([...selectList, row]);
     } else {
