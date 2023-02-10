@@ -42,12 +42,18 @@ const PlayerListPage = () => {
     for (let i = 0; i < copyArr.length; i++) {
       copyArr[i] = { ...copyArr[i], participation: 'N' };
     }
+    const changeStatus = rightList.filter((item) => {
+      return !leftSelectList.some(
+        (other) => other.participantName === item.participantName
+      );
+    });
+
     await dispatch(EntryDataThunk(copyArr));
     await dispatch(DeleteEntryDataThunk(leftSelectList));
+    await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(onReset());
   };
 
-  useEffect(() => {});
   return (
     <WrapDiv>
       <LeftTable />
