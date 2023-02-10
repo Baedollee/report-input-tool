@@ -12,7 +12,6 @@ const RightTable = () => {
   const selectData = useSelector((state) => state.entrySlice.rightSelectList);
   const [selectList, setSelectList] = useState(selectData);
 
-  console.log('entryList', rowsData);
   const columns = [
     {
       dataField: 'participantId',
@@ -102,8 +101,7 @@ const RightTable = () => {
       },
     },
   ];
-  const products = rowsData;
-
+  const products = rowsData.filter((state) => state.participation === 'N');
   const handleBtnClick = () => {
     if (!selectList.includes(2)) {
       setSelectList([...selectList, 2]);

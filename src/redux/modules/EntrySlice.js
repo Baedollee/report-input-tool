@@ -39,6 +39,30 @@ const initialState = {
       teamName: '대한항공',
       participation: 'N',
     },
+    {
+      participantOrder: 4,
+      participantId: 'CCCC',
+      createdTime: 'null',
+      participantBIB: '33',
+      participantName: '배성열',
+      participantPosition: 'OH',
+      role: 'Player',
+      teamId: 'KAL',
+      teamName: '대한항공',
+      participation: 'N',
+    },
+    {
+      participantOrder: 5,
+      participantId: 'CCCC',
+      createdTime: 'null',
+      participantBIB: '33',
+      participantName: '강인호',
+      participantPosition: 'OH',
+      role: 'Player',
+      teamId: 'KAL',
+      teamName: '대한항공',
+      participation: 'N',
+    },
   ],
   lineUpList: [
     {
@@ -98,7 +122,7 @@ export const DeleteEntryDataThunk = createAsyncThunk(
 export const LineUpListDataThunk = createAsyncThunk(
   'LineUpListDataThunk/post',
   async (payload, thunkApi) => {
-    console.log('라인업 포스트 post', payload);
+    // console.log('라인업 포스트 post', payload);
     try {
       const response = await axios.post('', payload);
       console.log('라인업 리스폰스', response);
@@ -114,7 +138,7 @@ export const GetLineUpListDataThunk = createAsyncThunk(
     console.log('라인업 get', payload);
     try {
       const response = await axios.get('');
-      console.log('라인업 get data', response);
+      // console.log('라인업 get data', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -146,6 +170,9 @@ const entrySlice = createSlice({
     onReset: (state, action) => {
       state.leftSelectList = [];
       state.rightSelectList = [];
+    },
+    onChange: (state, action) => {
+      state.entryList = action.payload;
     },
   },
   extraReducers: {
@@ -194,5 +221,6 @@ const entrySlice = createSlice({
   },
 });
 
-export const { onEntrySelect, onLineUpSelect, onReset } = entrySlice.actions;
+export const { onEntrySelect, onLineUpSelect, onReset, onChange } =
+  entrySlice.actions;
 export default entrySlice.reducer;

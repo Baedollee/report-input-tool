@@ -3,14 +3,17 @@ import RightTable from 'components/entry/RightTable';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  DeleteEntryDataThunk,
   EntryDataThunk,
   LineUpListDataThunk,
+  onChange,
   onReset,
 } from 'redux/modules/EntrySlice';
 import styled from 'styled-components';
 
 const PlayerListPage = () => {
   const dispatch = useDispatch();
+  const rightList = useSelector((state) => state.entrySlice.entryList);
   const rightSelectList = useSelector(
     (state) => state.entrySlice.rightSelectList
   );
@@ -24,6 +27,13 @@ const PlayerListPage = () => {
     for (let i = 0; i < copyArr.length; i++) {
       copyArr[i] = { ...copyArr[i], participation: 'Y' };
     }
+    const changeStatus = rightList.filter((item) => {
+      return !rightSelectList.some(
+        (other) => other.participantName === item.participantName
+      );
+    });
+
+    await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(LineUpListDataThunk(copyArr));
     await dispatch(onReset());
   };
@@ -33,6 +43,7 @@ const PlayerListPage = () => {
       copyArr[i] = { ...copyArr[i], participation: 'N' };
     }
     await dispatch(EntryDataThunk(copyArr));
+    await dispatch(DeleteEntryDataThunk(leftSelectList));
     await dispatch(onReset());
   };
 
