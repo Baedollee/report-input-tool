@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { titleCategory } from '../../../static/MockData';
+import { titleCategory } from '../../static/MockData';
 
 const ReportTitle = () => {
   const navigate = useNavigate();

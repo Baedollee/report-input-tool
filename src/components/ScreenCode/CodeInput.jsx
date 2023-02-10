@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {
   postCodeState,
   MockCodeDataThunk,
-} from '../../../redux/modules/codeDataSlice';
+} from '../../redux/modules/codeDataSlice';
 
 const CodeInput = () => {
   const dispatch = useDispatch();

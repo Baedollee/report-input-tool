@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetCodeMockDataThunk } from '../../../redux/modules/codeDataSlice';
+import { GetCodeMockDataThunk } from '../../redux/modules/codeDataSlice';
 
 const CodeOutput = () => {
   const dispatch = useDispatch();

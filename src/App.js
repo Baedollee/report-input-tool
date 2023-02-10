@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Main from 'pages/reportInputPage/ReportInput';
-import CodeReportPage from 'pages/codeReportPage/CodeReportPage';
-import TestPage from 'pages/testPage/TestPage';
-import PlayerListPage from 'pages/playerListPage/PlayerListPage';
-import BootstrapTableTest from 'pages/testPage/bootStrapTable/BootstrapTableTest';
-import HitMapTestPage from 'pages/hitmapTestPage/HitMapTestPage';
+import Main from 'pages/ReportInputPage/ReportInput';
+import CodeReportPage from 'pages/CodeReportPage/CodeReportPage';
+import TestPage from 'pages/TestPage/TestPage';
+import PlayerListPage from 'pages/PlayerListPage/PlayerListPage';
+import BootstrapTableTest from 'pages/TestPage/bootStrapTable/BootstrapTableTest';
+import HitMapTestPage from 'pages/HitmapTestPage/HitMapTestPage';
 
 function App() {
   return (
