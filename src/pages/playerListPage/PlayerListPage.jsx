@@ -22,7 +22,7 @@ const PlayerListPage = () => {
     const copyArr = [...rightSelectList];
 
     for (let i = 0; i < copyArr.length; i++) {
-      copyArr[i] = { ...copyArr[i], participation: true };
+      copyArr[i] = { ...copyArr[i], participation: 'Y' };
     }
     await dispatch(LineUpListDataThunk(copyArr));
     await dispatch(onReset());
@@ -30,7 +30,7 @@ const PlayerListPage = () => {
   const onClickEntryHandler = async () => {
     const copyArr = [...leftSelectList];
     for (let i = 0; i < copyArr.length; i++) {
-      copyArr[i] = { ...copyArr[i], participation: false };
+      copyArr[i] = { ...copyArr[i], participation: 'N' };
     }
     await dispatch(EntryDataThunk(copyArr));
     await dispatch(onReset());

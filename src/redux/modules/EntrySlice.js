@@ -13,7 +13,7 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      participation: false,
+      participation: 'N',
     },
     {
       participantOrder: 2,
@@ -25,7 +25,7 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      participation: false,
+      participation: 'N',
     },
     {
       participantOrder: 3,
@@ -37,7 +37,7 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      participation: false,
+      participation: 'N',
     },
   ],
   lineUpList: [
@@ -51,7 +51,7 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      participation: true,
+      participation: 'Y',
     },
   ],
   leftSelectList: [],
