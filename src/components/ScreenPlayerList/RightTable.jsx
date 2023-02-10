@@ -5,102 +5,15 @@ import styled, { createGlobalStyle } from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { columns } from 'static/BootStrapTableColumsContents';
 
 const RightTable = () => {
   const dispatch = useDispatch();
   const rowsData = useSelector((state) => state.entrySlice.entryList);
   const selectData = useSelector((state) => state.entrySlice.rightSelectList);
   const [selectList, setSelectList] = useState(selectData);
+  console.log('12312321312', rowsData);
 
-  const columns = [
-    {
-      dataField: 'participantId',
-      text: '참가자고유번호',
-      editable: false,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column)
-          return {
-            width: 'auto',
-            fontSize: 10,
-            textAlign: 'center',
-          };
-      },
-    },
-    {
-      dataField: 'createdTime',
-      text: '시간',
-      editable: true,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-    {
-      dataField: 'participantBIB',
-      text: '등번호',
-      editable: true,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-    {
-      dataField: 'participantOrder',
-      text: '선수이름',
-      editable: false,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-    {
-      dataField: 'participantPosition',
-      text: '포지션',
-      editable: false,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-    {
-      dataField: 'role',
-      text: '역할',
-      editable: false,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-    {
-      dataField: 'teamId',
-      text: '팀고유번호',
-      editable: false,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-    {
-      dataField: 'teamName',
-      text: '팀명',
-      editable: false,
-      sort: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-    {
-      dataField: 'participation',
-      text: '참가여부',
-      editable: false,
-      sort: true,
-      hidden: true,
-      headerStyle: (column, colIndex) => {
-        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-      },
-    },
-  ];
   const products = rowsData.filter((state) => state.participation === 'N');
   const handleBtnClick = () => {
     if (!selectList.includes(2)) {
