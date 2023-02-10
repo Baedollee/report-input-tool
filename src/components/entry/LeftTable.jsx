@@ -60,7 +60,7 @@ const LeftTable = () => {
       },
     },
     {
-      dataField: 'participantName',
+      dataField: 'participantOrder',
       text: '선수이름',
       editable: false,
       sort: true,
@@ -122,7 +122,7 @@ const LeftTable = () => {
       setSelectList([...selectList, row]);
     } else {
       setSelectList(
-        selectList.filter((x) => x.participantName !== row.participantName)
+        selectList.filter((x) => x.participantOrder !== row.participantOrder)
       );
     }
   };
@@ -193,7 +193,7 @@ const LeftTable = () => {
         <div>출전선수</div>
         <BootstrapTable
           bootstrap4
-          keyField='participantName'
+          keyField='participantOrder'
           data={products}
           columns={columns}
           selectRow={selectRow}

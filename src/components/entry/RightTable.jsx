@@ -46,7 +46,7 @@ const RightTable = () => {
       },
     },
     {
-      dataField: 'participantName',
+      dataField: 'participantOrder',
       text: '선수이름',
       editable: false,
       sort: true,
@@ -114,7 +114,7 @@ const RightTable = () => {
   //     setSelectList(([...selectList]) => [...selectList, row]);
   //   } else {
   //     setSelectList((selectList) =>
-  //       selectList.filter((x) => x.participantName !== row.participantName)
+  //       selectList.filter((x) => x.participantOrder !== row.participantOrder)
   //     );
   //   }
   // });
@@ -124,7 +124,7 @@ const RightTable = () => {
       setSelectList([...selectList, row]);
     } else {
       setSelectList(
-        selectList.filter((x) => x.participantName !== row.participantName)
+        selectList.filter((x) => x.participantOrder !== row.participantOrder)
       );
     }
   };
@@ -188,7 +188,7 @@ const RightTable = () => {
         <div>팀선수명단</div>
         <BootstrapTable
           bootstrap4
-          keyField='participantName'
+          keyField='participantOrder'
           data={products}
           columns={columns}
           selectRow={selectRow}

@@ -29,7 +29,7 @@ const PlayerListPage = () => {
     }
     const changeStatus = rightList.filter((item) => {
       return !rightSelectList.some(
-        (other) => other.participantName === item.participantName
+        (other) => other.participantOrder === item.participantOrder
       );
     });
 
@@ -44,7 +44,7 @@ const PlayerListPage = () => {
     }
     const changeStatus = rightList.filter((item) => {
       return !leftSelectList.some(
-        (other) => other.participantName === item.participantName
+        (other) => other.participantOrder === item.participantOrder
       );
     });
 

@@ -67,6 +67,7 @@ const initialState = {
   lineUpList: [
     {
       id: 1,
+      participantOrder: 10,
       participantId: '1',
       createdTime: 'null',
       participantBIB: '11',
