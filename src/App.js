@@ -11,19 +11,21 @@ import HitMapTestPage from 'pages/hitmapTestPage/HitMapTestPage';
 function App() {
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
-      </Routes> */}
+      </Routes>
       {/* <EntryPage /> */}
       {/* 공부페이지 */}
       {/* <TestPage /> */}
 
-      {/* 라인업 선수 클릭 이동 페이지 */}
-      <PlayerListPage />
+      {/* 라인업 선수 클릭 이동 페이지
+      <PlayerListPage /> */}
 
       {/* 히트맵 테스트 페이지 */}
       {/* <HitMapTestPage /> */}
+
+      {/* 관리자 테스트 페이지 */}
     </>
   );
 }

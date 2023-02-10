@@ -1,5 +1,5 @@
-import LeftTable from 'components/entry/LeftTable';
-import RightTable from 'components/entry/RightTable';
+import LeftTable from 'components/playerList/LeftTable';
+import RightTable from 'components/playerList/RightTable';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
