@@ -16,15 +16,14 @@ function App() {
         <Route path='/codeReport' element={<CodeReportPage />} />
       </Routes> */}
       {/* <EntryPage /> */}
-
       {/* 공부페이지 */}
       {/* <TestPage /> */}
 
       {/* 라인업 선수 클릭 이동 페이지 */}
-      {/* <PlayerListPage /> */}
+      <PlayerListPage />
 
       {/* 히트맵 테스트 페이지 */}
-      <HitMapTestPage />
+      {/* <HitMapTestPage /> */}
     </>
   );
 }

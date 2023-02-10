@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { GetEntryDataThunk, onSelect } from 'redux/modules/EntrySlice';
+import { GetEntryDataThunk, onEntrySelect } from 'redux/modules/EntrySlice';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,9 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const RightTable = () => {
   const dispatch = useDispatch();
   const rowsData = useSelector((state) => state.entrySlice.entryList);
-  const selectData = useSelector((state) => state.entrySlice.RightSelectList);
+  const selectData = useSelector((state) => state.entrySlice.rightSelectList);
   const [selectList, setSelectList] = useState(selectData);
 
+  console.log('entryList', rowsData);
   const columns = [
     {
       dataField: 'participantId',
@@ -90,6 +91,16 @@ const RightTable = () => {
         if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
       },
     },
+    {
+      dataField: 'participation',
+      text: '참가여부',
+      editable: false,
+      sort: true,
+      hidden: true,
+      headerStyle: (column, colIndex) => {
+        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
+      },
+    },
   ];
   const products = rowsData;
 
@@ -110,7 +121,7 @@ const RightTable = () => {
   //   }
   // });
 
-  const handleOnSelect = (row, isSelect) => {
+  const handleOnSelect = (row, isSelect, index) => {
     if (isSelect) {
       setSelectList([...selectList, row]);
     } else {
@@ -166,14 +177,12 @@ const RightTable = () => {
   };
 
   useEffect(() => {
-    dispatch(onSelect(selectList));
+    dispatch(onEntrySelect(selectList));
   }, [selectList]);
-
-  console.log(selectData);
 
   useEffect(() => {
     dispatch(GetEntryDataThunk());
-  }, [rowsData]);
+  }, []);
 
   return (
     <>

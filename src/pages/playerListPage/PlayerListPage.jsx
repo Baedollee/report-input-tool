@@ -1,29 +1,38 @@
 import LeftTable from 'components/entry/LeftTable';
 import RightTable from 'components/entry/RightTable';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  DeleteLineUpListDataThunk,
   EntryDataThunk,
   LineUpListDataThunk,
   onReset,
 } from 'redux/modules/EntrySlice';
 import styled from 'styled-components';
-import { DeleteEntryDataThunk } from '../../redux/modules/EntrySlice';
 
 const PlayerListPage = () => {
   const dispatch = useDispatch();
-  const selectList = useSelector((state) => state.entrySlice.selectList);
-  console.log('page', selectList);
+  const rightSelectList = useSelector(
+    (state) => state.entrySlice.rightSelectList
+  );
+  const leftSelectList = useSelector(
+    (state) => state.entrySlice.leftSelectList
+  );
 
   const onClickLinUpHandler = async () => {
-    await dispatch(LineUpListDataThunk(selectList));
-    await dispatch(DeleteEntryDataThunk(selectList));
+    const copyArr = [...rightSelectList];
+
+    for (let i = 0; i < copyArr.length; i++) {
+      copyArr[i] = { ...copyArr[i], participation: true };
+    }
+    await dispatch(LineUpListDataThunk(copyArr));
     await dispatch(onReset());
   };
   const onClickEntryHandler = async () => {
-    await dispatch(EntryDataThunk(selectList));
-    await dispatch(DeleteLineUpListDataThunk(selectList));
+    const copyArr = [...leftSelectList];
+    for (let i = 0; i < copyArr.length; i++) {
+      copyArr[i] = { ...copyArr[i], participation: false };
+    }
+    await dispatch(EntryDataThunk(copyArr));
     await dispatch(onReset());
   };
 

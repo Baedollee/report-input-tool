@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { entrySlice, onSelect } from 'redux/modules/EntrySlice';
+import { onLineUpSelect, onSelect } from 'redux/modules/EntrySlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { GetLineUpListDataThunk } from '../../redux/modules/EntrySlice';
 import styled from 'styled-components';
@@ -104,6 +104,16 @@ const LeftTable = () => {
         if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
       },
     },
+    {
+      dataField: 'participation',
+      text: '참가여부',
+      editable: false,
+      sort: true,
+      hidden: true,
+      headerStyle: (column, colIndex) => {
+        if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
+      },
+    },
   ];
   const products = rowsData;
 
@@ -170,7 +180,7 @@ const LeftTable = () => {
   // };
 
   useEffect(() => {
-    dispatch(onSelect(selectList));
+    dispatch(onLineUpSelect(selectList));
   }, [selectList]);
 
   //   useEffect(() => {

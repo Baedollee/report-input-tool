@@ -13,8 +13,7 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      // participantPosition: 'OP',
-      // startingReserve: '선발',
+      participation: false,
     },
     {
       participantOrder: 2,
@@ -26,8 +25,7 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      // participantPosition: 'OP',
-      // startingReserve: '선발',
+      participation: false,
     },
     {
       participantOrder: 3,
@@ -39,8 +37,7 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      // participantPosition: 'OP',
-      // startingReserve: '선발',
+      participation: false,
     },
   ],
   lineUpList: [
@@ -54,12 +51,11 @@ const initialState = {
       role: 'Player',
       teamId: 'KAL',
       teamName: '대한항공',
-      // participantPosition: 'OP',
-      // startingReserve: '선발',
+      participation: true,
     },
   ],
   leftSelectList: [],
-  RightSelectList: [],
+  rightSelectList: [],
 };
 
 export const EntryDataThunk = createAsyncThunk(
@@ -78,7 +74,7 @@ export const EntryDataThunk = createAsyncThunk(
 export const GetEntryDataThunk = createAsyncThunk(
   'EntryDataThunk/get',
   async (payload, thunkApi) => {
-    console.log('엔드리 get', payload);
+    // console.log('엔드리 get', payload);
     try {
       const response = await axios.get('/api/team/selectTeamroster');
       console.log('서버 get data', response);
@@ -141,12 +137,15 @@ const entrySlice = createSlice({
   name: 'entry',
   initialState,
   reducers: {
-    onSelect: (state, action) => {
-      console.log('1111111', action);
-      state.selectList = action.payload;
+    onEntrySelect: (state, action) => {
+      state.rightSelectList = action.payload;
+    },
+    onLineUpSelect: (state, action) => {
+      state.leftSelectList = action.payload;
     },
     onReset: (state, action) => {
-      state.selectList = [];
+      state.leftSelectList = [];
+      state.rightSelectList = [];
     },
   },
   extraReducers: {
@@ -179,7 +178,7 @@ const entrySlice = createSlice({
       console.log(action);
     },
     [GetLineUpListDataThunk.fulfilled]: (state, action) => {
-      state.lineUpList = action.payload;
+      state.lineUpList.filter((get) => get.participation === true);
     },
     [GetLineUpListDataThunk.rejected]: (state, action) => {
       console.log(action);
@@ -195,5 +194,5 @@ const entrySlice = createSlice({
   },
 });
 
-export const { onSelect, onReset } = entrySlice.actions;
+export const { onEntrySelect, onLineUpSelect, onReset } = entrySlice.actions;
 export default entrySlice.reducer;
