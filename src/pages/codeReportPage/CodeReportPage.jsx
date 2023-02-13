@@ -25,6 +25,7 @@ const CodeReportPage = () => {
     </>
   );
 };
+// console.log(object);
 
 const MovePageDiv = styled.div`
   display: flex;
