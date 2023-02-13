@@ -11,10 +11,12 @@ const RightTable = () => {
   const dispatch = useDispatch();
   const rowsData = useSelector((state) => state.entrySlice.entryList);
   const selectData = useSelector((state) => state.entrySlice.rightSelectList);
+  const selectStatus = useSelector((state) => state.entrySlice.isSelect);
   const [selectList, setSelectList] = useState(selectData);
-  console.log('12312321312', rowsData);
 
-  const products = rowsData.filter((state) => state.participation === 'N');
+  // console.log('--------', rowsData);
+  const products = rowsData;
+  // .filter((state) => state.participation === 'N');
   const handleBtnClick = () => {
     if (!selectList.includes(2)) {
       setSelectList([...selectList, 2]);
@@ -33,12 +35,12 @@ const RightTable = () => {
   // });
 
   const handleOnSelect = (row, isSelect, index, a) => {
-    console.log('12312321321', a);
+    console.log('12312321321', row);
     if (isSelect) {
       setSelectList([...selectList, row]);
     } else {
       setSelectList(
-        selectList.filter((x) => x.participantOrder !== row.participantOrder)
+        selectList.filter((x) => x.participantName !== row.participantName)
       );
     }
   };
@@ -102,7 +104,7 @@ const RightTable = () => {
         <div>팀선수명단</div>
         <BootstrapTable
           bootstrap4
-          keyField='participantOrder'
+          keyField='participantName'
           data={products}
           columns={columns}
           selectRow={selectRow}

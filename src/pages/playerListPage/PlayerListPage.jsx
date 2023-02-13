@@ -1,5 +1,6 @@
 import LeftTable from 'components/ScreenPlayerList/LeftTable';
 import RightTable from 'components/ScreenPlayerList/RightTable';
+import TopTable from 'components/ScreenPlayerList/TopTable';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -55,12 +56,17 @@ const PlayerListPage = () => {
 
   return (
     <WrapDiv>
-      <LeftTable />
-      <MiddleBoxDiv>
-        <button onClick={onClickLinUpHandler}>선발추가</button>
-        <button onClick={onClickEntryHandler}>벤치추가</button>
-      </MiddleBoxDiv>
-      <RightTable />
+      <div>
+        <TopTable />
+      </div>
+      <BoxWrap>
+        <LeftTable />
+        <MiddleBoxDiv>
+          <button onClick={onClickLinUpHandler}>선발추가</button>
+          <button onClick={onClickEntryHandler}>벤치추가</button>
+        </MiddleBoxDiv>
+        <RightTable />
+      </BoxWrap>
     </WrapDiv>
   );
 };
@@ -69,7 +75,10 @@ const WrapDiv = styled.div`
   display: flex;
   height: 100vh;
   padding: 10px;
-  flex-direction: row;
+  flex-direction: column;
+`;
+const BoxWrap = styled.div`
+  display: flex;
 `;
 
 const MiddleBoxDiv = styled.div`

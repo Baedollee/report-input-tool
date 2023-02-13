@@ -2,68 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  entryList: [
-    {
-      participantOrder: 1,
-      participantId: 'AAAA',
-      createdTime: 'null',
-      participantBIB: '11',
-      participantName: '수지',
-      participantPosition: 'OH',
-      role: 'Player',
-      teamId: 'KAL',
-      teamName: '대한항공',
-      participation: 'N',
-    },
-    {
-      participantOrder: 2,
-      participantId: 'BBBB',
-      createdTime: 'null',
-      participantBIB: '22',
-      participantName: '아이유',
-      participantPosition: 'OH',
-      role: 'Player',
-      teamId: 'KAL',
-      teamName: '대한항공',
-      participation: 'N',
-    },
-    {
-      participantOrder: 3,
-      participantId: 'CCCC',
-      createdTime: 'null',
-      participantBIB: '33',
-      participantName: '설현',
-      participantPosition: 'OH',
-      role: 'Player',
-      teamId: 'KAL',
-      teamName: '대한항공',
-      participation: 'N',
-    },
-    {
-      participantOrder: 4,
-      participantId: 'CCCC',
-      createdTime: 'null',
-      participantBIB: '33',
-      participantName: '배성열',
-      participantPosition: 'OH',
-      role: 'Player',
-      teamId: 'KAL',
-      teamName: '대한항공',
-      participation: 'N',
-    },
-    {
-      participantOrder: 5,
-      participantId: 'CCCC',
-      createdTime: 'null',
-      participantBIB: '33',
-      participantName: '강인호',
-      participantPosition: 'OH',
-      role: 'Player',
-      teamId: 'KAL',
-      teamName: '대한항공',
-      participation: 'N',
-    },
-  ],
+  entryList: [],
   lineUpList: [
     {
       id: 1,
@@ -81,7 +20,21 @@ const initialState = {
   ],
   leftSelectList: [],
   rightSelectList: [],
+  playData: [],
+  isSelect: true,
 };
+
+export const PlayDataThunk = createAsyncThunk(
+  'PlayDataThunk/get',
+  async (payload, thunkApi) => {
+    try {
+      const response = await axios.get('/api/game/selectGame');
+      return thunkApi.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
 
 export const EntryDataThunk = createAsyncThunk(
   'EntryDataThunk/post',
@@ -123,9 +76,9 @@ export const DeleteEntryDataThunk = createAsyncThunk(
 export const LineUpListDataThunk = createAsyncThunk(
   'LineUpListDataThunk/post',
   async (payload, thunkApi) => {
-    // console.log('라인업 포스트 post', payload);
+    console.log('라인업 포스트 post', payload);
     try {
-      const response = await axios.post('', payload);
+      const response = await axios.post('/api/team/insertTeamroster', payload);
       console.log('라인업 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
@@ -175,8 +128,17 @@ const entrySlice = createSlice({
     onChange: (state, action) => {
       state.entryList = action.payload;
     },
+    isSelect: (state, action) => {
+      state.isSelect = action.payload;
+    },
   },
   extraReducers: {
+    [PlayDataThunk.fulfilled]: (state, action) => {
+      state.entryList = action.payload;
+    },
+    [PlayDataThunk.rejected]: (state, action) => {
+      console.log(action);
+    },
     [EntryDataThunk.fulfilled]: (state, action) => {
       console.log(action);
       state.codeDataList = [...action.payload, state.codeDataList];
@@ -222,6 +184,6 @@ const entrySlice = createSlice({
   },
 });
 
-export const { onEntrySelect, onLineUpSelect, onReset, onChange } =
+export const { onEntrySelect, onLineUpSelect, onReset, onChange, isSelect } =
   entrySlice.actions;
 export default entrySlice.reducer;
