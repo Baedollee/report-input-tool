@@ -14,6 +14,8 @@ import styled from 'styled-components';
 
 const PlayerListPage = () => {
   const dispatch = useDispatch();
+  const playData = useSelector((state) => state.entrySlice.playData);
+
   const rightList = useSelector((state) => state.entrySlice.entryList);
   const rightSelectList = useSelector(
     (state) => state.entrySlice.rightSelectList
@@ -24,9 +26,16 @@ const PlayerListPage = () => {
 
   const onClickLinUpHandler = async () => {
     const copyArr = [...rightSelectList];
-
+    // console.log('123213123213123', copyArr);
     for (let i = 0; i < copyArr.length; i++) {
-      copyArr[i] = { ...copyArr[i], participation: 'Y' };
+      copyArr[i] = {
+        ...copyArr[i],
+        participation: 'Y',
+        competitionCode: playData[0].competitionCode,
+        gender: playData[0].gender,
+        homeTeam: playData[0].homeTeam,
+        gameCode: playData[0].gameCode,
+      };
     }
     const changeStatus = rightList.filter((item) => {
       return !rightSelectList.some(

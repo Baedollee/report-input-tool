@@ -134,7 +134,7 @@ const entrySlice = createSlice({
   },
   extraReducers: {
     [PlayDataThunk.fulfilled]: (state, action) => {
-      state.entryList = action.payload;
+      state.playData = action.payload;
     },
     [PlayDataThunk.rejected]: (state, action) => {
       console.log(action);

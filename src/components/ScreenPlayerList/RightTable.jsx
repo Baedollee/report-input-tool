@@ -14,7 +14,7 @@ const RightTable = () => {
   const selectStatus = useSelector((state) => state.entrySlice.isSelect);
   const [selectList, setSelectList] = useState(selectData);
 
-  // console.log('--------', rowsData);
+  console.log('--------', rowsData);
   const products = rowsData;
   // .filter((state) => state.participation === 'N');
   const handleBtnClick = () => {
