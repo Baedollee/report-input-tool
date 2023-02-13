@@ -6,6 +6,7 @@ import TestPage from 'pages/TestPage/TestPage';
 import PlayerListPage from 'pages/PlayerListPage/PlayerListPage';
 import BootstrapTableTest from 'pages/TestPage/bootStrapTable/BootstrapTableTest';
 import HitMapTestPage from 'pages/HitmapTestPage/HitMapTestPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 
 function App() {
   return (
@@ -17,10 +18,13 @@ function App() {
       </Routes> */}
       {/* 공부페이지 */}
       {/* <TestPage /> */}
-      라인업 선수 클릭 이동 페이지
-      <PlayerListPage />
+      {/* 라인업 선수 클릭 이동 페이지
+      <PlayerListPage /> */}
       {/* 히트맵 테스트 페이지 */}
       {/* <HitMapTestPage /> */}
+      {/* 로그인 테스트 페이지 */}
+      <LoginPage />
+
       {/* 관리자 테스트 페이지 */}
     </>
   );

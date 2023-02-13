@@ -25,6 +25,7 @@ const CodeInput = () => {
     e.preventDefault();
     dispatch(MockCodeDataThunk(codeInputText));
   };
+
   //   useEffect(() => {}, [onSubmitHandler()]);
 
   return (

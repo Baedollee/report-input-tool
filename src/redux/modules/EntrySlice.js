@@ -6,7 +6,7 @@ const initialState = {
     {
       participantOrder: 1,
       participantId: 'AAAA',
-      createdTime: null,
+      createdTime: 'null',
       participantBIB: '11',
       participantName: '수지',
       participantPosition: 'OH',
@@ -192,7 +192,7 @@ const entrySlice = createSlice({
     },
     [DeleteEntryDataThunk.fulfilled]: (state, action) => {
       state.entryList = state.entryList.filter(
-        (post) => post.id !== action.payload
+        (post) => post.participantOrder !== action.payload
       );
     },
     [DeleteEntryDataThunk.rejected]: (state, action) => {
@@ -213,7 +213,7 @@ const entrySlice = createSlice({
     },
     [DeleteLineUpListDataThunk.fulfilled]: (state, action) => {
       state.lineUpList = state.lineUpList.filter(
-        (post) => post.id !== action.payload
+        (post) => post.participantOrder !== action.payload
       );
     },
     [DeleteLineUpListDataThunk.rejected]: (state, action) => {
