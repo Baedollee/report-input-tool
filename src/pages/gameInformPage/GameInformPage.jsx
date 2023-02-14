@@ -4,41 +4,42 @@ import TopTable from 'components/ScreenPlayerList/TopTable';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  DeleteEntryDataThunk,
-  EntryDataThunk,
+  DeleteRosterDataThunk,
+  PostRosterDataThunk,
   LineUpListDataThunk,
   onChange,
   onReset,
-} from 'redux/modules/EntrySlice';
+} from 'redux/modules/gameInformSlice';
 import styled from 'styled-components';
 
-const PlayerListPage = () => {
+const GameInformPage = () => {
   const dispatch = useDispatch();
-  const playData = useSelector((state) => state.entrySlice.playData);
+  const gameData = useSelector((state) => state.gameInformSlice.gameData);
+  const rosterList = useSelector((state) => state.gameInformSlice.rosterList);
 
-  const rightList = useSelector((state) => state.entrySlice.entryList);
-  const rightSelectList = useSelector(
-    (state) => state.entrySlice.rightSelectList
+  const lineUpSelectList = useSelector(
+    (state) => state.gameInformSlice.lineUpSelectList
   );
-  const leftSelectList = useSelector(
-    (state) => state.entrySlice.leftSelectList
+  const rosterSelectList = useSelector(
+    (state) => state.gameInformSlice.rosterSelectList
   );
 
-  const onClickLinUpHandler = async () => {
-    const copyArr = [...rightSelectList];
-    // console.log('123213123213123', copyArr);
+  const onClickAddLinUpHandler = async () => {
+    const copyArr = [...rosterSelectList];
+
     for (let i = 0; i < copyArr.length; i++) {
       copyArr[i] = {
         ...copyArr[i],
         participation: 'Y',
-        competitionCode: playData[0].competitionCode,
-        gender: playData[0].gender,
-        homeAway: playData[0].homeTeam,
-        gameCode: playData[0].gameCode,
+        competitionCode: gameData[0].competitionCode,
+        gender: gameData[0].gender,
+        homeAway: gameData[0].homeTeam,
+        gameCode: gameData[0].gameCode,
       };
     }
-    const changeStatus = rightList.filter((item) => {
-      return !rightSelectList.some(
+
+    const changeStatus = rosterList.filter((item) => {
+      return !rosterSelectList.some(
         (other) => other.participantOrder === item.participantOrder
       );
     });
@@ -47,18 +48,18 @@ const PlayerListPage = () => {
     await dispatch(onReset());
   };
 
-  const onClickEntryHandler = async () => {
-    const copyArr = [...leftSelectList];
+  const onClickAddRosterHandler = async () => {
+    const copyArr = [...lineUpSelectList];
     for (let i = 0; i < copyArr.length; i++) {
       copyArr[i] = { ...copyArr[i], participation: 'N' };
     }
-    const changeStatus = rightList.filter((item) => {
-      return !leftSelectList.some(
+    const changeStatus = rosterList.filter((item) => {
+      return !lineUpSelectList.some(
         (other) => other.participantOrder === item.participantOrder
       );
     });
-    await dispatch(EntryDataThunk(copyArr));
-    await dispatch(DeleteEntryDataThunk(leftSelectList));
+    await dispatch(PostRosterDataThunk(copyArr));
+    await dispatch(DeleteRosterDataThunk(lineUpSelectList));
     await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(onReset());
   };
@@ -71,8 +72,8 @@ const PlayerListPage = () => {
       <BoxWrap>
         <LeftTable />
         <MiddleBoxDiv>
-          <button onClick={onClickLinUpHandler}>선발추가</button>
-          <button onClick={onClickEntryHandler}>벤치추가</button>
+          <button onClick={onClickAddLinUpHandler}>선발추가</button>
+          <button onClick={onClickAddRosterHandler}>벤치추가</button>
         </MiddleBoxDiv>
         <RightTable />
       </BoxWrap>
@@ -107,5 +108,4 @@ const MiddleBoxDiv = styled.div`
   }
 `;
 
-export default PlayerListPage;
-//
+export default GameInformPage;

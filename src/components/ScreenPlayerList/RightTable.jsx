@@ -1,7 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { GetEntryDataThunk, onEntrySelect } from 'redux/modules/EntrySlice';
+import {
+  GetRosterDataThunk,
+  onRosterSelect,
+} from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,9 +12,11 @@ import { columns } from 'static/BootStrapTableColumsContents';
 
 const RightTable = () => {
   const dispatch = useDispatch();
-  const rowsData = useSelector((state) => state.entrySlice.entryList);
-  const selectData = useSelector((state) => state.entrySlice.rightSelectList);
-  const selectStatus = useSelector((state) => state.entrySlice.isSelect);
+  const rowsData = useSelector((state) => state.gameInformSlice.rosterList);
+  const selectData = useSelector(
+    (state) => state.gameInformSlice.rosterSelectList
+  );
+  const selectStatus = useSelector((state) => state.gameInformSlice.isSelect);
   const [selectList, setSelectList] = useState(selectData);
 
   console.log('--------', rowsData);
@@ -91,11 +96,11 @@ const RightTable = () => {
   };
 
   useEffect(() => {
-    dispatch(onEntrySelect(selectList));
+    dispatch(onRosterSelect(selectList));
   }, [selectList]);
 
   useEffect(() => {
-    dispatch(GetEntryDataThunk());
+    dispatch(GetRosterDataThunk());
   }, []);
 
   return (

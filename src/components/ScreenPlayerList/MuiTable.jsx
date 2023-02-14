@@ -9,7 +9,7 @@
 //   GridActionsCellItem,
 //   GRID_CHECKBOX_SELECTION_COL_DEF,
 // } from '@mui/x-data-grid-pro';
-// import { entrySlice } from 'redux/modules/EntrySlice';
+// import { gameInformSlice } from 'redux/modules/gameInformSlice';
 // import { useSelector } from 'react-redux';
 // import {
 //   randomCreatedDate,
@@ -19,7 +19,7 @@
 // } from '@mui/x-data-grid-generator';
 
 // export const MuiTable = () => {
-//   const rowsData = useSelector((state) => state.entrySlice.entryList);
+//   const rowsData = useSelector((state) => state.gameInformSlice.rosterList);
 
 //   console.log(rowsData);
 //   return (

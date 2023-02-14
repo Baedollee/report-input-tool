@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { onLineUpSelect, onSelect } from 'redux/modules/EntrySlice';
+import { onRosterSelect, onSelect } from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { GetLineUpListDataThunk } from '../../redux/modules/EntrySlice';
+import { GetLineUpListDataThunk } from '../../redux/modules/gameInformSlice';
 import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
@@ -10,8 +10,10 @@ import { columns } from 'static/BootStrapTableColumsContents';
 
 const LeftTable = () => {
   const dispatch = useDispatch();
-  const rowsData = useSelector((state) => state.entrySlice.lineUpList);
-  const selectData = useSelector((state) => state.entrySlice.leftSelectList);
+  const rowsData = useSelector((state) => state.gameInformSlice.lineUpList);
+  const selectData = useSelector(
+    (state) => state.gameInformSlice.rosterSelectList
+  );
   const [selectList, setSelectList] = useState(selectData);
 
   const products = rowsData;
@@ -79,7 +81,7 @@ const LeftTable = () => {
   // };
 
   useEffect(() => {
-    dispatch(onLineUpSelect(selectList));
+    dispatch(onRosterSelect(selectList));
   }, [selectList]);
 
   //   useEffect(() => {

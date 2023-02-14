@@ -2,16 +2,16 @@ import React from 'react';
 import { useEffect } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { useDispatch, useSelector } from 'react-redux';
-import { PlayDataThunk } from 'redux/modules/EntrySlice';
+import { GameDataThunk } from 'redux/modules/gameInformSlice';
 
 const TopTable = () => {
   const dispatch = useDispatch();
-  const playData = useSelector((state) => state.entrySlice.playData);
-  const products = playData;
-  console.log(playData);
+  const gameData = useSelector((state) => state.gameInformSlice.gameData);
+  const products = gameData;
+  console.log(gameData);
 
   useEffect(() => {
-    dispatch(PlayDataThunk());
+    dispatch(GameDataThunk());
   }, []);
 
   const columns = [

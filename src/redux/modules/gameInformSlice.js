@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  entryList: [],
+  rosterList: [],
   lineUpList: [
     {
       id: 1,
@@ -18,14 +18,14 @@ const initialState = {
       participation: 'Y',
     },
   ],
-  leftSelectList: [],
-  rightSelectList: [],
-  playData: [],
+  lineUpSelectList: [],
+  rosterSelectList: [],
+  gameData: [],
   isSelect: true,
 };
 
-export const PlayDataThunk = createAsyncThunk(
-  'PlayDataThunk/get',
+export const GameDataThunk = createAsyncThunk(
+  'GameDataThunk/get',
   async (payload, thunkApi) => {
     try {
       const response = await axios.get('/api/game/selectGame');
@@ -36,23 +36,22 @@ export const PlayDataThunk = createAsyncThunk(
   }
 );
 
-export const EntryDataThunk = createAsyncThunk(
-  'EntryDataThunk/post',
+export const PostRosterDataThunk = createAsyncThunk(
+  'RosterDataThunk/post',
   async (payload, thunkApi) => {
-    console.log('엔트리 포스트 post', payload);
+    console.log('선수명단 포스트 post', payload);
     try {
       const response = await axios.post('', payload);
-      console.log('엔트리 리스폰스', response);
+      console.log('선수명단 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
   }
 );
-export const GetEntryDataThunk = createAsyncThunk(
-  'EntryDataThunk/get',
+export const GetRosterDataThunk = createAsyncThunk(
+  'RosterDataThunk/get',
   async (payload, thunkApi) => {
-    // console.log('엔드리 get', payload);
     try {
       const response = await axios.get('/api/team/selectTeamroster');
       console.log('서버 get data', response);
@@ -62,8 +61,8 @@ export const GetEntryDataThunk = createAsyncThunk(
     }
   }
 );
-export const DeleteEntryDataThunk = createAsyncThunk(
-  'EntryDataThunk/delete',
+export const DeleteRosterDataThunk = createAsyncThunk(
+  'RosterDataThunk/delete',
   async (payload, thunkAPI) => {
     try {
       const response = await axios.delete(`/${payload}`);
@@ -111,53 +110,53 @@ export const DeleteLineUpListDataThunk = createAsyncThunk(
   }
 );
 
-const entrySlice = createSlice({
-  name: 'entry',
+const gameInformSlice = createSlice({
+  name: 'GameInform',
   initialState,
   reducers: {
-    onEntrySelect: (state, action) => {
-      state.rightSelectList = action.payload;
+    onRosterSelect: (state, action) => {
+      state.rosterSelectList = action.payload;
     },
     onLineUpSelect: (state, action) => {
-      state.leftSelectList = action.payload;
+      state.lineUpSelectList = action.payload;
     },
     onReset: (state, action) => {
-      state.leftSelectList = [];
-      state.rightSelectList = [];
+      state.rosterSelectList = [];
+      state.lineUpSelectList = [];
     },
     onChange: (state, action) => {
-      state.entryList = action.payload;
+      state.rosterList = action.payload;
     },
     isSelect: (state, action) => {
       state.isSelect = action.payload;
     },
   },
   extraReducers: {
-    [PlayDataThunk.fulfilled]: (state, action) => {
-      state.playData = action.payload;
+    [GameDataThunk.fulfilled]: (state, action) => {
+      state.gameData = action.payload;
     },
-    [PlayDataThunk.rejected]: (state, action) => {
+    [GameDataThunk.rejected]: (state, action) => {
       console.log(action);
     },
-    [EntryDataThunk.fulfilled]: (state, action) => {
+    [PostRosterDataThunk.fulfilled]: (state, action) => {
       console.log(action);
       state.codeDataList = [...action.payload, state.codeDataList];
     },
-    [EntryDataThunk.rejected]: (state, action) => {
+    [PostRosterDataThunk.rejected]: (state, action) => {
       console.log(action);
     },
-    [GetEntryDataThunk.fulfilled]: (state, action) => {
-      state.entryList = action.payload;
+    [GetRosterDataThunk.fulfilled]: (state, action) => {
+      state.rosterList = action.payload;
     },
-    [GetEntryDataThunk.rejected]: (state, action) => {
+    [GetRosterDataThunk.rejected]: (state, action) => {
       console.log(action);
     },
-    [DeleteEntryDataThunk.fulfilled]: (state, action) => {
-      state.entryList = state.entryList.filter(
+    [DeleteRosterDataThunk.fulfilled]: (state, action) => {
+      state.rosterList = state.rosterList.filter(
         (post) => post.participantOrder !== action.payload
       );
     },
-    [DeleteEntryDataThunk.rejected]: (state, action) => {
+    [DeleteRosterDataThunk.rejected]: (state, action) => {
       console.log(action);
     },
     [LineUpListDataThunk.fulfilled]: (state, action) => {
@@ -184,6 +183,6 @@ const entrySlice = createSlice({
   },
 });
 
-export const { onEntrySelect, onLineUpSelect, onReset, onChange, isSelect } =
-  entrySlice.actions;
-export default entrySlice.reducer;
+export const { onLineUpSelect, onRosterSelect, onReset, onChange, isSelect } =
+  gameInformSlice.actions;
+export default gameInformSlice.reducer;
