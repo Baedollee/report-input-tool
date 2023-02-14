@@ -1,8 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import {
-  GetRosterDataThunk,
-  onRosterSelect,
-} from 'redux/modules/gameInformSlice';
+import React, { useEffect, useState } from 'react';
+import { onRosterSelect, onSelect } from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -10,37 +7,16 @@ import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { columns } from 'static/BootStrapTableColumsContents';
 
-const RightTable = () => {
+const LineUpListTable = ({ lineUpList }) => {
   const dispatch = useDispatch();
-  const rowsData = useSelector((state) => state.gameInformSlice.rosterList);
   const selectData = useSelector(
     (state) => state.gameInformSlice.rosterSelectList
   );
-  const selectStatus = useSelector((state) => state.gameInformSlice.isSelect);
   const [selectList, setSelectList] = useState(selectData);
 
-  console.log('--------', rowsData);
-  const products = rowsData;
-  // .filter((state) => state.participation === 'N');
-  const handleBtnClick = () => {
-    if (!selectList.includes(2)) {
-      setSelectList([...selectList, 2]);
-    } else {
-      setSelectList(selectList.filter((x) => x !== 2));
-    }
-  };
-  // const handleOnSelect = useCallback((row, isSelect) => {
-  //   if (isSelect) {
-  //     setSelectList(([...selectList]) => [...selectList, row]);
-  //   } else {
-  //     setSelectList((selectList) =>
-  //       selectList.filter((x) => x.participantOrder !== row.participantOrder)
-  //     );
-  //   }
-  // });
+  const products = lineUpList;
 
-  const handleOnSelect = (row, isSelect, index, a) => {
-    console.log('12312321321', row);
+  const handleOnSelect = (row, isSelect) => {
     if (isSelect) {
       setSelectList([...selectList, row]);
     } else {
@@ -58,10 +34,6 @@ const RightTable = () => {
       setSelectList([]);
     }
   };
-
-  // useEffect(() => {
-  //   handleOnSelect();
-  // }, [handleOnSelect]);
 
   const selectRow = {
     mode: 'checkbox',
@@ -91,30 +63,36 @@ const RightTable = () => {
       textAlign: 'center',
     };
   };
-  const columnStyle = (column, columnIndex) => {
-    console.log(column, columnIndex);
-  };
+  const columnStyle = (column, columnIndex) => {};
+
+  // const beforeSaveCell = (oldValue, newValue, row, column, done) => {
+  //   console.log('----', oldValue);
+  //   setTimeout(() => {
+  //     if (alert('변경하시겠습니까?')) {
+  //       done(true);
+  //     } else {
+  //       done(false);
+  //     }
+  //   }, 0);
+  //   return { async: true };
+  // };
 
   useEffect(() => {
     dispatch(onRosterSelect(selectList));
   }, [selectList]);
 
-  useEffect(() => {
-    dispatch(GetRosterDataThunk());
-  }, []);
-
   return (
     <>
-      <LeftBoxDiv>
-        <div>팀선수명단</div>
+      <RightBoxDiv>
+        <div>출전선수</div>
         <BootstrapTable
           bootstrap4
-          keyField='participantName'
+          keyField='participantOrder'
           data={products}
           columns={columns}
           selectRow={selectRow}
           defaultSorted={defaultSorted}
-          cellEdit={cellEditFactory({ mode: 'dbclick', blurToSave: true })}
+          cellEdit={cellEditFactory({ mode: 'dbclick' })}
           bordered={true}
           hover
           // striped
@@ -122,14 +100,14 @@ const RightTable = () => {
           columnStyle={columnStyle}
           rowStyle={rowStyle}
         />
-      </LeftBoxDiv>
+      </RightBoxDiv>
     </>
   );
 };
 
-const LeftBoxDiv = styled.div`
+const RightBoxDiv = styled.div`
   width: 45%;
   flex-direction: column;
 `;
 
-export default RightTable;
+export default LineUpListTable;

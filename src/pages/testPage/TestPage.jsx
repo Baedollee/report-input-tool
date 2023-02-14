@@ -16,11 +16,8 @@ const TestPage = () => {
 
   useEffect(() => {
     incrementCount();
-
-    console.log('useEffect', count);
   }, [incrementCount]);
 
-  console.log(count);
   const loadJson = () => {
     return fetch('www.naver.com').then((response) => {
       if (response.status === 200) {

@@ -11,6 +11,9 @@ const ReportTitle = () => {
         <button onClick={() => navigate('/codeReport')}>
           코드입력 페이지로 이동
         </button>
+        <button onClick={() => navigate('/gameInfo')}>
+          엔트리 선택 페이지 이동
+        </button>
       </MovePageDiv>
       <Wrap>
         {titleCategory.map((item, index) => (

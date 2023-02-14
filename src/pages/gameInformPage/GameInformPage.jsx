@@ -1,28 +1,37 @@
-import LeftTable from 'components/ScreenPlayerList/LeftTable';
-import RightTable from 'components/ScreenPlayerList/RightTable';
-import TopTable from 'components/ScreenPlayerList/TopTable';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import GameDataTable from 'components/ScreenPlayerList/GameDataTable';
+import styled from 'styled-components';
+import LineUpListTable from 'components/ScreenPlayerList/LineUpListTable';
+import RosterListTable from 'components/ScreenPlayerList/RosterListTable';
 import {
   DeleteRosterDataThunk,
   PostRosterDataThunk,
-  LineUpListDataThunk,
+  PostLineUpListDataThunk,
   onChange,
   onReset,
+  GetRosterDataThunk,
+  GameDataThunk,
+  GetLineUpListDataThunk,
 } from 'redux/modules/gameInformSlice';
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const GameInformPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const gameData = useSelector((state) => state.gameInformSlice.gameData);
-  const rosterList = useSelector((state) => state.gameInformSlice.rosterList);
-
+  const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
+  const rosterList = useSelector((state) => state?.gameInformSlice?.rosterList);
+  const lineUpList = useSelector((state) => state?.gameInformSlice?.lineUpList);
   const lineUpSelectList = useSelector(
     (state) => state.gameInformSlice.lineUpSelectList
   );
   const rosterSelectList = useSelector(
     (state) => state.gameInformSlice.rosterSelectList
   );
+
+  console.log('게임 정보 ', gameData);
+
+  const [settingSelector, setSettingSelector] = useState('Home');
 
   const onClickAddLinUpHandler = async () => {
     const copyArr = [...rosterSelectList];
@@ -31,21 +40,27 @@ const GameInformPage = () => {
       copyArr[i] = {
         ...copyArr[i],
         participation: 'Y',
-        competitionCode: gameData[0].competitionCode,
-        gender: gameData[0].gender,
-        homeAway: gameData[0].homeTeam,
-        gameCode: gameData[0].gameCode,
+        competitionCode: gameData.competitionCode,
+        gender: gameData.gender,
+        homeAway: gameData.homeTeam,
+        gameCode: gameData.gameCode,
       };
     }
 
     const changeStatus = rosterList.filter((item) => {
       return !rosterSelectList.some(
-        (other) => other.participantOrder === item.participantOrder
+        (other) => other.participantName === item.participantName
       );
     });
+
     await dispatch(onChange([...changeStatus, ...copyArr]));
-    await dispatch(LineUpListDataThunk(copyArr));
+    await dispatch(PostLineUpListDataThunk(copyArr));
     await dispatch(onReset());
+  };
+
+  const onClickSettingSelect = (e) => {
+    const { value } = e.target;
+    setSettingSelector(value);
   };
 
   const onClickAddRosterHandler = async () => {
@@ -55,7 +70,7 @@ const GameInformPage = () => {
     }
     const changeStatus = rosterList.filter((item) => {
       return !lineUpSelectList.some(
-        (other) => other.participantOrder === item.participantOrder
+        (other) => other.participantName === item.participantName
       );
     });
     await dispatch(PostRosterDataThunk(copyArr));
@@ -64,18 +79,36 @@ const GameInformPage = () => {
     await dispatch(onReset());
   };
 
+  useEffect(() => {
+    dispatch(GameDataThunk());
+    dispatch(GetRosterDataThunk());
+    dispatch(GetLineUpListDataThunk());
+  }, []);
+
   return (
     <WrapDiv>
+      <button onClick={() => navigate('/')}>홈으로 이동</button>
+      <BtnSelectBox>
+        <button value={'Home'} onClick={onClickSettingSelect}>
+          홈팀
+        </button>
+        <button value={'Away'} onClick={onClickSettingSelect}>
+          어웨이
+        </button>
+        <button value={'Etc'} onClick={onClickSettingSelect}>
+          기타설정
+        </button>
+      </BtnSelectBox>
       <div>
-        <TopTable />
+        <GameDataTable gameData={gameData} />
       </div>
       <BoxWrap>
-        <LeftTable />
+        <LineUpListTable lineUpList={lineUpList} />
         <MiddleBoxDiv>
           <button onClick={onClickAddLinUpHandler}>선발추가</button>
           <button onClick={onClickAddRosterHandler}>벤치추가</button>
         </MiddleBoxDiv>
-        <RightTable />
+        <RosterListTable rosterList={rosterList} />
       </BoxWrap>
     </WrapDiv>
   );
@@ -87,6 +120,18 @@ const WrapDiv = styled.div`
   padding: 10px;
   flex-direction: column;
 `;
+const BtnSelectBox = styled.div`
+  display: flex;
+  gap: 1px;
+  button {
+    border: 1px solid black;
+    background-color: white;
+    :hover {
+      background-color: orange;
+    }
+  }
+`;
+
 const BoxWrap = styled.div`
   display: flex;
 `;
@@ -95,6 +140,7 @@ const MiddleBoxDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 10%;
   gap: 10px;
   button {
