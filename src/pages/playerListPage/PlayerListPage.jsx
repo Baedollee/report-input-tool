@@ -33,7 +33,7 @@ const PlayerListPage = () => {
         participation: 'Y',
         competitionCode: playData[0].competitionCode,
         gender: playData[0].gender,
-        homeTeam: playData[0].homeTeam,
+        homeAway: playData[0].homeTeam,
         gameCode: playData[0].gameCode,
       };
     }
