@@ -36,8 +36,8 @@ const GameDataTable = ({ gameData }) => {
     <>
       <BootstrapTable
         bootstrap4
-        keyField='gameNum'
-        data={[]}
+        keyField='setNum'
+        data={gameData}
         columns={columns}
       />
       ;

@@ -19,8 +19,12 @@ import { useNavigate } from 'react-router-dom';
 const GameInformPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
+  const gameInform = useSelector((state) => state?.gameInformSlice?.gameData);
   const rosterList = useSelector((state) => state?.gameInformSlice?.rosterList);
+
+  const gameData = [...gameInform];
+  console.log('게임 데이터', gameData);
+
   const lineUpList = useSelector((state) => state?.gameInformSlice?.lineUpList);
   const lineUpSelectList = useSelector(
     (state) => state.gameInformSlice.lineUpSelectList
@@ -28,26 +32,53 @@ const GameInformPage = () => {
   const rosterSelectList = useSelector(
     (state) => state.gameInformSlice.rosterSelectList
   );
-
-  console.log('게임 정보 ', gameData);
+  console.log('선수리스트 선택', rosterSelectList);
 
   const [settingSelector, setSettingSelector] = useState('Home');
+
+  const homeAwayRosterList = () => {
+    if (settingSelector === 'Home') {
+      return rosterList.filter((i) => i.teamId === gameData[0]?.homeTeam);
+    } else {
+      return rosterList.filter((i) => i.teamId === gameData[0]?.awayTeam);
+    }
+  };
+
+  // console.log('선수정보', homeAwayRosterList());
+  const homeAwayLineUpList = () => {
+    if (settingSelector === 'Home') {
+      return lineUpList.filter((i) => i.teamId === gameData[0]?.homeTeam);
+    } else {
+      return lineUpList.filter((i) => i.teamId === gameData[0]?.awayTeam);
+    }
+  };
 
   const onClickAddLinUpHandler = async () => {
     const copyArr = [...rosterSelectList];
 
     for (let i = 0; i < copyArr.length; i++) {
-      copyArr[i] = {
-        ...copyArr[i],
-        participation: 'Y',
-        competitionCode: gameData.competitionCode,
-        gender: gameData.gender,
-        homeAway: gameData.homeTeam,
-        gameCode: gameData.gameCode,
-      };
+      if (settingSelector === 'Home') {
+        copyArr[i] = {
+          ...copyArr[i],
+          participation: 'Y',
+          competitionCode: gameData[0]?.competitionCode,
+          gender: gameData[0]?.gender,
+          homeAway: '홈',
+          gameCode: gameData[0]?.gameCode,
+        };
+      } else {
+        copyArr[i] = {
+          ...copyArr[i],
+          participation: 'Y',
+          competitionCode: gameData[0]?.competitionCode,
+          gender: gameData[0]?.gender,
+          homeAway: '원정',
+          gameCode: gameData[0]?.gameCode,
+        };
+      }
     }
 
-    const changeStatus = rosterList.filter((item) => {
+    const changeStatus = homeAwayRosterList().filter((item) => {
       return !rosterSelectList.some(
         (other) => other.participantName === item.participantName
       );
@@ -68,7 +99,7 @@ const GameInformPage = () => {
     for (let i = 0; i < copyArr.length; i++) {
       copyArr[i] = { ...copyArr[i], participation: 'N' };
     }
-    const changeStatus = rosterList.filter((item) => {
+    const changeStatus = homeAwayLineUpList().filter((item) => {
       return !lineUpSelectList.some(
         (other) => other.participantName === item.participantName
       );
@@ -83,7 +114,8 @@ const GameInformPage = () => {
     dispatch(GameDataThunk());
     dispatch(GetRosterDataThunk());
     dispatch(GetLineUpListDataThunk());
-  }, []);
+    return () => dispatch(onReset());
+  }, [settingSelector]);
 
   return (
     <WrapDiv>
@@ -103,12 +135,12 @@ const GameInformPage = () => {
         <GameDataTable gameData={gameData} />
       </div>
       <BoxWrap>
-        <LineUpListTable lineUpList={lineUpList} />
+        <LineUpListTable lineUpList={homeAwayLineUpList()} />
         <MiddleBoxDiv>
           <button onClick={onClickAddLinUpHandler}>선발추가</button>
           <button onClick={onClickAddRosterHandler}>벤치추가</button>
         </MiddleBoxDiv>
-        <RosterListTable rosterList={rosterList} />
+        <RosterListTable rosterList={homeAwayRosterList()} />
       </BoxWrap>
     </WrapDiv>
   );

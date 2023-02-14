@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   GetRosterDataThunk,
+  isSelect,
   onRosterSelect,
 } from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,7 +18,10 @@ const RosterListTable = ({ rosterList }) => {
   const selectData = useSelector(
     (state) => state.gameInformSlice.rosterSelectList
   );
-  const selectStatus = useSelector((state) => state.gameInformSlice.isSelect);
+  const selectStatusStore = useSelector(
+    (state) => state.gameInformSlice.isSelect
+  );
+  const [selectStatus, setSelectStatus] = useState(selectStatusStore);
   const [selectList, setSelectList] = useState(selectData);
 
   const products = rowsData;
@@ -32,7 +36,7 @@ const RosterListTable = ({ rosterList }) => {
   };
 
   const handleOnSelect = (row, isSelect, index, a) => {
-    console.log('21321321', a);
+    // console.log('행 선택 ', isSelect);
     if (isSelect) {
       setSelectList([...selectList, row]);
     } else {
@@ -49,6 +53,11 @@ const RosterListTable = ({ rosterList }) => {
     } else {
       setSelectList([]);
     }
+  };
+
+  const selectionRenderer = ({ mode, checked, disabled }) => {
+    console.log('선택 콜백', disabled);
+    // return !checked;
   };
 
   // useEffect(() => {
