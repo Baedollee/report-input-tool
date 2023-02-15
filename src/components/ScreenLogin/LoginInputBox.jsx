@@ -8,7 +8,6 @@ const LoginInputBox = () => {
   };
 
   const [loginInputText, setLoginInputText] = useState(loginValue);
-  console.log(loginInputText);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;

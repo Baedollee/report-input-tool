@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { onRosterSelect, onSelect } from 'redux/modules/gameInformSlice';
+import { onLineUpSelect } from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -9,12 +9,12 @@ import { columns } from 'static/BootStrapTableColumsContents';
 
 const LineUpListTable = ({ lineUpList }) => {
   const dispatch = useDispatch();
-  const selectData = useSelector(
-    (state) => state.gameInformSlice.rosterSelectList
-  );
-  const [selectList, setSelectList] = useState(selectData);
-
   const products = lineUpList;
+  const selectData = useSelector(
+    (state) => state.gameInformSlice.lineUpSelectList
+  );
+
+  const [selectList, setSelectList] = useState(selectData);
 
   const handleOnSelect = (row, isSelect) => {
     if (isSelect) {
@@ -65,20 +65,8 @@ const LineUpListTable = ({ lineUpList }) => {
   };
   const columnStyle = (column, columnIndex) => {};
 
-  // const beforeSaveCell = (oldValue, newValue, row, column, done) => {
-  //   console.log('----', oldValue);
-  //   setTimeout(() => {
-  //     if (alert('변경하시겠습니까?')) {
-  //       done(true);
-  //     } else {
-  //       done(false);
-  //     }
-  //   }, 0);
-  //   return { async: true };
-  // };
-
   useEffect(() => {
-    dispatch(onRosterSelect(selectList));
+    dispatch(onLineUpSelect(selectList));
   }, [selectList]);
 
   return (
@@ -87,7 +75,7 @@ const LineUpListTable = ({ lineUpList }) => {
         <div>출전선수</div>
         <BootstrapTable
           bootstrap4
-          keyField='participantOrder'
+          keyField='participantName'
           data={products}
           columns={columns}
           selectRow={selectRow}

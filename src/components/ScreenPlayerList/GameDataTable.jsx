@@ -1,9 +1,9 @@
 import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
+import styled from 'styled-components';
 
 const GameDataTable = ({ gameData }) => {
-  const row = [gameData];
-
+  const hiddenRows = [1, 2];
   const columns = [
     {
       dataField: 'gameNum',
@@ -36,13 +36,29 @@ const GameDataTable = ({ gameData }) => {
     <>
       <BootstrapTable
         bootstrap4
-        keyField='setNum'
-        data={gameData}
+        keyField='gameNum'
+        data={[gameData]}
         columns={columns}
+        hiddenRows={hiddenRows}
       />
-      ;
     </>
   );
 };
+
+const TableWrap = styled.table`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  border: 1px solid black;
+  td {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid black;
+  }
+  tr {
+    display: flex;
+    border-top: 1px solid black;
+  }
+`;
 
 export default GameDataTable;

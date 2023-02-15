@@ -28,7 +28,7 @@ export const GameDataThunk = createAsyncThunk(
   'GameDataThunk/get',
   async (payload, thunkApi) => {
     try {
-      const response = await axios.get('/api/game/selectSet');
+      const response = await axios.get('/api/game/selectGame');
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -88,10 +88,9 @@ export const PostLineUpListDataThunk = createAsyncThunk(
 export const GetLineUpListDataThunk = createAsyncThunk(
   'LineUpListDataThunk/get',
   async (payload, thunkApi) => {
-    console.log('라인업 get', payload);
     try {
-      const response = await axios.get('');
-      // console.log('라인업 get data', response);
+      const response = await axios.get('/api/play/selectPlayerList');
+      console.log('라인업 get data', response.data.data);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -133,6 +132,7 @@ const gameInformSlice = createSlice({
   },
   extraReducers: {
     [GameDataThunk.fulfilled]: (state, action) => {
+      // state.gameData = [...state.gameData, action.payload];
       state.gameData = action.payload;
     },
     [GameDataThunk.rejected]: (state, action) => {
@@ -160,14 +160,15 @@ const gameInformSlice = createSlice({
       console.log(action);
     },
     [PostLineUpListDataThunk.fulfilled]: (state, action) => {
-      console.log(action);
+      console.log('페이로드', action.payload);
       state.lineUpList = [...action.payload, state.lineUpList];
     },
     [PostLineUpListDataThunk.rejected]: (state, action) => {
       console.log(action);
     },
     [GetLineUpListDataThunk.fulfilled]: (state, action) => {
-      state.lineUpList.filter((get) => get.participation === true);
+      // state.lineUpList.filter((get) => get.participation === 'Y');
+      state.lineUpList = action.payload;
     },
     [GetLineUpListDataThunk.rejected]: (state, action) => {
       console.log(action);

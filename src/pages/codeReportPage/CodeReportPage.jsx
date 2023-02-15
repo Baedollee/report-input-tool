@@ -10,7 +10,7 @@ const CodeReportPage = () => {
   return (
     <>
       <MovePageDiv>
-        <button onClick={() => navigate('/')}>라인업페이지로 이동</button>
+        <button onClick={() => navigate('/')}>경기기록 페이지 이동</button>
       </MovePageDiv>
       <Wrap>
         <InputBox>

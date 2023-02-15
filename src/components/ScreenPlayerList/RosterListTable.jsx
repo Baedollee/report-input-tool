@@ -1,9 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import {
-  GetRosterDataThunk,
-  isSelect,
-  onRosterSelect,
-} from 'redux/modules/gameInformSlice';
+import React, { useEffect, useState } from 'react';
+import { onRosterSelect } from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';

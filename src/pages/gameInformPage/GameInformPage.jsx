@@ -19,11 +19,8 @@ import { useNavigate } from 'react-router-dom';
 const GameInformPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const gameInform = useSelector((state) => state?.gameInformSlice?.gameData);
+  const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
   const rosterList = useSelector((state) => state?.gameInformSlice?.rosterList);
-
-  const gameData = [...gameInform];
-  console.log('게임 데이터', gameData);
 
   const lineUpList = useSelector((state) => state?.gameInformSlice?.lineUpList);
   const lineUpSelectList = useSelector(
@@ -32,24 +29,22 @@ const GameInformPage = () => {
   const rosterSelectList = useSelector(
     (state) => state.gameInformSlice.rosterSelectList
   );
-  console.log('선수리스트 선택', rosterSelectList);
 
   const [settingSelector, setSettingSelector] = useState('Home');
 
   const homeAwayRosterList = () => {
     if (settingSelector === 'Home') {
-      return rosterList.filter((i) => i.teamId === gameData[0]?.homeTeam);
+      return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
     } else {
-      return rosterList.filter((i) => i.teamId === gameData[0]?.awayTeam);
+      return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
     }
   };
 
-  // console.log('선수정보', homeAwayRosterList());
   const homeAwayLineUpList = () => {
     if (settingSelector === 'Home') {
-      return lineUpList.filter((i) => i.teamId === gameData[0]?.homeTeam);
+      return lineUpList.filter((i) => i.teamId === gameData?.homeTeam);
     } else {
-      return lineUpList.filter((i) => i.teamId === gameData[0]?.awayTeam);
+      return lineUpList.filter((i) => i.teamId === gameData?.awayTeam);
     }
   };
 
@@ -61,19 +56,20 @@ const GameInformPage = () => {
         copyArr[i] = {
           ...copyArr[i],
           participation: 'Y',
-          competitionCode: gameData[0]?.competitionCode,
-          gender: gameData[0]?.gender,
+          competitionCode: gameData?.competitionCode,
+          gender: gameData?.gender,
           homeAway: '홈',
-          gameCode: gameData[0]?.gameCode,
+          gameCode: gameData?.gameCode,
+          startingReserve: '선발',
         };
       } else {
         copyArr[i] = {
           ...copyArr[i],
           participation: 'Y',
-          competitionCode: gameData[0]?.competitionCode,
-          gender: gameData[0]?.gender,
+          competitionCode: gameData?.competitionCode,
+          gender: gameData?.gender,
           homeAway: '원정',
-          gameCode: gameData[0]?.gameCode,
+          gameCode: gameData?.gameCode,
         };
       }
     }

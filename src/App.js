@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ReportInput from 'pages/reportInputPage/ReportInput';
+import GameDataSelectPage from 'pages/gameDataSelectPage/GameDataSelectPage';
 import CodeReportPage from 'pages/codeReportPage/CodeReportPage';
 import TestPage from 'pages/testPage/TestPage';
 import BootstrapTableTest from 'pages/testPage/bootStrapTable/BootstrapTableTest';
@@ -12,7 +12,7 @@ function App() {
     <>
       {/* 초기 라인업 코드입력 페이지 */}
       <Routes>
-        <Route path='/' element={<ReportInput />} />
+        <Route path='/' element={<GameDataSelectPage />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
         <Route path='/gameInfo' element={<GameInformPage />} />
       </Routes>
