@@ -1,24 +1,42 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import Select from 'react-select';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const GameSelectTable = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  // const options = [
+  //   {value:}
+  // ]
+
   return (
     <Wrap>
       <h1>경기선택</h1>
       <table>
-        <thead></thead>
+        {/* <thead></thead> */}
         <tbody>
           <tr>
             <th>리그</th>
-            <td>v-리그</td>
+            <td></td>
           </tr>
           <tr>
             <th>시즌</th>
-            <td>2023-2-15</td>
+            <td>
+              <select>
+                <option>2022-2023</option>
+              </select>
+            </td>
           </tr>
           <tr>
             <th>경기일자</th>
-            <td>2023-2-15</td>
+            <td>
+              <DatePicker
+                showIcon
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+            </td>
           </tr>
         </tbody>
         <tbody>

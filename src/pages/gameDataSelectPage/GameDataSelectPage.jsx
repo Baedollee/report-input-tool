@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import GameDataTable from 'components/ScreenGameSelect/GameDataTable';
 import GameSelectTable from 'components/ScreenGameSelect/GameSelectTable';
 import DropDown from 'components/Common/dropDown/DropDown';
+import { useState } from 'react';
 
 const GameDataSelectPage = () => {
+  const [dropDownVisibility, setDropDownVisibility] = useState(false);
   const navigate = useNavigate();
   return (
     <WrapDiv>
@@ -19,9 +21,7 @@ const GameDataSelectPage = () => {
       </div>
       <GameSelectTable />
       <GameDataTable />
-      <DropDown />
-      {/* <ReportInputData />
-      <ReportShowData /> */}
+      {/* <DropDown /> */}
     </WrapDiv>
   );
 };
