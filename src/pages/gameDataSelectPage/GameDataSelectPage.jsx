@@ -15,7 +15,6 @@ const GameDataSelectPage = () => {
         <button onClick={() => navigate('/gameInfo')}>
           엔트리 선택 페이지 이동
         </button>
-        <h2>경기선택</h2>
       </div>
       <GameSelectTable />
       <GameDataTable />
