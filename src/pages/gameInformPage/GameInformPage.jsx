@@ -19,16 +19,17 @@ import { useNavigate } from 'react-router-dom';
 const GameInformPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
-  const rosterList = useSelector((state) => state?.gameInformSlice?.rosterList);
+  const {
+    gameData,
+    rosterList,
+    lineUpList,
+    lineUpSelectList,
+    rosterSelectList,
+  } = useSelector((state) => state?.gameInformSlice);
 
-  const lineUpList = useSelector((state) => state?.gameInformSlice?.lineUpList);
-  const lineUpSelectList = useSelector(
-    (state) => state.gameInformSlice.lineUpSelectList
-  );
-  const rosterSelectList = useSelector(
-    (state) => state.gameInformSlice.rosterSelectList
-  );
+  // console.log('게임정보', gameData);
+  // console.log('선수단 명단', rosterList);
+  // console.log('라인업 리스트들', lineUpList);
 
   const [settingSelector, setSettingSelector] = useState('Home');
 
@@ -58,9 +59,9 @@ const GameInformPage = () => {
           participation: 'Y',
           competitionCode: gameData?.competitionCode,
           gender: gameData?.gender,
-          homeAway: '홈',
+          homeAway: 'home',
           gameCode: gameData?.gameCode,
-          startingReserve: '선발',
+          startingReserve: 'STR',
         };
       } else {
         copyArr[i] = {
@@ -68,7 +69,7 @@ const GameInformPage = () => {
           participation: 'Y',
           competitionCode: gameData?.competitionCode,
           gender: gameData?.gender,
-          homeAway: '원정',
+          homeAway: 'away',
           gameCode: gameData?.gameCode,
         };
       }

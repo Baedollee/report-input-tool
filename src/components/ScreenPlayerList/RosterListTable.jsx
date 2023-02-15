@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { onRosterSelect } from 'redux/modules/gameInformSlice';
+import {
+  onRosterSelect,
+  PostRosterDataThunk,
+} from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -9,30 +12,28 @@ import { columns } from 'static/BootStrapTableColumsContents';
 
 const RosterListTable = ({ rosterList }) => {
   const dispatch = useDispatch();
-  // const rowsData = useSelector((state) => state.gameInformSlice.rosterList);
-  const rowsData = rosterList;
-  const selectData = useSelector(
-    (state) => state.gameInformSlice.rosterSelectList
+  const { selectData, selectStatusStore } = useSelector(
+    (state) => state?.gameInformSlice
   );
-  const selectStatusStore = useSelector(
-    (state) => state.gameInformSlice.isSelect
-  );
-  const [selectStatus, setSelectStatus] = useState(selectStatusStore);
+
+  // const [selectStatus, setSelectStatus] = useState(selectStatusStore);
   const [selectList, setSelectList] = useState(selectData);
 
-  const products = rowsData;
+  const [rowIndex, setRowIndex] = useState(0);
+  const copyRosterArr = [...rosterList];
+
+  const products = copyRosterArr;
   // .filter((state) => state.participation === 'N');
 
-  const handleBtnClick = () => {
-    if (!selectList.includes(2)) {
-      setSelectList([...selectList, 2]);
-    } else {
-      setSelectList(selectList.filter((x) => x !== 2));
-    }
-  };
+  // const handleBtnClick = () => {
+  //   if (!selectList.includes(2)) {
+  //     setSelectList([...selectList, 2]);
+  //   } else {
+  //     setSelectList(selectList.filter((x) => x !== 2));
+  //   }
+  // };
 
   const handleOnSelect = (row, isSelect, index, a) => {
-    // console.log('행 선택 ', isSelect);
     if (isSelect) {
       setSelectList([...selectList, row]);
     } else {
@@ -51,14 +52,10 @@ const RosterListTable = ({ rosterList }) => {
     }
   };
 
-  const selectionRenderer = ({ mode, checked, disabled }) => {
-    console.log('선택 콜백', disabled);
-    // return !checked;
-  };
-
-  // useEffect(() => {
-  //   handleOnSelect();
-  // }, [handleOnSelect]);
+  // const selectionRenderer = ({ mode, checked, disabled }) => {
+  //   console.log('선택 콜백', disabled);
+  //   // return !checked;
+  // };
 
   const selectRow = {
     mode: 'checkbox',
@@ -69,15 +66,36 @@ const RosterListTable = ({ rosterList }) => {
     style: { backgroundColor: 'skyblue' },
     headerColumnStyle: { textAlign: 'center' },
   };
+
   const defaultSorted = [
     {
       dataField: 'name',
       order: 'desc',
     },
   ];
-  const cellEdit = {
-    mode: 'click',
-  };
+
+  const cellEdit = cellEditFactory({
+    mode: 'dbclick',
+    autoSelectText: true,
+    blurToSave: true,
+    onStartEdit: (row, column, rowIndex, columnIndex) => {
+      console.log('start to edit!!!');
+      setRowIndex(rowIndex);
+    },
+    beforeSaveCell: (oldValue, newValue, row, column) => {
+      console.log('Before Saving Cell!!');
+      copyRosterArr[rowIndex] = {
+        ...copyRosterArr[rowIndex],
+        participantOrder: Number(newValue),
+      };
+    },
+    afterSaveCell: (oldValue, newValue, row, column) => {
+      console.log('After Saving Cell!!');
+      console.log(newValue);
+      dispatch(PostRosterDataThunk(copyRosterArr));
+    },
+  });
+
   const rowStyle = (row, rowIndex) => {
     // if (rowIndex)
     return {
@@ -94,11 +112,7 @@ const RosterListTable = ({ rosterList }) => {
 
   useEffect(() => {
     dispatch(onRosterSelect(selectList));
-  }, [selectList]);
-
-  // useEffect(() => {
-  //   dispatch(GetRosterDataThunk());
-  // }, []);
+  }, [selectList, copyRosterArr]);
 
   return (
     <>
@@ -111,7 +125,7 @@ const RosterListTable = ({ rosterList }) => {
           columns={columns}
           selectRow={selectRow}
           defaultSorted={defaultSorted}
-          cellEdit={cellEditFactory({ mode: 'dbclick', blurToSave: true })}
+          cellEdit={cellEdit}
           bordered={true}
           hover
           // striped

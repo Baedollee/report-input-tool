@@ -16,7 +16,7 @@ export const columns = [
   {
     dataField: 'createdTime',
     text: '시간',
-    editable: true,
+    editable: false,
     sort: true,
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
@@ -88,10 +88,10 @@ export const columns = [
   },
   {
     dataField: 'participantOrder',
-    text: '키값',
-    editable: false,
+    text: '출전순서',
+    // editable: true,
     sort: true,
-    hidden: true,
+    // hidden: true,
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
     },

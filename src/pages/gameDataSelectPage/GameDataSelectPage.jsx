@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import GameDataTable from 'components/ScreenGameSelect/GameDataTable';
 import GameSelectTable from 'components/ScreenGameSelect/GameSelectTable';
+import DropDown from 'components/Common/dropDown/DropDown';
 
 const GameDataSelectPage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const GameDataSelectPage = () => {
       </div>
       <GameSelectTable />
       <GameDataTable />
+      <DropDown />
       {/* <ReportInputData />
       <ReportShowData /> */}
     </WrapDiv>

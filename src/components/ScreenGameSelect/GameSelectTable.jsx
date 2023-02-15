@@ -68,7 +68,7 @@ const Wrap = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100px;
+        min-width: 100px;
         height: 50px;
         border: 1px solid black;
       }
@@ -76,7 +76,7 @@ const Wrap = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        min-width: 360px;
+        min-width: 140px;
         height: 50px;
         border: 1px solid black;
       }

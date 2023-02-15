@@ -3,21 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   rosterList: [],
-  lineUpList: [
-    {
-      id: 1,
-      participantOrder: 10,
-      participantId: '1',
-      createdTime: 'null',
-      participantBIB: '11',
-      participantName: '수지',
-      participantPosition: 'OH',
-      role: 'Player',
-      teamId: 'KAL',
-      teamName: '대한항공',
-      participation: 'Y',
-    },
-  ],
+  lineUpList: [],
   lineUpSelectList: [],
   rosterSelectList: [],
   gameData: [],
@@ -29,8 +15,6 @@ export const GameDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get('/api/game/selectGame');
-
-      console.log(response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -56,7 +40,6 @@ export const GetRosterDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get('/api/team/selectTeamroster');
-      console.log('서버 get data', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -92,7 +75,7 @@ export const GetLineUpListDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get('/api/play/selectPlayerList');
-      console.log('라인업 get data', response.data.data);
+      // console.log('라인업 get data', response.data);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -162,7 +145,7 @@ const gameInformSlice = createSlice({
       console.log(action);
     },
     [PostLineUpListDataThunk.fulfilled]: (state, action) => {
-      console.log('페이로드', action.payload);
+      // console.log('페이로드', action.payload);
       state.lineUpList = [...action.payload, state.lineUpList];
     },
     [PostLineUpListDataThunk.rejected]: (state, action) => {
