@@ -12,12 +12,13 @@ import { columns } from 'static/BootStrapTableColumsContents';
 
 const RosterListTable = ({ rosterList }) => {
   const dispatch = useDispatch();
-  const { selectData, selectStatusStore } = useSelector(
+  const { rosterSelectList, selectStatusStore } = useSelector(
     (state) => state?.gameInformSlice
   );
 
   // const [selectStatus, setSelectStatus] = useState(selectStatusStore);
-  const [selectList, setSelectList] = useState(selectData);
+  const [selectList, setSelectList] = useState(rosterSelectList);
+  // console.log('11111', selectList);
 
   const [rowIndex, setRowIndex] = useState(0);
   const copyRosterArr = [...rosterList];
@@ -35,6 +36,7 @@ const RosterListTable = ({ rosterList }) => {
 
   const handleOnSelect = (row, isSelect, index, a) => {
     if (isSelect) {
+      console.log(row);
       setSelectList([...selectList, row]);
     } else {
       setSelectList(
@@ -111,6 +113,7 @@ const RosterListTable = ({ rosterList }) => {
   };
 
   useEffect(() => {
+    // dispatch(PostLineUpListDataThunk(selectList));
     dispatch(onRosterSelect(selectList));
   }, [selectList, copyRosterArr]);
 

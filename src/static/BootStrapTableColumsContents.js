@@ -97,3 +97,51 @@ export const columns = [
     },
   },
 ];
+
+export const gameDataColumn = [
+  {
+    dataField: 'competitionCode',
+    text: '시즌',
+  },
+  {
+    dataField: 'competitionCode',
+    text: '리그',
+  },
+  {
+    dataField: 'gender',
+    text: '성별',
+  },
+  {
+    dataField: 'homeTeam',
+    text: 'Home',
+  },
+  {
+    dataField: 'awayTeam',
+    text: 'Away',
+  },
+  {
+    dataField: 'teamId',
+    text: '경기고유번호',
+  },
+  {
+    dataField: 'createdTime',
+    text: '경기시작',
+  },
+  {
+    dataField: 'teamId',
+    text: '경기장',
+  },
+
+  {
+    dataField: '',
+    text: '기록 입력 상태',
+  },
+  {
+    dataField: '',
+    text: '경기정보 설정',
+  },
+  {
+    dataField: '',
+    text: '경기선택',
+  },
+];

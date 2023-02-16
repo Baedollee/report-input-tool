@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import { useEffect } from 'react';
 import { GameDataThunk } from 'redux/modules/gameInformSlice';
+import { gameDataColumn } from 'static/BootStrapTableColumsContents';
 
 const GameDataTable = () => {
   const dispatch = useDispatch();
   const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
-  console.log(gameData);
 
   const columnStyle = (column, columnIndex) => {};
 
@@ -17,29 +17,7 @@ const GameDataTable = () => {
     dispatch(GameDataThunk());
   }, []);
 
-  const columns = [
-    {
-      dataField: 'competitionCode',
-      text: '대회코드',
-    },
-    {
-      dataField: 'gender',
-      text: '성별',
-    },
-    {
-      dataField: 'homeAway',
-      text: '홈/원정 구분',
-    },
-    {
-      dataField: 'teamId',
-      text: '팀고유번호',
-    },
-
-    {
-      dataField: 'gameCode',
-      text: '경기코드',
-    },
-  ];
+  const columns = gameDataColumn;
 
   const cellEdit = cellEditFactory({
     mode: 'dbclick',
@@ -72,19 +50,11 @@ const GameDataTable = () => {
       <MovePageDiv></MovePageDiv>
       <BootstrapTable
         bootstrap4
-        keyField='gameNum'
+        keyField='teamId'
         data={[gameData]}
         columns={columns}
         cellEdit={cellEdit}
       />
-
-      {/* <Wrap>
-        {titleCategory.map((item, index) => (
-          <TitleDiv length={item.length} key={`${item}_${index}`}>
-            {item}
-          </TitleDiv>
-        ))}
-      </Wrap> */}
     </>
   );
 };

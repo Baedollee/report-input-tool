@@ -25,10 +25,10 @@ export const GameDataThunk = createAsyncThunk(
 export const PostRosterDataThunk = createAsyncThunk(
   'RosterDataThunk/post',
   async (payload, thunkApi) => {
-    console.log('선수명단 포스트 post', payload);
+    // console.log('선수명단 포스트 post', payload);
     try {
       const response = await axios.post('', payload);
-      console.log('선수명단 리스폰스', response);
+      // console.log('선수명단 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -62,7 +62,7 @@ export const PostLineUpListDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     console.log('라인업 포스트 post', payload);
     try {
-      const response = await axios.post('/api/team/insertTeamroster', payload);
+      const response = await axios.post('/api/startlist/insertLineup', payload);
       console.log('라인업 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
@@ -145,8 +145,8 @@ const gameInformSlice = createSlice({
       console.log(action);
     },
     [PostLineUpListDataThunk.fulfilled]: (state, action) => {
-      // console.log('페이로드', action.payload);
-      state.lineUpList = [...action.payload, state.lineUpList];
+      console.log('페이로드', action.payload);
+      // state.lineUpList = [...action.payload, state.lineUpList];
     },
     [PostLineUpListDataThunk.rejected]: (state, action) => {
       console.log(action);

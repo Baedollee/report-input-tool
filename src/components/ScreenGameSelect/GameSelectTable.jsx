@@ -3,12 +3,21 @@ import styled from 'styled-components';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { ko } from 'date-fns/esm/locale';
 
 const GameSelectTable = () => {
   const [startDate, setStartDate] = useState(new Date());
-  // const options = [
-  //   {value:}
-  // ]
+
+  const [isClearable, setIsClearable] = useState(true);
+  const DateArr = String(startDate).split(' ');
+
+  const leagueName = [{ value: '데이터', label: 'V-리그' }];
+  const season = [{ value: '22-23', label: '2022-2023' }];
+  const gender = [
+    { value: '남', label: '남자' },
+    { value: '여', label: '여자' },
+  ];
+  const teamName = [];
 
   return (
     <Wrap>
@@ -18,14 +27,35 @@ const GameSelectTable = () => {
         <tbody>
           <tr>
             <th>리그</th>
-            <td></td>
+            <td>
+              <Select
+                options={leagueName}
+                className='basic-single'
+                classNamePrefix='select'
+                isClearable={isClearable}
+                placeholder='선택하세요'
+                isSearchable={false}
+                width='100'
+                height='50'
+              />
+            </td>
           </tr>
           <tr>
             <th>시즌</th>
             <td>
-              <select>
+              <Select
+                options={season}
+                className='basic-single'
+                classNamePrefix='select'
+                isClearable={isClearable}
+                placeholder='선택하세요'
+                isSearchable={false}
+                width='100'
+                height='50'
+              />
+              {/* <select>
                 <option>2022-2023</option>
-              </select>
+              </select> */}
             </td>
           </tr>
           <tr>
@@ -35,22 +65,45 @@ const GameSelectTable = () => {
                 showIcon
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
+                dateFormat='MM월 dd일'
+                locale={ko}
               />
+            </td>
+            <td>
+              <button>불러오기</button>
             </td>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <th>성별</th>
-            <td>선택</td>
+            <td>
+              <Select
+                options={gender}
+                className='basic-single'
+                classNamePrefix='select'
+                isClearable={isClearable}
+                placeholder='선택하세요'
+                isSearchable={false}
+                width='100'
+                height='50'
+              />
+            </td>
           </tr>
           <tr>
-            <th>공란</th>
-            <td>공란</td>
-          </tr>
-          <tr>
-            <th>공란</th>
-            <td>공란</td>
+            <th>팀</th>
+            <td>
+              <Select
+                options={teamName}
+                className='basic-single'
+                classNamePrefix='select'
+                isClearable={isClearable}
+                placeholder='선택하세요'
+                isSearchable={false}
+                width='100'
+                height='50'
+              />
+            </td>
           </tr>
         </tbody>
       </table>

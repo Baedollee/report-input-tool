@@ -7,8 +7,8 @@ import DropDown from 'components/Common/dropDown/DropDown';
 import { useState } from 'react';
 
 const GameDataSelectPage = () => {
-  const [dropDownVisibility, setDropDownVisibility] = useState(false);
   const navigate = useNavigate();
+  const [dropDownVisibility, setDropDownVisibility] = useState(false);
   return (
     <WrapDiv>
       <div>
@@ -18,6 +18,7 @@ const GameDataSelectPage = () => {
         <button onClick={() => navigate('/gameInfo')}>
           엔트리 선택 페이지 이동
         </button>
+        <button onClick={() => navigate('/login')}>로그인 페이지 이동</button>
       </div>
       <GameSelectTable />
       <GameDataTable />

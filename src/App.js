@@ -6,6 +6,7 @@ import TestPage from 'pages/testPage/TestPage';
 import BootstrapTableTest from 'pages/testPage/bootStrapTable/BootstrapTableTest';
 import HitMapTestPage from 'pages/hitmapTestPage/HitMapTestPage';
 import GameInformPage from 'pages/gameInformPage/GameInformPage';
+import LoginPage from 'pages/loginoutPage/LoginPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<GameDataSelectPage />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
         <Route path='/gameInfo' element={<GameInformPage />} />
+        <Route path='/login' element={<LoginPage />} />
       </Routes>
       {/* 공부페이지 */}
       {/* <TestPage /> */}

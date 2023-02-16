@@ -28,8 +28,10 @@ const GameInformPage = () => {
   } = useSelector((state) => state?.gameInformSlice);
 
   // console.log('게임정보', gameData);
+
   // console.log('선수단 명단', rosterList);
-  // console.log('라인업 리스트들', lineUpList);
+
+  console.log('라인업 리스트들', lineUpList);
 
   const [settingSelector, setSettingSelector] = useState('Home');
 
@@ -56,22 +58,28 @@ const GameInformPage = () => {
       if (settingSelector === 'Home') {
         copyArr[i] = {
           ...copyArr[i],
-          participation: 'Y',
+          // participation: 'Y',
           competitionCode: gameData?.competitionCode,
           gender: gameData?.gender,
           homeAway: 'home',
           gameCode: gameData?.gameCode,
           startingReserve: 'STR',
         };
+
+        delete copyArr[i].lineupStatus;
+        delete copyArr[i].role;
       } else {
         copyArr[i] = {
           ...copyArr[i],
-          participation: 'Y',
+          // participation: 'Y',
           competitionCode: gameData?.competitionCode,
           gender: gameData?.gender,
           homeAway: 'away',
           gameCode: gameData?.gameCode,
+          startingReserve: 'STR',
         };
+        delete copyArr[i].lineupStatus;
+        delete copyArr[i].role;
       }
     }
 
@@ -80,9 +88,16 @@ const GameInformPage = () => {
         (other) => other.participantName === item.participantName
       );
     });
+    console.log('포스트 데이터');
+
+    const formData = new FormData();
+    formData.append('copyArr', JSON.stringify(copyArr));
+
+    console.log('멀티폼');
+    console.log(formData);
 
     await dispatch(onChange([...changeStatus, ...copyArr]));
-    await dispatch(PostLineUpListDataThunk(copyArr));
+    await dispatch(PostLineUpListDataThunk({ ...copyArr }));
     await dispatch(onReset());
   };
 
