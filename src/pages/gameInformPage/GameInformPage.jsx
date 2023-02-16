@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import GameDataTable from 'components/ScreenPlayerList/GameDataTable';
 import styled from 'styled-components';
@@ -15,6 +15,8 @@ import {
   GetLineUpListDataThunk,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
+import SelectMenu from 'components/ScreenPlayerList/SelectMenu';
 
 const GameInformPage = () => {
   const navigate = useNavigate();
@@ -27,16 +29,28 @@ const GameInformPage = () => {
     rosterSelectList,
   } = useSelector((state) => state?.gameInformSlice);
 
-  // console.log('게임정보', gameData);
+  const [menuSelect, setMenuSelect] = useState('Home');
 
-  // console.log('선수단 명단', rosterList);
+  // console.log('게임정보', gameList);
 
-  console.log('라인업 리스트들', lineUpList);
+  // console.log('선수단 명단');
+  // console.log(rosterList);
 
-  const [settingSelector, setSettingSelector] = useState('Home');
+  // console.log('라인업 리스트들', lineUpList);
+
+  // const homeAwayRosterList = useCallback(() => {
+  //   if (menuSelect === 'Home') {
+  //     return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
+  //   } else {
+  //     return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
+  //   }
+  // }, [menuSelect]);
+
+  // console.log('콜벡');
+  // console.log(homeAwayRosterList());
 
   const homeAwayRosterList = () => {
-    if (settingSelector === 'Home') {
+    if (menuSelect === 'Home') {
       return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
     } else {
       return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
@@ -44,7 +58,7 @@ const GameInformPage = () => {
   };
 
   const homeAwayLineUpList = () => {
-    if (settingSelector === 'Home') {
+    if (menuSelect === 'Home') {
       return lineUpList.filter((i) => i.teamId === gameData?.homeTeam);
     } else {
       return lineUpList.filter((i) => i.teamId === gameData?.awayTeam);
@@ -55,7 +69,7 @@ const GameInformPage = () => {
     const copyArr = [...rosterSelectList];
 
     for (let i = 0; i < copyArr.length; i++) {
-      if (settingSelector === 'Home') {
+      if (menuSelect === 'Home') {
         copyArr[i] = {
           ...copyArr[i],
           // participation: 'Y',
@@ -101,11 +115,6 @@ const GameInformPage = () => {
     await dispatch(onReset());
   };
 
-  const onClickSettingSelect = (e) => {
-    const { value } = e.target;
-    setSettingSelector(value);
-  };
-
   const onClickAddRosterHandler = async () => {
     const copyArr = [...lineUpSelectList];
     for (let i = 0; i < copyArr.length; i++) {
@@ -122,27 +131,16 @@ const GameInformPage = () => {
     await dispatch(onReset());
   };
 
-  useEffect(() => {
-    dispatch(GameDataThunk());
-    dispatch(GetRosterDataThunk());
-    dispatch(GetLineUpListDataThunk());
-    return () => dispatch(onReset());
-  }, [settingSelector]);
+  // useEffect(() => {
+  //   dispatch(GameDataThunk());
+  //   dispatch(GetRosterDataThunk());
+  //   return () => dispatch(onReset());
+  // }, [menuSelect]);
 
   return (
     <WrapDiv>
       <button onClick={() => navigate('/')}>홈으로 이동</button>
-      <BtnSelectBox>
-        <button value={'Home'} onClick={onClickSettingSelect}>
-          홈팀
-        </button>
-        <button value={'Away'} onClick={onClickSettingSelect}>
-          어웨이
-        </button>
-        <button value={'Etc'} onClick={onClickSettingSelect}>
-          기타설정
-        </button>
-      </BtnSelectBox>
+      <SelectMenu menuSelect={menuSelect} setMenuSelect={setMenuSelect} />
       <div>
         <GameDataTable gameData={gameData} />
       </div>
@@ -163,17 +161,6 @@ const WrapDiv = styled.div`
   height: 100vh;
   padding: 10px;
   flex-direction: column;
-`;
-const BtnSelectBox = styled.div`
-  display: flex;
-  gap: 1px;
-  button {
-    border: 1px solid black;
-    background-color: white;
-    :hover {
-      background-color: orange;
-    }
-  }
 `;
 
 const BoxWrap = styled.div`

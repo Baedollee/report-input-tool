@@ -1,8 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { memo, useCallback, useMemo } from 'react';
+import { useEffect } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
+import { useDispatch } from 'react-redux';
+import { GameDataThunk } from 'redux/modules/gameInformSlice';
 import styled from 'styled-components';
 
 const GameDataTable = ({ gameData }) => {
+  const dispatch = useDispatch();
+  const gameDataUrl = `/api/game/selectGame`;
+
+  const getGameList = useCallback(() => {
+    dispatch(GameDataThunk(gameDataUrl));
+  }, [JSON.stringify(gameDataUrl)]);
+
+  useEffect(() => {
+    getGameList();
+  }, []);
+
+  const memo = useMemo(() => getGameList, [gameData]);
+  console.log(memo);
+
   const hiddenRows = [1, 2];
   const columns = [
     {

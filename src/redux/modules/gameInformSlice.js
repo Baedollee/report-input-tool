@@ -14,7 +14,7 @@ export const GameDataThunk = createAsyncThunk(
   'GameDataThunk/get',
   async (payload, thunkApi) => {
     try {
-      const response = await axios.get('/api/game/selectGame');
+      const response = await axios.get(payload);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -118,7 +118,7 @@ const gameInformSlice = createSlice({
   extraReducers: {
     [GameDataThunk.fulfilled]: (state, action) => {
       // state.gameData = [...state.gameData, action.payload];
-      state.gameData = action.payload;
+      state.gameData = action?.payload;
     },
     [GameDataThunk.rejected]: (state, action) => {
       console.log(action);

@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { onLineUpSelect } from 'redux/modules/gameInformSlice';
+import React, { useCallback, useEffect, useState } from 'react';
+import {
+  GetLineUpListDataThunk,
+  onLineUpSelect,
+} from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { columns } from 'static/BootStrapTableColumsContents';
+import axios from 'axios';
 
 const LineUpListTable = ({ lineUpList }) => {
   const dispatch = useDispatch();
-  const products = lineUpList;
+  const copyLineUpArr = [...lineUpList];
+  const products = copyLineUpArr;
   const selectData = useSelector(
     (state) => state.gameInformSlice.lineUpSelectList
   );
@@ -67,7 +72,17 @@ const LineUpListTable = ({ lineUpList }) => {
 
   useEffect(() => {
     dispatch(onLineUpSelect(selectList));
+    console.log('333333');
   }, [selectList]);
+
+  const getLineUpData = useCallback(() => {
+    dispatch(GetLineUpListDataThunk());
+  }, [copyLineUpArr]);
+
+  useEffect(() => {
+    getLineUpData();
+    console.log('2222');
+  }, []);
 
   return (
     <>

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
+  GetRosterDataThunk,
   onRosterSelect,
   PostRosterDataThunk,
 } from 'redux/modules/gameInformSlice';
@@ -12,6 +13,15 @@ import { columns } from 'static/BootStrapTableColumsContents';
 
 const RosterListTable = ({ rosterList }) => {
   const dispatch = useDispatch();
+
+  //  const homeAwayRosterList = () => {
+  //    if (settingSelector === 'Home') {
+  //      return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
+  //    } else {
+  //      return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
+  //    }
+  //  };
+
   const { rosterSelectList, selectStatusStore } = useSelector(
     (state) => state?.gameInformSlice
   );
@@ -36,7 +46,6 @@ const RosterListTable = ({ rosterList }) => {
 
   const handleOnSelect = (row, isSelect, index, a) => {
     if (isSelect) {
-      console.log(row);
       setSelectList([...selectList, row]);
     } else {
       setSelectList(
@@ -112,10 +121,18 @@ const RosterListTable = ({ rosterList }) => {
     console.log(column, columnIndex);
   };
 
+  // useEffect(() => {
+  //   // dispatch(PostLineUpListDataThunk(selectList));
+  //   dispatch(onRosterSelect(selectList));
+  // }, [selectList, copyRosterArr]);
+
+  const getRosterData = useCallback(() => {
+    dispatch(GetRosterDataThunk());
+  }, [JSON.stringify(copyRosterArr)]);
+
   useEffect(() => {
-    // dispatch(PostLineUpListDataThunk(selectList));
-    dispatch(onRosterSelect(selectList));
-  }, [selectList, copyRosterArr]);
+    getRosterData();
+  }, []);
 
   return (
     <>
