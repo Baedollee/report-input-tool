@@ -36,6 +36,9 @@ const GameInformPage = () => {
   // console.log('선수단 명단');
   // console.log(rosterList);
 
+  // console.log('선수단 선택 명단');
+  // console.log(rosterSelectList);
+
   // console.log('라인업 리스트들', lineUpList);
 
   const homeAwayRosterList = () => {
@@ -93,14 +96,14 @@ const GameInformPage = () => {
     });
     console.log('포스트 데이터');
 
-    const formData = new FormData();
-    formData.append('copyArr', JSON.stringify(copyArr));
+    // const formData = new FormData();
+    // formData.append('copyArr', JSON.stringify(copyArr));
 
-    console.log('멀티폼');
-    console.log(formData);
+    // console.log('멀티폼');
+    // console.log(formData);
 
     await dispatch(onChange([...changeStatus, ...copyArr]));
-    await dispatch(PostLineUpListDataThunk({ ...copyArr }));
+    await dispatch(PostLineUpListDataThunk(copyArr));
     await dispatch(onReset());
   };
 
@@ -114,7 +117,7 @@ const GameInformPage = () => {
         (other) => other.participantName === item.participantName
       );
     });
-    await dispatch(PostRosterDataThunk(copyArr));
+    await dispatch(PostRosterDataThunk({ ...copyArr }));
     await dispatch(DeleteRosterDataThunk(lineUpSelectList));
     await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(onReset());

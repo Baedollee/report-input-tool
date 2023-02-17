@@ -69,18 +69,20 @@ const LineUpListTable = ({ lineUpList }) => {
   };
   const columnStyle = (column, columnIndex) => {};
 
-  useEffect(() => {
+  const selectLineUp = useCallback(() => {
     dispatch(onLineUpSelect(selectList));
-    console.log('333333');
-  }, [selectList]);
+  }, [selectList, dispatch]);
+
+  useEffect(() => {
+    selectLineUp();
+  }, []);
 
   const getLineUpData = useCallback(() => {
     dispatch(GetLineUpListDataThunk());
-  }, [copyLineUpArr]);
+  }, [copyLineUpArr, dispatch]);
 
   useEffect(() => {
     getLineUpData();
-    console.log('2222');
   }, []);
 
   return (

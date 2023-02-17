@@ -12,14 +12,11 @@ const GameDataTable = ({ gameData }) => {
 
   const getGameList = useCallback(() => {
     dispatch(GameDataThunk(gameDataUrl));
-  }, [JSON.stringify(gameDataUrl)]);
+  }, [gameDataUrl, dispatch]);
 
   useEffect(() => {
     getGameList();
   }, []);
-
-  const memo = useMemo(() => getGameList, [gameData]);
-  console.log(memo);
 
   const hiddenRows = [1, 2];
   const columns = [

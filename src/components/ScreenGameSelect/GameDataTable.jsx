@@ -22,11 +22,11 @@ const GameDataTable = () => {
   const cellEdit = cellEditFactory({
     mode: 'dbclick',
     onStartEdit: (row, column, rowIndex, columnIndex) => {
-      console.log('스타트 에디트', row, column, rowIndex, columnIndex);
+      // console.log('스타트 에디트', row, column, rowIndex, columnIndex);
     },
     beforeSaveCell: (oldValue, newValue, row, colum) => {
       const copyArr = [...gameData];
-      console.log('2222', copyArr);
+      // console.log('2222', copyArr);
 
       console.log('------', oldValue, newValue, row, colum);
     },

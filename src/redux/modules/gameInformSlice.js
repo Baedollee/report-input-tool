@@ -25,7 +25,7 @@ export const GameDataThunk = createAsyncThunk(
 export const PostRosterDataThunk = createAsyncThunk(
   'RosterDataThunk/post',
   async (payload, thunkApi) => {
-    // console.log('선수명단 포스트 post', payload);
+    console.log('선수명단 포스트 post', payload);
     try {
       const response = await axios.post('', payload);
       // console.log('선수명단 리스폰스', response);

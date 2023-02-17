@@ -34,6 +34,7 @@ const RosterListTable = ({ rosterList }) => {
   const copyRosterArr = [...rosterList];
 
   const products = copyRosterArr;
+
   // .filter((state) => state.participation === 'N');
 
   // const handleBtnClick = () => {
@@ -126,13 +127,21 @@ const RosterListTable = ({ rosterList }) => {
   //   dispatch(onRosterSelect(selectList));
   // }, [selectList, copyRosterArr]);
 
+  console.log('셀렉', selectList);
+  // const rosterSelect = useCallback(() => {
+  //   dispatch(onRosterSelect(selectList));
+  // }, [JSON.stringify(selectList), dispatch]);
+
+  useEffect(() => {
+    dispatch(onRosterSelect(selectList));
+  }, [selectList]);
+
   const getRosterData = useCallback(() => {
     dispatch(GetRosterDataThunk());
   }, [JSON.stringify(copyRosterArr), dispatch]);
 
   useEffect(() => {
     getRosterData();
-    console.log('12321312321');
   }, []);
 
   return (
