@@ -60,9 +60,11 @@ export const DeleteRosterDataThunk = createAsyncThunk(
 export const PostLineUpListDataThunk = createAsyncThunk(
   'LineUpListDataThunk/post',
   async (payload, thunkApi) => {
-    console.log('라인업 포스트 post', payload);
+    console.log('라인업 포스트 post');
     try {
-      const response = await axios.post('/api/startlist/insertLineup', payload);
+      const response = await axios.post('/api/startlist/insertLineup', {
+        payload,
+      });
       console.log('라인업 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {

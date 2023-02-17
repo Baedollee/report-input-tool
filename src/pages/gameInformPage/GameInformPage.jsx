@@ -74,6 +74,7 @@ const GameInformPage = () => {
 
         delete copyArr[i].lineupStatus;
         delete copyArr[i].role;
+        delete copyArr[i].createdTime;
       } else {
         copyArr[i] = {
           ...copyArr[i],
@@ -86,6 +87,7 @@ const GameInformPage = () => {
         };
         delete copyArr[i].lineupStatus;
         delete copyArr[i].role;
+        delete copyArr[i].createdTime;
       }
     }
 
@@ -117,7 +119,7 @@ const GameInformPage = () => {
         (other) => other.participantName === item.participantName
       );
     });
-    await dispatch(PostRosterDataThunk({ ...copyArr }));
+    await dispatch(PostRosterDataThunk(...copyArr));
     await dispatch(DeleteRosterDataThunk(lineUpSelectList));
     await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(onReset());
