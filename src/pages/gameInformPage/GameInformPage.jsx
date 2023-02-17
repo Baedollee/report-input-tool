@@ -10,6 +10,9 @@ import {
   PostLineUpListDataThunk,
   onChange,
   onReset,
+  GetRosterDataThunk,
+  GameDataThunk,
+  GetLineUpListDataThunk,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
@@ -26,12 +29,25 @@ const GameInformPage = () => {
     rosterSelectList,
   } = useSelector((state) => state?.gameInformSlice);
 
-  const [isSected, setIsSected] = useState([]);
   const [menuSelect, setMenuSelect] = useState('Home');
 
-  const copySelectList = [...rosterSelectList];
+  // console.log('게임정보', gameList);
 
-  const [selectList, setSelectList] = useState([copySelectList]);
+  // console.log('선수단 명단');
+  // console.log(rosterList);
+
+  // console.log('라인업 리스트들', lineUpList);
+
+  // const homeAwayRosterList = useCallback(() => {
+  //   if (menuSelect === 'Home') {
+  //     return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
+  //   } else {
+  //     return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
+  //   }
+  // }, [menuSelect]);
+
+  // console.log('콜벡');
+  // console.log(homeAwayRosterList());
 
   const homeAwayRosterList = () => {
     if (menuSelect === 'Home') {
@@ -96,6 +112,7 @@ const GameInformPage = () => {
 
     await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(PostLineUpListDataThunk({ ...copyArr }));
+    await dispatch(onReset());
   };
 
   const onClickAddRosterHandler = async () => {
@@ -114,6 +131,12 @@ const GameInformPage = () => {
     await dispatch(onReset());
   };
 
+  // useEffect(() => {
+  //   dispatch(GameDataThunk());
+  //   dispatch(GetRosterDataThunk());
+  //   return () => dispatch(onReset());
+  // }, [menuSelect]);
+
   return (
     <WrapDiv>
       <button onClick={() => navigate('/')}>홈으로 이동</button>
@@ -127,15 +150,7 @@ const GameInformPage = () => {
           <button onClick={onClickAddLinUpHandler}>선발추가</button>
           <button onClick={onClickAddRosterHandler}>벤치추가</button>
         </MiddleBoxDiv>
-        <RosterListTable
-          rosterList={homeAwayRosterList()}
-          rosterSelectList={rosterSelectList}
-          copySelectList={copySelectList}
-          selectList={selectList}
-          setSelectList={setSelectList}
-          setIsSected={setIsSected}
-          isSected={isSected}
-        />
+        <RosterListTable rosterList={homeAwayRosterList()} />
       </BoxWrap>
     </WrapDiv>
   );

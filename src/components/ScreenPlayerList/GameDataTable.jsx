@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import axios from 'axios';
+import React, { memo, useCallback, useMemo } from 'react';
 import { useEffect } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { useDispatch } from 'react-redux';
 import { GameDataThunk } from 'redux/modules/gameInformSlice';
-import { gameDataColumn } from 'static/BootStrapTableColumsContents';
 import styled from 'styled-components';
 
 const GameDataTable = ({ gameData }) => {
@@ -18,8 +18,37 @@ const GameDataTable = ({ gameData }) => {
     getGameList();
   }, []);
 
-  // const hiddenRows = [1, 2];
-  const columns = gameDataColumn;
+  const memo = useMemo(() => getGameList, [gameData]);
+  console.log(memo);
+
+  const hiddenRows = [1, 2];
+  const columns = [
+    {
+      dataField: 'gameNum',
+      text: '경기번호',
+      hidden: true,
+    },
+    {
+      dataField: 'competitionCode',
+      text: '리그',
+    },
+    {
+      dataField: 'gender',
+      text: '성별',
+    },
+    {
+      dataField: 'homeTeam',
+      text: 'Home',
+    },
+    {
+      dataField: 'awayTeam',
+      text: 'Away',
+    },
+    {
+      dataField: 'gameCode',
+      text: '경기코드',
+    },
+  ];
 
   return (
     <>
@@ -28,7 +57,7 @@ const GameDataTable = ({ gameData }) => {
         keyField='gameNum'
         data={[gameData]}
         columns={columns}
-        // hiddenRows={hiddenRows}
+        hiddenRows={hiddenRows}
       />
     </>
   );

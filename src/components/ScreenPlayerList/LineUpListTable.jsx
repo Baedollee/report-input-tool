@@ -72,6 +72,7 @@ const LineUpListTable = ({ lineUpList }) => {
 
   useEffect(() => {
     dispatch(onLineUpSelect(selectList));
+    console.log('333333');
   }, [selectList]);
 
   const getLineUpData = useCallback(() => {
@@ -80,6 +81,7 @@ const LineUpListTable = ({ lineUpList }) => {
 
   useEffect(() => {
     getLineUpData();
+    console.log('2222');
   }, []);
 
   return (

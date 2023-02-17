@@ -100,34 +100,6 @@ export const columns = [
 
 export const gameDataColumn = [
   {
-    dataField: 'gameNum',
-    text: '경기번호',
-    hidden: true,
-  },
-  {
-    dataField: 'competitionCode',
-    text: '리그',
-  },
-  {
-    dataField: 'gender',
-    text: '성별',
-  },
-  {
-    dataField: 'homeTeam',
-    text: 'Home',
-  },
-  {
-    dataField: 'awayTeam',
-    text: 'Away',
-  },
-  {
-    dataField: 'gameCode',
-    text: '경기코드',
-  },
-];
-
-export const gameDataInputColumn = [
-  {
     dataField: 'competitionCode',
     text: '시즌',
   },
