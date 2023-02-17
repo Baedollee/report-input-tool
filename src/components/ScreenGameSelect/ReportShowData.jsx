@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { GetMockDataThunk } from '../../redux/modules/dataSlice';
@@ -6,9 +6,15 @@ import { GetMockDataThunk } from '../../redux/modules/dataSlice';
 const GetData = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.dataList.getDataList);
+
+  const getData = useCallback(
+    () => dispatch(GetMockDataThunk()),
+    [data, dispatch]
+  );
   useEffect(() => {
-    dispatch(GetMockDataThunk());
-  }, [JSON.stringify(data)]);
+    getData();
+    console.log('111111');
+  }, []);
   return (
     <>
       {data.map((item, index) => (

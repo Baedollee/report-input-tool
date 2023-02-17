@@ -69,20 +69,21 @@ const LineUpListTable = ({ lineUpList }) => {
   };
   const columnStyle = (column, columnIndex) => {};
 
-  const selectLineUp = useCallback(() => {
+  // const selectLineUp = useCallback(() => {
+  //   dispatch(onLineUpSelect(selectList));
+  // }, [selectList, dispatch]);
+
+  useEffect(() => {
     dispatch(onLineUpSelect(selectList));
-  }, [selectList, dispatch]);
+  }, [selectList]);
+
+  // const getLineUpData = useCallback(() => {
+  //   dispatch(GetLineUpListDataThunk());
+  // }, [copyLineUpArr, dispatch]);
 
   useEffect(() => {
-    selectLineUp();
-  }, []);
-
-  const getLineUpData = useCallback(() => {
+    // getLineUpData();
     dispatch(GetLineUpListDataThunk());
-  }, [copyLineUpArr, dispatch]);
-
-  useEffect(() => {
-    getLineUpData();
   }, []);
 
   return (

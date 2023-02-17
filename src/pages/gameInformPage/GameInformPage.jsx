@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import GameDataTable from 'components/ScreenPlayerList/GameDataTable';
+import GameDataTable from 'components/Common/GameDataTable';
 import styled from 'styled-components';
 import LineUpListTable from 'components/ScreenPlayerList/LineUpListTable';
 import RosterListTable from 'components/ScreenPlayerList/RosterListTable';
@@ -15,7 +15,6 @@ import {
   GetLineUpListDataThunk,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
-import { useCallback } from 'react';
 import SelectMenu from 'components/ScreenPlayerList/SelectMenu';
 
 const GameInformPage = () => {
@@ -119,7 +118,9 @@ const GameInformPage = () => {
         (other) => other.participantName === item.participantName
       );
     });
-    await dispatch(PostRosterDataThunk(...copyArr));
+
+    console.log('삭제할 것들', copyArr);
+    // await dispatch(PostRosterDataThunk(...copyArr));
     await dispatch(DeleteRosterDataThunk(lineUpSelectList));
     await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(onReset());

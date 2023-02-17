@@ -1,19 +1,19 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import GameDataSelectPage from 'pages/gameDataSelectPage/GameDataSelectPage';
 import CodeReportPage from 'pages/codeReportPage/CodeReportPage';
 import TestPage from 'pages/testPage/TestPage';
 import BootstrapTableTest from 'pages/testPage/bootStrapTable/BootstrapTableTest';
 import HitMapTestPage from 'pages/hitmapTestPage/HitMapTestPage';
 import GameInformPage from 'pages/gameInformPage/GameInformPage';
 import LoginPage from 'pages/loginoutPage/LoginPage';
+import GameSelectPage from 'pages/gameSelectPage/GameSelectPage';
 
 function App() {
   return (
     <>
       {/* 초기 라인업 코드입력 페이지 */}
       <Routes>
-        <Route path='/' element={<GameDataSelectPage />} />
+        <Route path='/' element={<GameSelectPage />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
         <Route path='/gameInfo' element={<GameInformPage />} />
         <Route path='/login' element={<LoginPage />} />

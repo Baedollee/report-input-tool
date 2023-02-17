@@ -9,7 +9,10 @@ const GameSelectTable = () => {
   const [startDate, setStartDate] = useState(new Date());
 
   const [isClearable, setIsClearable] = useState(true);
-  const DateArr = String(startDate).split(' ');
+
+  const [league, setLeague] = useState('');
+  console.log('리그리그', league);
+  console.log('비져블', isClearable);
 
   const leagueName = [{ value: '데이터', label: 'V-리그' }];
   const season = [{ value: '22-23', label: '2022-2023' }];
@@ -70,7 +73,7 @@ const GameSelectTable = () => {
               />
             </td>
             <td>
-              <button>불러오기</button>
+              <button onClick={() => setIsClearable(false)}>불러오기</button>
             </td>
           </tr>
         </tbody>

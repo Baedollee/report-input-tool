@@ -6,7 +6,36 @@ const initialState = {
   lineUpList: [],
   lineUpSelectList: [],
   rosterSelectList: [],
-  gameData: [],
+  gameData: [
+    // {
+    //   awayScore: 0,
+    //   awayScoreSum: 0,
+    //   awaySetScore: 0,
+    //   awayTeam: 'KEP',
+    //   awayWL: null,
+    //   broadcaster: null,
+    //   competitionCode: '22-23V',
+    //   createdTime: '2023-02-06T09:19:42.459+00:11',
+    //   gameCode: '22-23VMENR3-123',
+    //   gameDate: '2023-02-02',
+    //   gameDay: null,
+    //   gameLocation: null,
+    //   gameNum: 123,
+    //   gameStatus: null,
+    //   gameTime: null,
+    //   gender: 'M',
+    //   homeScore: 0,
+    //   homeScoreSum: 0,
+    //   homeSetScore: 1,
+    //   homeTeam: 'KAL',
+    //   homeWL: null,
+    //   roundSeq: 4,
+    //   setNum: 0,
+    //   setTime: 0,
+    //   spectatorNumber: null,
+    //   totalSetTime: 0,
+    // },
+  ],
   isSelect: true,
 };
 
@@ -15,6 +44,7 @@ export const GameDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get(payload);
+      console.log(response.data.data);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -62,9 +92,7 @@ export const PostLineUpListDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     console.log('라인업 포스트 post');
     try {
-      const response = await axios.post('/api/startlist/insertLineup', {
-        payload,
-      });
+      const response = await axios.post('/api/startlist/insertLineup', payload);
       console.log('라인업 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
@@ -119,8 +147,7 @@ const gameInformSlice = createSlice({
   },
   extraReducers: {
     [GameDataThunk.fulfilled]: (state, action) => {
-      // state.gameData = [...state.gameData, action.payload];
-      state.gameData = action?.payload;
+      state.gameData = action.payload;
     },
     [GameDataThunk.rejected]: (state, action) => {
       console.log(action);

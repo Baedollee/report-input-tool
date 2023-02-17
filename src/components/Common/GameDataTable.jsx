@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -11,12 +11,15 @@ const GameDataTable = () => {
   const dispatch = useDispatch();
   const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
 
-  const columnStyle = (column, columnIndex) => {};
+  const getGameData = useCallback(() => {
+    dispatch(GameDataThunk(`/api/game/selectGame`));
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(GameDataThunk());
+    getGameData();
   }, []);
 
+  const columnStyle = (column, columnIndex) => {};
   const columns = gameDataColumn;
 
   const cellEdit = cellEditFactory({
@@ -45,15 +48,17 @@ const GameDataTable = () => {
       textAlign: 'center',
     };
   };
+  const hiddenRowKeys = [`2023-02-06T09:19:42.459+00:11`];
   return (
     <>
       <MovePageDiv></MovePageDiv>
       <BootstrapTable
         bootstrap4
-        keyField='teamId'
+        keyField='createdTime'
         data={[gameData]}
         columns={columns}
         cellEdit={cellEdit}
+        hiddenRows={hiddenRowKeys}
       />
     </>
   );

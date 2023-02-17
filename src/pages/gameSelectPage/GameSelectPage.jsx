@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import GameDataTable from 'components/ScreenGameSelect/GameDataTable';
+import GameDataTable from 'components/Common/GameDataTable';
 import GameSelectTable from 'components/ScreenGameSelect/GameSelectTable';
-import DropDown from 'components/Common/dropDown/DropDown';
 import { useState } from 'react';
 
-const GameDataSelectPage = () => {
+const GameSelectPage = () => {
   const navigate = useNavigate();
   const [dropDownVisibility, setDropDownVisibility] = useState(false);
+
   return (
     <WrapDiv>
       <div>
@@ -32,5 +32,5 @@ const WrapDiv = styled.div`
   flex-direction: column;
 `;
 
-export default GameDataSelectPage;
+export default GameSelectPage;
 //
