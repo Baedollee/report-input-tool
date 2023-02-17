@@ -14,26 +14,13 @@ import { columns } from 'static/BootStrapTableColumsContents';
 const RosterListTable = ({ rosterList }) => {
   const dispatch = useDispatch();
 
-  //  const homeAwayRosterList = () => {
-  //    if (settingSelector === 'Home') {
-  //      return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
-  //    } else {
-  //      return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
-  //    }
-  //  };
-
   const { rosterSelectList, selectStatusStore } = useSelector(
     (state) => state?.gameInformSlice
   );
 
-  // const [selectStatus, setSelectStatus] = useState(selectStatusStore);
   const [selectList, setSelectList] = useState(rosterSelectList);
-  // console.log('11111', selectList);
-
   const [rowIndex, setRowIndex] = useState(0);
   const copyRosterArr = [...rosterList];
-
-  const products = copyRosterArr;
 
   // .filter((state) => state.participation === 'N');
 
@@ -127,7 +114,6 @@ const RosterListTable = ({ rosterList }) => {
   //   dispatch(onRosterSelect(selectList));
   // }, [selectList, copyRosterArr]);
 
-  console.log('셀렉', selectList);
   // const rosterSelect = useCallback(() => {
   //   dispatch(onRosterSelect(selectList));
   // }, [JSON.stringify(selectList), dispatch]);
@@ -144,6 +130,7 @@ const RosterListTable = ({ rosterList }) => {
     getRosterData();
   }, []);
 
+  const products = copyRosterArr;
   return (
     <>
       <LeftBoxDiv>

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import GameDataTable from 'components/Common/GameDataTable';
 import styled from 'styled-components';
@@ -6,13 +6,13 @@ import LineUpListTable from 'components/ScreenPlayerList/LineUpListTable';
 import RosterListTable from 'components/ScreenPlayerList/RosterListTable';
 import {
   DeleteRosterDataThunk,
-  PostRosterDataThunk,
   PostLineUpListDataThunk,
   onChange,
   onReset,
-  GetRosterDataThunk,
-  GameDataThunk,
   GetLineUpListDataThunk,
+  PostRosterDataThunk,
+  GetRosterDataThunk,
+  DeleteLineUpListDataThunk,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
 import SelectMenu from 'components/ScreenPlayerList/SelectMenu';
@@ -29,16 +29,6 @@ const GameInformPage = () => {
   } = useSelector((state) => state?.gameInformSlice);
 
   const [menuSelect, setMenuSelect] = useState('Home');
-
-  // console.log('게임정보', gameList);
-
-  // console.log('선수단 명단');
-  // console.log(rosterList);
-
-  // console.log('선수단 선택 명단');
-  // console.log(rosterSelectList);
-
-  // console.log('라인업 리스트들', lineUpList);
 
   const homeAwayRosterList = () => {
     if (menuSelect === 'Home') {
@@ -58,7 +48,8 @@ const GameInformPage = () => {
 
   const onClickAddLinUpHandler = async () => {
     const copyArr = [...rosterSelectList];
-
+    const copyArrRoster = [...copyArr];
+    console.log(copyArrRoster);
     for (let i = 0; i < copyArr.length; i++) {
       if (menuSelect === 'Home') {
         copyArr[i] = {
@@ -90,47 +81,46 @@ const GameInformPage = () => {
       }
     }
 
+    // 팀선수 명단 참가여부 y 값 변경
+    // for (let i = 0; i < copyArrRoster.length; i++) {
+    //   copyArrRoster[i] = { ...copyArrRoster[i], participation: 'Y' };
+    // }
+
     const changeStatus = homeAwayRosterList().filter((item) => {
       return !rosterSelectList.some(
         (other) => other.participantName === item.participantName
       );
     });
-    console.log('포스트 데이터');
-
-    // const formData = new FormData();
-    // formData.append('copyArr', JSON.stringify(copyArr));
-
-    // console.log('멀티폼');
-    // console.log(formData);
 
     await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(PostLineUpListDataThunk(copyArr));
+    // await dispatch(PostRosterDataThunk(copyArrRoster));
+    await dispatch(GetLineUpListDataThunk());
+    // await dispatch(GetRosterDataThunk());
     await dispatch(onReset());
   };
 
   const onClickAddRosterHandler = async () => {
     const copyArr = [...lineUpSelectList];
-    for (let i = 0; i < copyArr.length; i++) {
-      copyArr[i] = { ...copyArr[i], participation: 'N' };
-    }
+    console.log('자 드가자아아');
+    console.log(copyArr);
+    // for (let i = 0; i < copyArr.length; i++) {
+    //   // copyArr[i] = { ...copyArr[i], participation: 'N' };
+    //   delete copyArr[i].createdTime;
+    // }
     const changeStatus = homeAwayLineUpList().filter((item) => {
       return !lineUpSelectList.some(
         (other) => other.participantName === item.participantName
       );
     });
 
-    console.log('삭제할 것들', copyArr);
     // await dispatch(PostRosterDataThunk(...copyArr));
-    await dispatch(DeleteRosterDataThunk(lineUpSelectList));
-    await dispatch(onChange([...changeStatus, ...copyArr]));
+    await dispatch(DeleteLineUpListDataThunk(lineUpSelectList));
+    await dispatch(GetLineUpListDataThunk());
+    await dispatch(GetRosterDataThunk());
+    // await dispatch(onChange([...changeStatus, ...copyArr]));
     await dispatch(onReset());
   };
-
-  // useEffect(() => {
-  //   dispatch(GameDataThunk());
-  //   dispatch(GetRosterDataThunk());
-  //   return () => dispatch(onReset());
-  // }, [menuSelect]);
 
   return (
     <WrapDiv>

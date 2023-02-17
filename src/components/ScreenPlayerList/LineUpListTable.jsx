@@ -77,13 +77,12 @@ const LineUpListTable = ({ lineUpList }) => {
     dispatch(onLineUpSelect(selectList));
   }, [selectList]);
 
-  // const getLineUpData = useCallback(() => {
-  //   dispatch(GetLineUpListDataThunk());
-  // }, [copyLineUpArr, dispatch]);
+  const getLineUpData = useCallback(() => {
+    dispatch(GetLineUpListDataThunk());
+  }, [lineUpList, dispatch]);
 
   useEffect(() => {
-    // getLineUpData();
-    dispatch(GetLineUpListDataThunk());
+    getLineUpData();
   }, []);
 
   return (

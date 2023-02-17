@@ -44,7 +44,6 @@ export const GameDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get(payload);
-      console.log(response.data.data);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -57,7 +56,7 @@ export const PostRosterDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     console.log('선수명단 포스트 post', payload);
     try {
-      const response = await axios.post('', payload);
+      const response = await axios.post('/api/team/updateTeamroster', payload);
       // console.log('선수명단 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
@@ -92,7 +91,10 @@ export const PostLineUpListDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     console.log('라인업 포스트 post');
     try {
-      const response = await axios.post('/api/startlist/insertLineup', payload);
+      const response = await axios.post(
+        '/api/startlist/insertStartlist',
+        payload
+      );
       console.log('라인업 리스폰스', response);
       return thunkApi.fulfillWithValue(response);
     } catch (error) {
@@ -105,7 +107,7 @@ export const GetLineUpListDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get('/api/startlist/selectPlayerList');
-      console.log('라인업 get data', response.data);
+      // console.log('라인업 get data', response.data);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -115,9 +117,14 @@ export const GetLineUpListDataThunk = createAsyncThunk(
 export const DeleteLineUpListDataThunk = createAsyncThunk(
   'LineUpListDataThunk/delete',
   async (payload, thunkAPI) => {
+    console.log('삭제삭제', payload);
     try {
-      const response = await axios.delete(`/${payload}`);
-      return thunkAPI.fulfillWithValue(payload);
+      const response = await axios.put(
+        '/api/startlist/deleteStartlist',
+        payload
+      );
+      console.log('삭제요청 리스폰스', response);
+      return thunkAPI.fulfillWithValue([...payload]);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -188,9 +195,9 @@ const gameInformSlice = createSlice({
       console.log(action);
     },
     [DeleteLineUpListDataThunk.fulfilled]: (state, action) => {
-      state.lineUpList = state.lineUpList.filter(
-        (post) => post.participantOrder !== action.payload
-      );
+      // state.lineUpList = state.lineUpList.filter(
+      //   (post) => post.participantOrder !== action.payload
+      // );
     },
     [DeleteLineUpListDataThunk.rejected]: (state, action) => {
       console.log(action);
