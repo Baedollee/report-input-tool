@@ -136,7 +136,7 @@ const GameInformPage = () => {
 
   return (
     <WrapDiv>
-      <button onClick={() => navigate('/')}>홈으로 이동</button>
+      <HomeBtn onClick={() => navigate('/')}>홈으로 이동</HomeBtn>
       <SelectMenu menuSelect={menuSelect} setMenuSelect={setMenuSelect} />
       <div>
         <GameDataTable gameData={gameData} />
@@ -159,6 +159,15 @@ const WrapDiv = styled.div`
   padding: 10px;
   flex-direction: column;
 `;
+const HomeBtn = styled.button`
+  color: #ffffff;
+  background-color: #5ab427;
+  border: none;
+  font-size: 20px;
+  width: 120px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+`;
 
 const BoxWrap = styled.div`
   display: flex;
@@ -179,6 +188,9 @@ const MiddleBoxDiv = styled.div`
     background-color: orange;
     color: white;
     font-weight: 700;
+    :hover {
+      font-size: 15px;
+    }
   }
 `;
 

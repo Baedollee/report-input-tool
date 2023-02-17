@@ -26,12 +26,25 @@ const SelectMenu = ({ menuSelect, setMenuSelect }) => {
 
 const BtnSelectBox = styled.div`
   display: flex;
-  gap: 1px;
+  gap: 5px;
+  height: 100px;
+
   button {
+    display: flex;
     border: 1px solid black;
-    background-color: white;
+    color: white;
+    background-color: skyblue;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+
     :hover {
       background-color: orange;
+      font-size: 25px;
     }
   }
 `;
