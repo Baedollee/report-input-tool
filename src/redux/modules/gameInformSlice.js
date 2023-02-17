@@ -117,7 +117,6 @@ const gameInformSlice = createSlice({
   },
   extraReducers: {
     [GameDataThunk.fulfilled]: (state, action) => {
-      // state.gameData = [...state.gameData, action.payload];
       state.gameData = action?.payload;
     },
     [GameDataThunk.rejected]: (state, action) => {

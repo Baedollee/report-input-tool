@@ -10,29 +10,18 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { columns } from 'static/BootStrapTableColumsContents';
+import { forEach } from 'json-server-auth';
 
-const RosterListTable = ({ rosterList }) => {
+const RosterListTable = ({
+  rosterList,
+  copySelectList,
+  setIsSected,
+  isSected,
+}) => {
   const dispatch = useDispatch();
-
-  //  const homeAwayRosterList = () => {
-  //    if (settingSelector === 'Home') {
-  //      return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
-  //    } else {
-  //      return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
-  //    }
-  //  };
-
-  const { rosterSelectList, selectStatusStore } = useSelector(
-    (state) => state?.gameInformSlice
-  );
-
-  // const [selectStatus, setSelectStatus] = useState(selectStatusStore);
-  const [selectList, setSelectList] = useState(rosterSelectList);
-  // console.log('11111', selectList);
-
   const [rowIndex, setRowIndex] = useState(0);
   const copyRosterArr = [...rosterList];
-
+  console.log('선택된', isSected);
   const products = copyRosterArr;
   // .filter((state) => state.participation === 'N');
 
@@ -43,24 +32,31 @@ const RosterListTable = ({ rosterList }) => {
   //     setSelectList(selectList.filter((x) => x !== 2));
   //   }
   // };
+  const [selectList, setSelectList] = useState([]);
+  console.log('선택 명단', selectList);
 
   const handleOnSelect = (row, isSelect, index, a) => {
+    console.log(row);
+    // const ids = selectList.map((r) => r.participantName);
     if (isSelect) {
-      setSelectList([...selectList, row]);
+      setSelectList([...selectList, row.participantName]);
     } else {
-      setSelectList(
-        selectList.filter((x) => x.participantName !== row.participantName)
-      );
+      // setSelectList(selectList.filter((x) => x));
+      // x.participantName !== row.participantName)
     }
   };
 
-  const handleOnSelectAll = (isSelect, rows) => {
-    const ids = rows.map((r) => r);
+  const handleOnSelectAll = (isSelect, rows, hello) => {
+    const ids = rows.map((r) => r.participantName);
+    console.log(hello);
     if (isSelect) {
       setSelectList(ids);
     } else {
       setSelectList([]);
     }
+  };
+  const selectionRenderer = (mode, checked, disabled) => {
+    console.log(mode);
   };
 
   // const selectionRenderer = ({ mode, checked, disabled }) => {
@@ -74,6 +70,7 @@ const RosterListTable = ({ rosterList }) => {
     clickToEdit: true,
     onSelect: handleOnSelect,
     onSelectAll: handleOnSelectAll,
+    selected: selectList,
     style: { backgroundColor: 'skyblue' },
     headerColumnStyle: { textAlign: 'center' },
   };

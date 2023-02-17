@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import { useEffect } from 'react';
 import { GameDataThunk } from 'redux/modules/gameInformSlice';
-import { gameDataColumn } from 'static/BootStrapTableColumsContents';
+import { gameDataInputColumn } from 'static/BootStrapTableColumsContents';
 
 const GameDataTable = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const GameDataTable = () => {
     dispatch(GameDataThunk());
   }, []);
 
-  const columns = gameDataColumn;
+  const columns = gameDataInputColumn;
 
   const cellEdit = cellEditFactory({
     mode: 'dbclick',
