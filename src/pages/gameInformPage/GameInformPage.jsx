@@ -49,7 +49,8 @@ const GameInformPage = () => {
   const onClickAddLinUpHandler = async () => {
     const copyArr = [...rosterSelectList];
     const copyArrRoster = [...copyArr];
-    console.log(copyArrRoster);
+    console.log('으아아아아ㅏㅇ');
+    console.log(copyArr);
     for (let i = 0; i < copyArr.length; i++) {
       if (menuSelect === 'Home') {
         copyArr[i] = {
@@ -86,18 +87,29 @@ const GameInformPage = () => {
     //   copyArrRoster[i] = { ...copyArrRoster[i], participation: 'Y' };
     // }
 
+    // 이미 선택된 선수 필터 처리
+    const postFilter = lineUpList.filter((i) => {
+      return copyArr.some(
+        (other) => other.participantName === i.participantName
+      );
+    });
+
     const changeStatus = homeAwayRosterList().filter((item) => {
       return !rosterSelectList.some(
         (other) => other.participantName === item.participantName
       );
     });
 
-    await dispatch(onChange([...changeStatus, ...copyArr]));
-    await dispatch(PostLineUpListDataThunk(copyArr));
-    // await dispatch(PostRosterDataThunk(copyArrRoster));
-    await dispatch(GetLineUpListDataThunk());
-    // await dispatch(GetRosterDataThunk());
-    await dispatch(onReset());
+    if (postFilter.length > 0) {
+      window.alert('이미 선택된 선수가 있습니다');
+    } else {
+      await dispatch(onChange([...changeStatus, ...copyArr]));
+      await dispatch(PostLineUpListDataThunk(copyArr));
+      // await dispatch(PostRosterDataThunk(copyArrRoster));
+      await dispatch(GetLineUpListDataThunk());
+      // await dispatch(GetRosterDataThunk());
+      await dispatch(onReset());
+    }
   };
 
   const onClickAddRosterHandler = async () => {

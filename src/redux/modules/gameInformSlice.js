@@ -95,8 +95,7 @@ export const PostLineUpListDataThunk = createAsyncThunk(
         '/api/startlist/insertStartlist',
         payload
       );
-      console.log('라인업 리스폰스', response);
-      return thunkApi.fulfillWithValue(response);
+      // return thunkApi.fulfillWithValue(response);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
