@@ -128,10 +128,11 @@ const RosterListTable = ({ rosterList }) => {
 
   const getRosterData = useCallback(() => {
     dispatch(GetRosterDataThunk());
-  }, [JSON.stringify(copyRosterArr)]);
+  }, [JSON.stringify(copyRosterArr), dispatch]);
 
   useEffect(() => {
     getRosterData();
+    console.log('12321312321');
   }, []);
 
   return (

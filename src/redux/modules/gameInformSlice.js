@@ -74,8 +74,8 @@ export const GetLineUpListDataThunk = createAsyncThunk(
   'LineUpListDataThunk/get',
   async (payload, thunkApi) => {
     try {
-      const response = await axios.get('/api/play/selectPlayerList');
-      // console.log('라인업 get data', response.data);
+      const response = await axios.get('/api/startlist/selectPlayerList');
+      console.log('라인업 get data', response.data);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

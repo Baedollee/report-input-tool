@@ -9,7 +9,6 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { columns } from 'static/BootStrapTableColumsContents';
-import axios from 'axios';
 
 const LineUpListTable = ({ lineUpList }) => {
   const dispatch = useDispatch();

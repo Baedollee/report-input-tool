@@ -43,12 +43,12 @@ const HandleImageCompression = () => {
 
   return (
     <>
-      <button
+      {/* <button
         files={data.avatar}
         onChange={onClickImageUpload}
         onImageClick={(index, fs) => console.log(index, fs)}
         accept='image/gif,image/jpeg,image/jpg,image/png'
-      />
+      /> */}
       <button type='ghost' onClick={onSubmit}>
         저장하기
       </button>

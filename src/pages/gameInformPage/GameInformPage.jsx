@@ -38,17 +38,6 @@ const GameInformPage = () => {
 
   // console.log('라인업 리스트들', lineUpList);
 
-  // const homeAwayRosterList = useCallback(() => {
-  //   if (menuSelect === 'Home') {
-  //     return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
-  //   } else {
-  //     return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
-  //   }
-  // }, [menuSelect]);
-
-  // console.log('콜벡');
-  // console.log(homeAwayRosterList());
-
   const homeAwayRosterList = () => {
     if (menuSelect === 'Home') {
       return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
