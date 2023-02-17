@@ -18,6 +18,7 @@ const RosterListTable = ({ rosterList }) => {
     (state) => state?.gameInformSlice
   );
 
+  const [tableSelected, setTableSelected] = useState([]);
   const [selectList, setSelectList] = useState(rosterSelectList);
   const [rowIndex, setRowIndex] = useState(0);
   const copyRosterArr = [...rosterList];
@@ -60,6 +61,7 @@ const RosterListTable = ({ rosterList }) => {
     mode: 'checkbox',
     clickToSelect: true,
     clickToEdit: true,
+    selected: tableSelected,
     onSelect: handleOnSelect,
     onSelectAll: handleOnSelectAll,
     style: { backgroundColor: 'skyblue' },

@@ -189,7 +189,9 @@ const MiddleBoxDiv = styled.div`
     color: white;
     font-weight: 700;
     :hover {
-      font-size: 15px;
+      width: 75px;
+      height: 55px;
+      font-size: 17px;
     }
   }
 `;

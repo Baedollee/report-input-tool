@@ -122,7 +122,6 @@ const Wrap = styled.div`
   table {
     display: flex;
     flex-direction: column;
-    width: 100%;
     border: 1px solid black;
     /* 표 테두리 간격 없애기 */
     border-collapse: collapse;

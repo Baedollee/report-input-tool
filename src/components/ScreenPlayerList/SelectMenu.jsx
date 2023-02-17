@@ -27,7 +27,7 @@ const SelectMenu = ({ menuSelect, setMenuSelect }) => {
 const BtnSelectBox = styled.div`
   display: flex;
   gap: 5px;
-  height: 100px;
+  height: 50px;
 
   button {
     display: flex;
