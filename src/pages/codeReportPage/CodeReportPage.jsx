@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import CodeTitle from '../../components/ScreenCode/CodeTitle';
-import CodeInput from '../../components/ScreenCode/CodeInput';
-import CodeOutput from '../../components/ScreenCode/CodeOutput';
+import CodeTitle from '../../components/ScreenCodeReport/CodeTitle';
+import CodeInput from '../../components/ScreenCodeReport/CodeInput';
+import CodeOutput from '../../components/ScreenCodeReport/CodeOutput';
 
 const CodeReportPage = () => {
   const navigate = useNavigate();

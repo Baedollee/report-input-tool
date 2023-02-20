@@ -1,9 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import cellEditFactory from 'react-bootstrap-table2-editor';
-import { useEffect } from 'react';
 import { GameDataThunk } from 'redux/modules/gameInformSlice';
 import { gameDataColumn } from 'static/BootStrapTableColumsContents';
 
@@ -26,17 +25,11 @@ const GameDataTable = () => {
 
   const cellEdit = cellEditFactory({
     mode: 'dbclick',
-    onStartEdit: (row, column, rowIndex, columnIndex) => {
-      // console.log('스타트 에디트', row, column, rowIndex, columnIndex);
-    },
+    onStartEdit: (row, column, rowIndex, columnIndex) => {},
     beforeSaveCell: (oldValue, newValue, row, colum) => {
       const copyArr = [...gameData];
-      // console.log('2222', copyArr);
-      // console.log('------', oldValue, newValue, row, colum);
     },
-    afterSaveCell: (oldValue, newValue, row, column) => {
-      // console.log('21321321312', oldValue, newValue);
-    },
+    afterSaveCell: (oldValue, newValue, row, column) => {},
   });
 
   const row = {

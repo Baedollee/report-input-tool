@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import GameDataTable from 'components/Common/GameDataTable';
 import styled from 'styled-components';
-import LineUpListTable from 'components/ScreenPlayerList/LineUpListTable';
-import RosterListTable from 'components/ScreenPlayerList/RosterListTable';
+import LineUpListTable from 'components/ScreenGameInform/LineUpListTable';
+import RosterListTable from 'components/ScreenGameInform/RosterListTable';
 import {
   DeleteRosterDataThunk,
   PostLineUpListDataThunk,
@@ -16,7 +16,7 @@ import {
   isSelect,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
-import SelectMenu from 'components/ScreenPlayerList/SelectMenu';
+import SelectMenu from 'components/ScreenGameInform/SelectMenu';
 
 const GameInformPage = () => {
   const navigate = useNavigate();
