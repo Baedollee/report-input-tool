@@ -73,18 +73,15 @@ const RosterListTable = ({ rosterList }) => {
     autoSelectText: true,
     blurToSave: true,
     onStartEdit: (row, column, rowIndex, columnIndex) => {
-      console.log('start to edit!!!');
       setRowIndex(rowIndex);
     },
     beforeSaveCell: (oldValue, newValue, row, column) => {
-      console.log('Before Saving Cell!!');
       copyRosterArr[rowIndex] = {
         ...copyRosterArr[rowIndex],
         participantOrder: Number(newValue),
       };
     },
     afterSaveCell: (oldValue, newValue, row, column) => {
-      console.log('After Saving Cell!!');
       console.log(newValue);
       dispatch(PostRosterDataThunk(copyRosterArr));
     },

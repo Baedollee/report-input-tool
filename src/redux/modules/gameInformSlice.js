@@ -71,6 +71,7 @@ export const GetRosterDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get('/api/team/selectTeamroster');
+      console.log('213213213', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

@@ -8,20 +8,47 @@ import DefaultContents from './ReportInputData';
 
 const GameSelectTable = () => {
   const [startDate, setStartDate] = useState(new Date());
-
   const [isClearable, setIsClearable] = useState(true);
 
-  const [league, setLeague] = useState('');
-  console.log('리그리그', league);
+  const dataValue = {
+    leagueName: '',
+    season: '',
+    teamName: '',
+    gender: '',
+    date: '',
+  };
+
+  const [tableDataInput, setTableDataInput] = useState(dataValue);
+
+  console.log('리그리그', tableDataInput);
   console.log('비져블', isClearable);
 
-  const leagueName = [{ value: '데이터', label: 'V-리그' }];
+  const leagueName = [
+    { value: 'leagueName', label: 'v-리그' },
+    { value: 'leagueName', label: 'j-리그' },
+  ];
+
   const season = [{ value: '22-23', label: '2022-2023' }];
   const gender = [
-    { value: '남', label: '남자' },
-    { value: '여', label: '여자' },
+    { value: 'gender', label: '남자' },
+    { value: 'gender', label: '여자' },
   ];
-  const teamName = [];
+  const teamName = [{ value: 'teamName', label: 'KAL' }];
+
+  const onChangeHandler = (e, isClearable) => {
+    console.log(isClearable);
+    if (isClearable.action === 'select-option') {
+      const { value, label } = e;
+      setTableDataInput({ ...tableDataInput, [value]: label });
+    } else {
+      console.log(isClearable.removedValues[0]);
+      const { value, label } = isClearable.removedValues[0];
+      setTableDataInput({
+        ...tableDataInput,
+        [value]: '',
+      });
+    }
+  };
 
   return (
     <Wrap>
@@ -37,8 +64,9 @@ const GameSelectTable = () => {
                 className='basic-single'
                 classNamePrefix='select'
                 isClearable={isClearable}
-                placeholder='선택하세요'
                 isSearchable={false}
+                placeholder='선택하세요'
+                onChange={onChangeHandler}
                 width='100'
                 height='50'
               />
@@ -54,6 +82,7 @@ const GameSelectTable = () => {
                 isClearable={isClearable}
                 placeholder='선택하세요'
                 isSearchable={false}
+                onChange={onChangeHandler}
                 width='100'
                 height='50'
               />
@@ -68,7 +97,10 @@ const GameSelectTable = () => {
               <DatePicker
                 showIcon
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => {
+                  setStartDate(date);
+                  setTableDataInput({ ...tableDataInput, date: startDate });
+                }}
                 dateFormat='MM월 dd일'
                 locale={ko}
               />
@@ -89,6 +121,7 @@ const GameSelectTable = () => {
                 isClearable={isClearable}
                 placeholder='선택하세요'
                 isSearchable={false}
+                onChange={onChangeHandler}
                 width='100'
                 height='50'
               />
@@ -97,15 +130,22 @@ const GameSelectTable = () => {
           <tr>
             <th>팀</th>
             <td>
-              <Select
+              {/* <Select
                 options={teamName}
                 className='basic-single'
                 classNamePrefix='select'
                 isClearable={isClearable}
                 placeholder='선택하세요'
                 isSearchable={false}
+                onChange={onChangeHandler}
                 width='100'
                 height='50'
+              /> */}
+              <input
+                type='text'
+                label='teamName'
+                value={tableDataInput.teamName}
+                onChange={onChangeHandler}
               />
             </td>
           </tr>

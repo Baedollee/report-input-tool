@@ -10,6 +10,7 @@ import { gameDataColumn } from 'static/BootStrapTableColumsContents';
 const GameDataTable = () => {
   const dispatch = useDispatch();
   const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
+  console.log(gameData);
 
   const getGameData = useCallback(() => {
     dispatch(GameDataThunk(`/api/game/selectGame`));

@@ -7,16 +7,21 @@ import HitMapTestPage from 'pages/hitmapTestPage/HitMapTestPage';
 import GameInformPage from 'pages/gameInformPage/GameInformPage';
 import LoginPage from 'pages/loginoutPage/LoginPage';
 import GameSelectPage from 'pages/gameSelectPage/GameSelectPage';
+import RegistrationManagementPage from 'pages/registrationManagementPage/RegistrationManagementPage';
 
 function App() {
   return (
     <>
       {/* 초기 라인업 코드입력 페이지 */}
       <Routes>
-        <Route path='/' element={<GameSelectPage />} />
+        <Route path='/' element={<LoginPage />} />
         <Route path='/codeReport' element={<CodeReportPage />} />
         <Route path='/gameInfo' element={<GameInformPage />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/gameSelect' element={<GameSelectPage />} />
+        <Route
+          path='/RegistrationManagement'
+          element={<RegistrationManagementPage />}
+        />
       </Routes>
       {/* 공부페이지 */}
       {/* <TestPage /> */}

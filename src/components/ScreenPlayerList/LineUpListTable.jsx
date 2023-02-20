@@ -19,8 +19,6 @@ const LineUpListTable = ({ lineUpList }) => {
     (state) => state.gameInformSlice
   );
 
-  console.log(lineUpSelectList, tableLineUpSelectList);
-
   const [selectList, setSelectList] = useState([]);
   const [subSelectList, setSubSelectList] = useState([...lineUpSelectList]);
 

@@ -12,13 +12,7 @@ const GameSelectPage = () => {
   return (
     <WrapDiv>
       <div>
-        <button onClick={() => navigate('/codeReport')}>
-          코드입력 페이지로 이동
-        </button>
-        <button onClick={() => navigate('/gameInfo')}>
-          엔트리 선택 페이지 이동
-        </button>
-        <button onClick={() => navigate('/login')}>로그인 페이지 이동</button>
+        <button onClick={() => navigate('/')}>홈 이동</button>
       </div>
       <GameSelectTable />
       <GameDataTable />
@@ -30,6 +24,7 @@ const GameSelectPage = () => {
 const WrapDiv = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export default GameSelectPage;

@@ -113,8 +113,6 @@ const GameInformPage = () => {
 
   const onClickAddRosterHandler = async () => {
     const copyArr = [...lineUpSelectList];
-    console.log('자 드가자아아');
-    console.log(copyArr);
     // for (let i = 0; i < copyArr.length; i++) {
     //   // copyArr[i] = { ...copyArr[i], participation: 'N' };
     //   delete copyArr[i].createdTime;
