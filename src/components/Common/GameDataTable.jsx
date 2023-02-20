@@ -19,8 +19,9 @@ const GameDataTable = () => {
     getGameData();
   }, []);
 
-  const columnStyle = (column, columnIndex) => {};
   const columns = gameDataColumn;
+
+  const columnStyle = (column, columnIndex) => {};
 
   const cellEdit = cellEditFactory({
     mode: 'dbclick',
@@ -30,13 +31,19 @@ const GameDataTable = () => {
     beforeSaveCell: (oldValue, newValue, row, colum) => {
       const copyArr = [...gameData];
       // console.log('2222', copyArr);
-
-      console.log('------', oldValue, newValue, row, colum);
+      // console.log('------', oldValue, newValue, row, colum);
     },
     afterSaveCell: (oldValue, newValue, row, column) => {
-      console.log('21321321312', oldValue, newValue);
+      // console.log('21321321312', oldValue, newValue);
     },
   });
+
+  const row = {
+    id: '1',
+    data: {
+      createdTime: '2023-02-06T09:19:42.459+00:00',
+    },
+  };
 
   const rowStyle = (row, rowIndex) => {
     // if (rowIndex)
@@ -54,11 +61,12 @@ const GameDataTable = () => {
       <MovePageDiv></MovePageDiv>
       <BootstrapTable
         bootstrap4
-        keyField='createdTime'
+        keyField='gameNum'
         data={[gameData]}
         columns={columns}
         cellEdit={cellEdit}
         hiddenRows={hiddenRowKeys}
+        row={row}
       />
     </>
   );

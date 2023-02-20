@@ -127,6 +127,10 @@ export const gameDataColumn = [
     dataField: 'createdTime',
     text: '경기시작',
   },
+  {
+    dataField: 'gameNum',
+    text: '게임순서',
+  },
   // {
   //   dataField: 'teamId',
   //   text: '경기장',

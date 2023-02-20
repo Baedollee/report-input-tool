@@ -6,6 +6,8 @@ const initialState = {
   lineUpList: [],
   lineUpSelectList: [],
   rosterSelectList: [],
+  tableRosterSelectList: [],
+  tableLineUpSelectList: [],
   gameData: [
     // {
     //   awayScore: 0,
@@ -36,7 +38,7 @@ const initialState = {
     //   totalSetTime: 0,
     // },
   ],
-  isSelect: true,
+  Select: true,
 };
 
 export const GameDataThunk = createAsyncThunk(
@@ -141,14 +143,22 @@ const gameInformSlice = createSlice({
       state.lineUpSelectList = action.payload;
     },
     onReset: (state, action) => {
-      state.rosterSelectList = [];
-      state.lineUpSelectList = [];
+      state.rosterSelectList = action.payload;
+      state.lineUpSelectList = action.payload;
+      state.tableRosterSelectList = action.payload;
+      state.tableLineUpSelectList = action.payload;
     },
     onChange: (state, action) => {
       state.rosterList = action.payload;
     },
     isSelect: (state, action) => {
-      state.isSelect = action.payload;
+      state.Select = action.payload;
+    },
+    ontableRosterSelect: (state, action) => {
+      state.tableRosterSelectList = action.payload;
+    },
+    ontableLineUpSelect: (state, action) => {
+      state.tableLineUpSelectList = action.payload;
     },
   },
   extraReducers: {
@@ -204,6 +214,13 @@ const gameInformSlice = createSlice({
   },
 });
 
-export const { onLineUpSelect, onRosterSelect, onReset, onChange, isSelect } =
-  gameInformSlice.actions;
+export const {
+  onLineUpSelect,
+  onRosterSelect,
+  onReset,
+  onChange,
+  isSelect,
+  ontableRosterSelect,
+  ontableLineUpSelect,
+} = gameInformSlice.actions;
 export default gameInformSlice.reducer;

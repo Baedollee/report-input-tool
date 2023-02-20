@@ -13,6 +13,7 @@ import {
   PostRosterDataThunk,
   GetRosterDataThunk,
   DeleteLineUpListDataThunk,
+  isSelect,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
 import SelectMenu from 'components/ScreenPlayerList/SelectMenu';
@@ -49,8 +50,6 @@ const GameInformPage = () => {
   const onClickAddLinUpHandler = async () => {
     const copyArr = [...rosterSelectList];
     const copyArrRoster = [...copyArr];
-    console.log('으아아아아ㅏㅇ');
-    console.log(copyArr);
     for (let i = 0; i < copyArr.length; i++) {
       if (menuSelect === 'Home') {
         copyArr[i] = {
@@ -108,7 +107,7 @@ const GameInformPage = () => {
       // await dispatch(PostRosterDataThunk(copyArrRoster));
       await dispatch(GetLineUpListDataThunk());
       // await dispatch(GetRosterDataThunk());
-      await dispatch(onReset());
+      await dispatch(onReset([]));
     }
   };
 
@@ -131,7 +130,7 @@ const GameInformPage = () => {
     await dispatch(GetLineUpListDataThunk());
     await dispatch(GetRosterDataThunk());
     // await dispatch(onChange([...changeStatus, ...copyArr]));
-    await dispatch(onReset());
+    await dispatch(onReset([]));
   };
 
   return (

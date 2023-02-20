@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   GetRosterDataThunk,
+  onReset,
   onRosterSelect,
+  ontableRosterSelect,
   PostRosterDataThunk,
 } from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,54 +16,45 @@ import { columns } from 'static/BootStrapTableColumsContents';
 const RosterListTable = ({ rosterList }) => {
   const dispatch = useDispatch();
 
-  const { rosterSelectList, selectStatusStore } = useSelector(
-    (state) => state?.gameInformSlice
-  );
+  const { rosterSelectList, selectStatusStore, tableRosterSelectList, Select } =
+    useSelector((state) => state?.gameInformSlice);
 
-  const [tableSelected, setTableSelected] = useState([]);
-  const [selectList, setSelectList] = useState(rosterSelectList);
+  const [selectList, setSelectList] = useState([]);
+  const [subSelectList, setSubSelectList] = useState([...rosterSelectList]);
+
   const [rowIndex, setRowIndex] = useState(0);
   const copyRosterArr = [...rosterList];
 
-  // .filter((state) => state.participation === 'N');
-
-  // const handleBtnClick = () => {
-  //   if (!selectList.includes(2)) {
-  //     setSelectList([...selectList, 2]);
-  //   } else {
-  //     setSelectList(selectList.filter((x) => x !== 2));
-  //   }
-  // };
-
-  const handleOnSelect = (row, isSelect, index, a) => {
+  const handleOnSelect = (row, isSelect, a, b) => {
     if (isSelect) {
-      setSelectList([...selectList, row]);
+      setSelectList([...tableRosterSelectList, row.participantName]);
+      setSubSelectList([...rosterSelectList, row]);
     } else {
-      setSelectList(
-        selectList.filter((x) => x.participantName !== row.participantName)
+      setSelectList(selectList.filter((x) => x !== row.participantName));
+      setSubSelectList(
+        subSelectList.filter((x) => x.participantName !== row.participantName)
       );
     }
   };
 
-  const handleOnSelectAll = (isSelect, rows) => {
-    const ids = rows.map((r) => r);
+  const handleOnSelectAll = (isSelect, rows, c) => {
+    const ids = rows.map((r) => r.participantName);
+    const select = rows.map((i) => i);
     if (isSelect) {
       setSelectList(ids);
+      setSubSelectList(select);
+      return isSelect;
     } else {
       setSelectList([]);
+      setSubSelectList([]);
     }
   };
-
-  // const selectionRenderer = ({ mode, checked, disabled }) => {
-  //   console.log('선택 콜백', disabled);
-  //   // return !checked;
-  // };
 
   const selectRow = {
     mode: 'checkbox',
     clickToSelect: true,
     clickToEdit: true,
-    selected: tableSelected,
+    selected: [...tableRosterSelectList],
     onSelect: handleOnSelect,
     onSelectAll: handleOnSelectAll,
     style: { backgroundColor: 'skyblue' },
@@ -111,18 +104,13 @@ const RosterListTable = ({ rosterList }) => {
     console.log(column, columnIndex);
   };
 
-  // useEffect(() => {
-  //   // dispatch(PostLineUpListDataThunk(selectList));
-  //   dispatch(onRosterSelect(selectList));
-  // }, [selectList, copyRosterArr]);
-
-  // const rosterSelect = useCallback(() => {
-  //   dispatch(onRosterSelect(selectList));
-  // }, [JSON.stringify(selectList), dispatch]);
+  useEffect(() => {
+    dispatch(ontableRosterSelect(selectList));
+  }, [selectList]);
 
   useEffect(() => {
-    dispatch(onRosterSelect(selectList));
-  }, [selectList]);
+    dispatch(onRosterSelect(subSelectList));
+  }, [subSelectList]);
 
   const getRosterData = useCallback(() => {
     dispatch(GetRosterDataThunk());
@@ -147,7 +135,6 @@ const RosterListTable = ({ rosterList }) => {
           cellEdit={cellEdit}
           bordered={true}
           hover
-          // striped
           condensed
           columnStyle={columnStyle}
           rowStyle={rowStyle}

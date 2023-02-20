@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import {
   GetLineUpListDataThunk,
   onLineUpSelect,
+  ontableLineUpSelect,
 } from 'redux/modules/gameInformSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -14,28 +15,37 @@ const LineUpListTable = ({ lineUpList }) => {
   const dispatch = useDispatch();
   const copyLineUpArr = [...lineUpList];
   const products = copyLineUpArr;
-  const selectData = useSelector(
-    (state) => state.gameInformSlice.lineUpSelectList
+  const { lineUpSelectList, tableLineUpSelectList } = useSelector(
+    (state) => state.gameInformSlice
   );
 
-  const [selectList, setSelectList] = useState(selectData);
+  console.log(lineUpSelectList, tableLineUpSelectList);
+
+  const [selectList, setSelectList] = useState([]);
+  const [subSelectList, setSubSelectList] = useState([...lineUpSelectList]);
 
   const handleOnSelect = (row, isSelect) => {
     if (isSelect) {
-      setSelectList([...selectList, row]);
+      setSelectList([...tableLineUpSelectList, row.participantName]);
+      setSubSelectList([...lineUpSelectList, row]);
     } else {
-      setSelectList(
-        selectList.filter((x) => x.participantName !== row.participantName)
+      setSelectList(selectList.filter((x) => x !== row.participantName));
+      setSubSelectList(
+        subSelectList.filter((x) => x.participantName !== row.participantName)
       );
     }
   };
 
   const handleOnSelectAll = (isSelect, rows) => {
-    const ids = rows.map((r) => r);
+    const ids = rows.map((r) => r.participantName);
+    const select = rows.map((i) => i);
     if (isSelect) {
       setSelectList(ids);
+      setSubSelectList(select);
+      return isSelect;
     } else {
       setSelectList([]);
+      setSubSelectList([]);
     }
   };
 
@@ -45,6 +55,7 @@ const LineUpListTable = ({ lineUpList }) => {
     clickToEdit: true,
     onSelect: handleOnSelect,
     onSelectAll: handleOnSelectAll,
+    selected: [...tableLineUpSelectList],
     style: { backgroundColor: 'skyblue' },
     headerColumnStyle: { textAlign: 'center' },
   };
@@ -74,8 +85,12 @@ const LineUpListTable = ({ lineUpList }) => {
   // }, [selectList, dispatch]);
 
   useEffect(() => {
-    dispatch(onLineUpSelect(selectList));
+    dispatch(ontableLineUpSelect(selectList));
   }, [selectList]);
+
+  useEffect(() => {
+    dispatch(onLineUpSelect(subSelectList));
+  }, [subSelectList]);
 
   const getLineUpData = useCallback(() => {
     dispatch(GetLineUpListDataThunk());
