@@ -18,6 +18,8 @@ export const columns = [
     text: '시간',
     editable: false,
     sort: true,
+    hidden: true,
+
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
     },
