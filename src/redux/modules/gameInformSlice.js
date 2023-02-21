@@ -22,7 +22,7 @@ const initialState = {
     //   gameDate: '2023-02-02',
     //   gameDay: null,
     //   gameLocation: null,
-    //   gameNum: 123,
+    //   gameNum: 222,
     //   gameStatus: null,
     //   gameTime: null,
     //   gender: 'M',
@@ -71,7 +71,6 @@ export const GetRosterDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get('/api/team/selectTeamroster');
-      console.log('213213213', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -93,6 +92,7 @@ export const PostLineUpListDataThunk = createAsyncThunk(
   'LineUpListDataThunk/post',
   async (payload, thunkApi) => {
     console.log('라인업 포스트 post');
+    console.log(payload);
     try {
       const response = await axios.post(
         '/api/startlist/insertStartlist',
@@ -164,7 +164,7 @@ const gameInformSlice = createSlice({
   },
   extraReducers: {
     [GameDataThunk.fulfilled]: (state, action) => {
-      state.gameData = action.payload;
+      state.gameData = [action.payload];
     },
     [GameDataThunk.rejected]: (state, action) => {
       console.log(action);

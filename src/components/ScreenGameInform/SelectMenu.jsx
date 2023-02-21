@@ -10,13 +10,13 @@ const SelectMenu = ({ menuSelect, setMenuSelect }) => {
   return (
     <>
       <BtnSelectBox>
-        <button value={'Home'} onClick={onClickMenuSelect}>
+        <button value='Home' onClick={onClickMenuSelect}>
           홈팀
         </button>
-        <button value={'Away'} onClick={onClickMenuSelect}>
+        <button value='Away' onClick={onClickMenuSelect}>
           어웨이
         </button>
-        <button value={'Etc'} onClick={onClickMenuSelect}>
+        <button value='Etc' onClick={onClickMenuSelect}>
           기타설정
         </button>
       </BtnSelectBox>

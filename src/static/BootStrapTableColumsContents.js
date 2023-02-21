@@ -91,7 +91,7 @@ export const columns = [
     text: '출전순서',
     // editable: true,
     sort: true,
-    // hidden: true,
+    hidden: true,
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
     },

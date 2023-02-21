@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import GameDataTable from 'components/Common/GameDataTable';
 import GameSelectTable from 'components/ScreenGameSelect/GameSelectTable';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const GameSelectPage = () => {
   const navigate = useNavigate();
   const [dropDownVisibility, setDropDownVisibility] = useState(false);
+  const { gameData } = useSelector((state) => state.gameInformSlice);
 
   return (
     <WrapDiv>
@@ -15,7 +17,7 @@ const GameSelectPage = () => {
         <button onClick={() => navigate('/')}>홈 이동</button>
       </div>
       <GameSelectTable />
-      <GameDataTable />
+      <GameDataTable gameData={gameData} />
       {/* <DropDown /> */}
     </WrapDiv>
   );

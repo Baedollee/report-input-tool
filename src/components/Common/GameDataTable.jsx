@@ -6,10 +6,8 @@ import cellEditFactory from 'react-bootstrap-table2-editor';
 import { GameDataThunk } from 'redux/modules/gameInformSlice';
 import { gameDataColumn } from 'static/BootStrapTableColumsContents';
 
-const GameDataTable = () => {
+const GameDataTable = ({ gameData }) => {
   const dispatch = useDispatch();
-  const gameData = useSelector((state) => state?.gameInformSlice?.gameData);
-  console.log(gameData);
 
   const getGameData = useCallback(() => {
     dispatch(GameDataThunk(`/api/game/selectGame`));
@@ -55,9 +53,9 @@ const GameDataTable = () => {
       <MovePageDiv></MovePageDiv>
       <BootstrapTable
         bootstrap4
-        keyField='gameNum'
-        data={[gameData]}
         columns={columns}
+        keyField='gameNum'
+        data={gameData}
         cellEdit={cellEdit}
         hiddenRows={hiddenRowKeys}
         row={row}

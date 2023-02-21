@@ -33,17 +33,17 @@ const GameInformPage = () => {
 
   const homeAwayRosterList = () => {
     if (menuSelect === 'Home') {
-      return rosterList.filter((i) => i.teamId === gameData?.homeTeam);
+      return rosterList.filter((i) => i.teamId === gameData[0]?.homeTeam);
     } else {
-      return rosterList.filter((i) => i.teamId === gameData?.awayTeam);
+      return rosterList.filter((i) => i.teamId === gameData[0]?.awayTeam);
     }
   };
 
   const homeAwayLineUpList = () => {
     if (menuSelect === 'Home') {
-      return lineUpList.filter((i) => i.teamId === gameData?.homeTeam);
+      return lineUpList.filter((i) => i.teamId === gameData[0]?.homeTeam);
     } else {
-      return lineUpList.filter((i) => i.teamId === gameData?.awayTeam);
+      return lineUpList.filter((i) => i.teamId === gameData[0]?.awayTeam);
     }
   };
 
@@ -55,28 +55,30 @@ const GameInformPage = () => {
         copyArr[i] = {
           ...copyArr[i],
           // participation: 'Y',
-          competitionCode: gameData?.competitionCode,
-          gender: gameData?.gender,
+          competitionCode: gameData[0]?.competitionCode,
+          gender: gameData[0]?.gender,
           homeAway: 'home',
-          gameCode: gameData?.gameCode,
+          gameCode: gameData[0]?.gameCode,
           startingReserve: 'STR',
         };
 
         delete copyArr[i].lineupStatus;
-        delete copyArr[i].role;
+        delete copyArr[i].participantOrder;
+        // delete copyArr[i].role;
         delete copyArr[i].createdTime;
       } else {
         copyArr[i] = {
           ...copyArr[i],
           // participation: 'Y',
-          competitionCode: gameData?.competitionCode,
-          gender: gameData?.gender,
+          competitionCode: gameData[0]?.competitionCode,
+          gender: gameData[0]?.gender,
           homeAway: 'away',
-          gameCode: gameData?.gameCode,
+          gameCode: gameData[0]?.gameCode,
           startingReserve: 'STR',
         };
         delete copyArr[i].lineupStatus;
-        delete copyArr[i].role;
+        // delete copyArr[i].role;
+        delete copyArr[i].participantOrder;
         delete copyArr[i].createdTime;
       }
     }

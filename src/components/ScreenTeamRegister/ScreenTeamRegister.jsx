@@ -4,10 +4,10 @@ import TeamRegisterShowTable from './TeamRegisterShowTable';
 
 const ScreenTeamRegister = () => {
   return (
-    <div>
+    <>
       <TeamRegisterInputTable />
       <TeamRegisterShowTable />
-    </div>
+    </>
   );
 };
 
