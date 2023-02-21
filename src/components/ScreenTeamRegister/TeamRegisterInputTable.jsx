@@ -22,7 +22,7 @@ const TeamRegisterInputTable = () => {
   }
   console.log(monthCnt);
 
-  const leagueName = [{ value: 'month', label: { monthCnt } }];
+  // const leagueName = [{ value: 'month', label: { monthCnt } }];
 
   return (
     <Wrap>
@@ -34,7 +34,7 @@ const TeamRegisterInputTable = () => {
           <tr>
             <th>경기일</th>
             <td>
-              <Select
+              {/* <Select
                 options={leagueName}
                 className='basic-single'
                 classNamePrefix='select'
@@ -55,7 +55,7 @@ const TeamRegisterInputTable = () => {
                 // onChange={onChangeHandler}
                 width='100'
                 height='50'
-              />
+              /> */}
             </td>
             <th>라운드</th>
             <td>숫자 선택</td>
