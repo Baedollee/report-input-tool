@@ -136,10 +136,11 @@ const GameInformPage = () => {
   return (
     <WrapDiv>
       <HomeBtn onClick={() => navigate('/')}>홈으로 이동</HomeBtn>
-      <SelectMenu menuSelect={menuSelect} setMenuSelect={setMenuSelect} />
+
       <div>
         <GameDataTable gameData={gameData} />
       </div>
+      <SelectMenu menuSelect={menuSelect} setMenuSelect={setMenuSelect} />
       <BoxWrap>
         <LineUpListTable lineUpList={homeAwayLineUpList()} />
         <MiddleBoxDiv>
