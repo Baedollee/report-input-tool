@@ -6,7 +6,7 @@ import {
   MockCodeDataThunk,
 } from '../../redux/modules/codeDataSlice';
 
-const CodeInput = () => {
+const MainCodeTable = () => {
   const dispatch = useDispatch();
   const codePostData = {
     codeOrder: 1,
@@ -107,4 +107,4 @@ const ListDiv = styled.div`
     height: 20px;
   }
 `;
-export default CodeInput;
+export default MainCodeTable;

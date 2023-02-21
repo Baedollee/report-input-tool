@@ -14,15 +14,32 @@ const TeamRegisterInputTable = () => {
     homeTeam: '',
     awayTeam: '',
   };
+
   const [tableDataInput, setTableDataInput] = useState(dataValue);
+  const [isClearable, setIsClearable] = useState(true);
+
+  const onChangeHandler = (e, isClearable) => {
+    if (isClearable.action === 'select-option') {
+      const { value, label } = e;
+      setTableDataInput({ ...tableDataInput, [value]: label });
+    } else {
+      const { value, label } = isClearable.removedValues[0];
+      setTableDataInput({
+        ...tableDataInput,
+        [value]: '',
+      });
+    }
+  };
+
+  console.log(tableDataInput);
 
   const monthCnt = [];
   for (let i = 1; i < 13; i++) {
-    monthCnt.push(i.toString());
+    let monthData = {};
+    monthData.value = 'month';
+    monthData.label = i + '';
+    monthCnt.push(monthData);
   }
-  console.log(monthCnt);
-
-  // const leagueName = [{ value: 'month', label: { monthCnt } }];
 
   return (
     <Wrap>
@@ -34,18 +51,18 @@ const TeamRegisterInputTable = () => {
           <tr>
             <th>경기일</th>
             <td>
-              {/* <Select
-                options={leagueName}
+              <Select
+                options={monthCnt}
                 className='basic-single'
                 classNamePrefix='select'
-                // isClearable={isClearable}
+                isClearable={isClearable}
                 isSearchable={false}
-                placeholder='선택하세요'
-                // onChange={onChangeHandler}
+                placeholder='월'
+                onChange={onChangeHandler}
                 width='100'
                 height='50'
               />
-              <Select
+              {/* <Select
                 options={leagueName}
                 className='basic-single'
                 classNamePrefix='select'

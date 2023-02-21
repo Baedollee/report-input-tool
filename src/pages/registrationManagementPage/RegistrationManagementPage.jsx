@@ -1,3 +1,4 @@
+import ScreenCodeManagement from 'components/ScreenCodeManagement/ScreenCodeManagement';
 import ScreenPlayerRegister from 'components/ScreenPlayerRegister/ScreenPlayerRegister';
 import ScreenTeamRegister from 'components/ScreenTeamRegister/ScreenTeamRegister';
 import React from 'react';
@@ -6,7 +7,7 @@ import styled from 'styled-components';
 import SelectManageMenu from './SelectManageMenu';
 
 const RegistrationManagementPage = () => {
-  const [selectMenu, setSelectMenu] = useState('');
+  const [selectMenu, setSelectMenu] = useState('teamRegister');
 
   const onClickPageTextHandler = (e) => {
     const { value } = e.target;
@@ -19,6 +20,9 @@ const RegistrationManagementPage = () => {
     }
     if (selectMenu === 'playerRegister') {
       return <ScreenPlayerRegister />;
+    }
+    if (selectMenu === 'codeManagement') {
+      return <ScreenCodeManagement />;
     }
   };
 

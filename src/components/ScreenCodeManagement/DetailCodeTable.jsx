@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetCodeMockDataThunk } from '../../redux/modules/codeDataSlice';
 
-const CodeOutput = () => {
+const DetailCodeTable = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.codeData.getCodeDataList);
   useEffect(() => {
@@ -84,4 +84,4 @@ const ListDiv = styled.div`
   border: 1px solid black;
   background-color: white;
 `;
-export default CodeOutput;
+export default DetailCodeTable;

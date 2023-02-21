@@ -186,6 +186,7 @@ const MiddleBoxDiv = styled.div`
   gap: 10px;
   img {
     width: 70px;
+    height: 100px;
   }
   button {
     width: 70px;
@@ -202,19 +203,7 @@ const MiddleBoxDiv = styled.div`
     }
   }
 `;
-const Triangle = styled.div`
-  display: inline-block;
-  border: 50px solid black;
-`;
-const Triangle_left = styled.div`
-  border-left-color: red;
-`;
-const Triangle_right = styled.div`
-  border-right-color: red;
-`;
-const Triangle_bottom = styled.div`
-  border-bottom-color: red;
-`;
+
 const ArrowRight = styled.img`
   display: flex;
   transform: rotate(180deg);
