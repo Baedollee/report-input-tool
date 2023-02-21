@@ -1,7 +1,16 @@
 export const columns = [
   {
+    dataField: 'participantName',
+    text: '선수명',
+    editable: false,
+    sort: true,
+    headerStyle: (column, colIndex) => {
+      if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
+    },
+  },
+  {
     dataField: 'participantId',
-    text: '참가자고유번호',
+    text: '선수번호',
     editable: false,
     sort: true,
     headerStyle: (column, colIndex) => {
@@ -26,22 +35,14 @@ export const columns = [
   },
   {
     dataField: 'participantBIB',
-    text: '등번호',
+    text: '배번',
     editable: true,
     sort: true,
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
     },
   },
-  {
-    dataField: 'participantName',
-    text: '선수이름',
-    editable: false,
-    sort: true,
-    headerStyle: (column, colIndex) => {
-      if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
-    },
-  },
+
   {
     dataField: 'participantPosition',
     text: '포지션',
@@ -56,6 +57,7 @@ export const columns = [
     text: '역할',
     editable: false,
     sort: true,
+    // hidden: true,
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
     },
@@ -65,6 +67,7 @@ export const columns = [
     text: '팀고유번호',
     editable: false,
     sort: true,
+    hidden: true,
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
     },
@@ -74,6 +77,7 @@ export const columns = [
     text: '팀명',
     editable: false,
     sort: true,
+    hidden: true,
     headerStyle: (column, colIndex) => {
       if (column) return { width: 'auto', fontSize: 10, textAlign: 'center' };
     },
@@ -104,6 +108,7 @@ export const gameDataColumn = [
   {
     dataField: 'competitionCode',
     text: '시즌',
+    hidden: true,
   },
   {
     dataField: 'gameCode',
@@ -113,6 +118,7 @@ export const gameDataColumn = [
     dataField: 'gender',
     text: '성별',
   },
+  { dataField: 'roundSeq', text: '라운드' },
   {
     dataField: 'homeTeam',
     text: 'Home',
@@ -132,6 +138,12 @@ export const gameDataColumn = [
   {
     dataField: 'gameNum',
     text: '게임순서',
+    hidden: true,
+  },
+  {
+    dataField: 'gameLocation',
+    text: '경기장',
+    // hidden: true,
   },
   // {
   //   dataField: 'teamId',

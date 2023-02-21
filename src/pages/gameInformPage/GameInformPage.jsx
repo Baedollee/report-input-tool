@@ -17,7 +17,7 @@ import {
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
 import SelectMenu from 'components/ScreenGameInform/SelectMenu';
-
+import Arrow from '../../assets/icons/Arrow.png';
 const GameInformPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -143,8 +143,12 @@ const GameInformPage = () => {
       <BoxWrap>
         <LineUpListTable lineUpList={homeAwayLineUpList()} />
         <MiddleBoxDiv>
-          <button onClick={onClickAddLinUpHandler}>선발추가</button>
-          <button onClick={onClickAddRosterHandler}>벤치추가</button>
+          <div>
+            <img src={Arrow} onClick={onClickAddLinUpHandler} />
+          </div>
+          <div>
+            <ArrowRight src={Arrow} onClick={onClickAddRosterHandler} />
+          </div>
         </MiddleBoxDiv>
         <RosterListTable rosterList={homeAwayRosterList()} />
       </BoxWrap>
@@ -179,6 +183,9 @@ const MiddleBoxDiv = styled.div`
   align-items: center;
   width: 10%;
   gap: 10px;
+  img {
+    width: 70px;
+  }
   button {
     width: 70px;
     height: 50px;
@@ -193,6 +200,23 @@ const MiddleBoxDiv = styled.div`
       font-size: 17px;
     }
   }
+`;
+const Triangle = styled.div`
+  display: inline-block;
+  border: 50px solid black;
+`;
+const Triangle_left = styled.div`
+  border-left-color: red;
+`;
+const Triangle_right = styled.div`
+  border-right-color: red;
+`;
+const Triangle_bottom = styled.div`
+  border-bottom-color: red;
+`;
+const ArrowRight = styled.img`
+  display: flex;
+  transform: rotate(180deg);
 `;
 
 export default GameInformPage;
