@@ -14,7 +14,9 @@ const SelectManageMenu = ({ onClickPageTextHandler }) => {
       <button onClick={onClickPageTextHandler} value='playerRegister'>
         선수관리
       </button>
-      <button>심판관리</button>
+      <button onClick={onClickPageTextHandler} value='refereeRegister'>
+        심판관리
+      </button>
       <button>대회/기타등록</button>
       <button onClick={onClickPageTextHandler} value='codeManagement'>
         코드관리
@@ -26,6 +28,8 @@ const SelectManageMenu = ({ onClickPageTextHandler }) => {
 const SelectMenuBox = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: skyblue;
+  margin-left: 5px;
   width: 100px;
   div {
     display: flex;

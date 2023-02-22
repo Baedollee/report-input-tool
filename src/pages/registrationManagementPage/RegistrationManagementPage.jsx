@@ -1,5 +1,6 @@
 import ScreenCodeManagement from 'components/ScreenCodeManagement/ScreenCodeManagement';
 import ScreenPlayerRegister from 'components/ScreenPlayerRegister/ScreenPlayerRegister';
+import ScreenRefereeRegister from 'components/ScreenRefereeRegister/ScreenRefereeRegister';
 import ScreenTeamRegister from 'components/ScreenTeamRegister/ScreenTeamRegister';
 import React from 'react';
 import { useState } from 'react';
@@ -23,6 +24,9 @@ const RegistrationManagementPage = () => {
     }
     if (selectMenu === 'codeManagement') {
       return <ScreenCodeManagement />;
+    }
+    if (selectMenu === 'refereeRegister') {
+      return <ScreenRefereeRegister />;
     }
   };
 

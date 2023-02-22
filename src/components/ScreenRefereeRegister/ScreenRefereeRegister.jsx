@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import TeamRegisterHeader from './TeamRegisterHeader';
-import TeamRegisterInputTable from './TeamRegisterInputTable';
-import TeamRegisterShowTable from './TeamRegisterShowTable';
+import RefereeRegisterHeader from './RefereeRegisterHeader';
+import RefereeRegisterInputTable from './RefereeRegisterInputTable';
+import RefereeRegisterShowTable from './RefereeRegisterShowTable';
 
-const ScreenTeamRegister = () => {
+const ScreenRefereeRegister = () => {
   return (
     <Wrap>
-      <TeamRegisterHeader />
+      <RefereeRegisterHeader />
       <Container>
-        <TeamRegisterInputTable />
-        <TeamRegisterShowTable />
+        <RefereeRegisterInputTable />
+        <RefereeRegisterShowTable />
       </Container>
     </Wrap>
   );
@@ -29,5 +29,4 @@ const Container = styled.div`
   padding: 5px;
   height: 100%;
 `;
-
-export default ScreenTeamRegister;
+export default ScreenRefereeRegister;

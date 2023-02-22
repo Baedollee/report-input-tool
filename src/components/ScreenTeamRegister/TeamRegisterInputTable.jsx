@@ -43,55 +43,60 @@ const TeamRegisterInputTable = () => {
 
   return (
     <Wrap>
-      <div>
-        <h3>팀 등록 관리</h3>
-      </div>
-      <TableBox>
-        <table>
-          <tr>
-            <th>경기일</th>
-            <td>
-              <Select
-                options={monthCnt}
-                className='basic-single'
-                classNamePrefix='select'
-                isClearable={isClearable}
-                isSearchable={false}
-                placeholder='월'
-                onChange={onChangeHandler}
-                width='100'
-                height='50'
-              />
-              {/* <Select
-                options={leagueName}
-                className='basic-single'
-                classNamePrefix='select'
-                // isClearable={isClearable}
-                isSearchable={false}
-                placeholder='선택하세요'
-                // onChange={onChangeHandler}
-                width='100'
-                height='50'
-              /> */}
-            </td>
-            <th>라운드</th>
-            <td>숫자 선택</td>
-            <th>성별</th>
-            <td>성별선택</td>
-            <th>경기장</th>
-            <td>경기장 선택</td>
-          </tr>
-          <tr>
-            <th>홈팀</th>
-            <td>팀선택</td>
-            <th>어웨이팀</th>
-            <td>팀선택</td>
-            <th>2222</th>
-            <td></td>
-          </tr>
-        </table>
-        <button>조회</button>
-      </TableBox>
+      <Container>
+        <TableBox>
+          <table>
+            <tbody>
+              <tr>
+                <th>구분</th>
+                <td>
+                  {/* <Select
+                    options={monthCnt}
+                    className='basic-single'
+                    classNamePrefix='select'
+                    isClearable={isClearable}
+                    isSearchable={false}
+                    placeholder='월'
+                    onChange={onChangeHandler}
+                    width='100'
+                    height='50'
+                  /> */}
+                  {/* <Select
+                    options={leagueName}
+                    className='basic-single'
+                    classNamePrefix='select'
+                    // isClearable={isClearable}
+                    isSearchable={false}
+                    placeholder='선택하세요'
+                    // onChange={onChangeHandler}
+                    width='100'
+                    height='50'
+                  /> */}
+                </td>
+                <th>시즌</th>
+                <td>숫자 선택</td>
+                <th>성별</th>
+                <td>성별선택</td>
+                <th>감독</th>
+                <td>경기장 선택</td>
+              </tr>
+              <tr>
+                <th>팀명</th>
+                <td>팀선택</td>
+                <th>연고지</th>
+                <td>입력</td>
+                <th>홈구장</th>
+                <td>입력</td>
+                <th style={{ backgroundColor: 'white', border: 'none' }}></th>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <ButtonBox>
+            <button>조회</button>
+          </ButtonBox>
+        </TableBox>
+      </Container>
     </Wrap>
   );
 };
@@ -99,24 +104,50 @@ const TeamRegisterInputTable = () => {
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: skyblue;
+  padding: 5px;
+  /* height: 100vh; */
   table {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     border: 1px solid black;
     border-collapse: collapse;
 
-    th {
-      background-color: gray;
-      width: 100px;
-      border: 1px solid black;
-    }
     tr {
       border-top: 1px solid black;
       border-bottom: 1px solid black;
     }
+    th {
+      text-align: center;
+      background-color: gray;
+      border: 1px solid black;
+      min-width: 100px;
+    }
+    td {
+      width: 310px;
+      background-color: white;
+    }
   }
 `;
+const Container = styled.div`
+  display: flex;
+`;
+
 const TableBox = styled.div`
   display: flex;
+  /* width: 100%; */
+`;
+const ButtonBox = styled.div`
+  display: flex;
+  width: 100px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  button {
+    width: 60px;
+    height: 30px;
+    border: none;
+    color: white;
+    background-color: #13136b;
+  }
 `;
 export default TeamRegisterInputTable;

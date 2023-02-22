@@ -1,14 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
-import cellEditFactory from 'react-bootstrap-table2-editor';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styled from 'styled-components';
-import { teamManagementColumn } from 'static/BootStrapTableColumsContents';
-import { GameDataThunk } from 'redux/modules/gameInformSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { GameDataThunk } from 'redux/modules/gameInformSlice';
+import { playerManagementColumn } from 'static/BootStrapTableColumsContents';
+import styled from 'styled-components';
 
-const TeamRegisterShowTable = () => {
+const PlayerRegisterShowTable = () => {
   const dispatch = useDispatch();
 
   const { gameData } = useSelector((state) => state.gameInformSlice);
@@ -27,12 +24,11 @@ const TeamRegisterShowTable = () => {
         bootstrap4
         keyField='num'
         data={gameData}
-        columns={teamManagementColumn}
+        columns={playerManagementColumn}
       />
     </Wrap>
   );
 };
-
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,4 +36,5 @@ const Wrap = styled.div`
   padding: 5px;
   height: 100%;
 `;
-export default TeamRegisterShowTable;
+
+export default PlayerRegisterShowTable;

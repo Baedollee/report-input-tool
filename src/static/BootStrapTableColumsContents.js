@@ -182,3 +182,136 @@ export const mainCodeColumn = [
     text: '수정 삭제',
   },
 ];
+
+export const teamManagementColumn = [
+  {
+    dataField: 'num',
+    text: '#',
+  },
+  {
+    dataField: 'seperate',
+    text: '구분',
+  },
+  {
+    dataField: 'season',
+    text: '시즌',
+  },
+  {
+    dataField: 'teamName',
+    text: '팀명',
+  },
+  {
+    dataField: 'x',
+    text: '',
+  },
+  {
+    dataField: 'teamCode',
+    text: '팀코드',
+  },
+  {
+    dataField: 'gender',
+    text: '성별',
+  },
+  {
+    dataField: 'home',
+    text: '홈구장',
+  },
+  {
+    dataField: 'y',
+    text: '연고지',
+  },
+  {
+    dataField: 'delete',
+    text: '수정/삭제',
+  },
+];
+
+export const playerManagementColumn = [
+  {
+    dataField: 'num',
+    text: '#',
+  },
+  {
+    dataField: 'name',
+    text: '이름',
+  },
+  {
+    dataField: 'gender',
+    text: '성별',
+  },
+  {
+    dataField: 'teamName',
+    text: '소속팀',
+  },
+  {
+    dataField: 'position',
+    text: '포지션',
+  },
+  {
+    dataField: 'backNum',
+    text: '배번',
+  },
+  {
+    dataField: 'sin',
+    text: '신분',
+  },
+  {
+    dataField: 'birth',
+    text: '생년월일',
+  },
+  {
+    dataField: 'x',
+    text: '',
+  },
+  {
+    dataField: 'y',
+    text: '',
+  },
+  {
+    dataField: 'national',
+    text: '국적',
+  },
+  {
+    dataField: 'delete',
+    text: '수정/삭제',
+  },
+];
+
+export const refereeManagementColumn = [
+  {
+    dataField: 'num',
+    text: '#',
+  },
+  {
+    dataField: 'name',
+    text: '이름',
+  },
+  {
+    dataField: 'gender',
+    text: '성별',
+  },
+  {
+    dataField: 'teamName',
+    text: '소속',
+  },
+  {
+    dataField: 'position',
+    text: '보직구분',
+  },
+  {
+    dataField: 'birth',
+    text: '생년월일',
+  },
+  {
+    dataField: 'x',
+    text: '주 부심 출장경기',
+  },
+  {
+    dataField: 'y',
+    text: '출전 기록심판 출장경기',
+  },
+  {
+    dataField: 'delete',
+    text: '수정/삭제',
+  },
+];

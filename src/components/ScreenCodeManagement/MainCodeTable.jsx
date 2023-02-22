@@ -32,6 +32,12 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 5px;
+  button {
+    background-color: #13136b;
+    color: white;
+    border: none;
+    width: 100px;
+  }
 `;
 
 export default MainCodeTable;
