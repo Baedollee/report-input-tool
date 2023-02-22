@@ -163,3 +163,22 @@ export const gameDataColumn = [
   //   text: '경기선택',
   // },
 ];
+
+export const mainCodeColumn = [
+  {
+    dataField: 'num',
+    text: '#',
+  },
+  {
+    dataField: 'section',
+    text: '주 코드',
+  },
+  {
+    dataField: 'code',
+    text: '코드 이름',
+  },
+  {
+    dataField: 'fine',
+    text: '수정 삭제',
+  },
+];

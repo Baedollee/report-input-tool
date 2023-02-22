@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import SelectManageMenu from './SelectManageMenu';
 
 const RegistrationManagementPage = () => {
-  const [selectMenu, setSelectMenu] = useState('teamRegister');
+  const [selectMenu, setSelectMenu] = useState('codeManagement');
 
   const onClickPageTextHandler = (e) => {
     const { value } = e.target;

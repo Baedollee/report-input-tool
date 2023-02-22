@@ -44,6 +44,9 @@ const SelectMenuBox = styled.div`
     border-bottom: 1px solid white;
     height: 50px;
     width: 100%;
+    :hover {
+      background-color: orange;
+    }
   }
 `;
 

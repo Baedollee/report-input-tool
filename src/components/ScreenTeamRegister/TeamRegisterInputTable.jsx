@@ -44,7 +44,7 @@ const TeamRegisterInputTable = () => {
   return (
     <Wrap>
       <div>
-        <h1>팀 등록 관리</h1>
+        <h3>팀 등록 관리</h3>
       </div>
       <TableBox>
         <table>

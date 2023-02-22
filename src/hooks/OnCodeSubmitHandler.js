@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { MockCodeDataThunk } from 'redux/modules/codeDataSlice';
+import { MockCodeDataThunk } from 'redux/modules/codeManagementDataSlice';
 
 export const OnCodeSubmitHandler = async (e) => {
   const codePostData = useSelector((state) => state.codeData.codeDataList);
