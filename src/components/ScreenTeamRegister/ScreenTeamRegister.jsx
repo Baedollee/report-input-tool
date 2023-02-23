@@ -40,7 +40,6 @@ const Wrap = styled.div`
   flex-direction: column;
   padding: 10px;
   height: 100vh;
-  z-index: 50;
 `;
 const Container = styled.div`
   display: flex;
