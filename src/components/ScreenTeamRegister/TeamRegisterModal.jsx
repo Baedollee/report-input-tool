@@ -1,6 +1,7 @@
 import SelectDivision from 'components/Common/inputSelector/SelectDivision';
 import SelectGender from 'components/Common/inputSelector/SelectGender';
 import InputText from 'components/Common/inputTextBox/InputText';
+import UploadImage from 'components/Common/uploadImageBox/UploadImage';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -21,7 +22,9 @@ const TeamRegisterModal = ({ setShowModal }) => {
             <tbody>
               <tr>
                 <th>팀로고</th>
-                <td>이미지 등록</td>
+                <td>
+                  <UploadImage />
+                </td>
                 <th>
                   <tr>
                     <th>팀명</th>

@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import kim from '../../assets/image/a3d908591f679e2f5c9875e433c3a947_mp4.gif';
 
 const LoginImgBox = () => {
   return (
     <>
       <Wrap>
         <ImgBox>
-          <div>이미지 들어가는 자리</div>
+          <img src={kim} alt='' width={'100%'} height={'100%'} />
         </ImgBox>
       </Wrap>
     </>
@@ -30,7 +31,6 @@ const ImgBox = styled.div`
   height: 60%;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
 `;
 
 export default LoginImgBox;
