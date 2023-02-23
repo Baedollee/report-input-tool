@@ -4,6 +4,10 @@ import Select from 'react-select';
 // import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import styled from 'styled-components';
+import SelectDivision from 'components/Common/inputSelector/SelectDivision';
+import SelectSeason from 'components/Common/inputSelector/SelectSeason';
+import SelectGender from 'components/Common/inputSelector/SelectGender';
+import InputText from 'components/Common/inputTextBox/InputText';
 
 const TeamRegisterInputTable = () => {
   const dataValue = {
@@ -61,32 +65,34 @@ const TeamRegisterInputTable = () => {
                     width='100'
                     height='50'
                   /> */}
-                  {/* <Select
-                    options={leagueName}
-                    className='basic-single'
-                    classNamePrefix='select'
-                    // isClearable={isClearable}
-                    isSearchable={false}
-                    placeholder='선택하세요'
-                    // onChange={onChangeHandler}
-                    width='100'
-                    height='50'
-                  /> */}
+                  <SelectDivision />
                 </td>
                 <th>시즌</th>
-                <td>숫자 선택</td>
+                <td>
+                  <SelectSeason />
+                </td>
                 <th>성별</th>
-                <td>성별선택</td>
+                <td>
+                  <SelectGender />
+                </td>
                 <th>감독</th>
-                <td>경기장 선택</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
               <tr>
                 <th>팀명</th>
-                <td>팀선택</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>연고지</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>홈구장</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th style={{ backgroundColor: 'white', border: 'none' }}></th>
                 <td></td>
               </tr>
@@ -151,4 +157,5 @@ const ButtonBox = styled.div`
     background-color: #13136b;
   }
 `;
+
 export default TeamRegisterInputTable;

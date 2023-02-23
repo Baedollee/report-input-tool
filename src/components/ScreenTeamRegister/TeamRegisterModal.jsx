@@ -1,3 +1,6 @@
+import SelectDivision from 'components/Common/inputSelector/SelectDivision';
+import SelectGender from 'components/Common/inputSelector/SelectGender';
+import InputText from 'components/Common/inputTextBox/InputText';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -29,61 +32,87 @@ const TeamRegisterModal = ({ setShowModal }) => {
                 </th>
                 <td>
                   <tr>
-                    <td>팀명 입력</td>
+                    <td>
+                      <InputText />
+                    </td>
                   </tr>
                   <tr>
-                    <td>공식 입력</td>
+                    <td>
+                      <InputText />
+                    </td>
                   </tr>
                 </td>
               </tr>
 
               <tr>
                 <th>성별</th>
-                <td>선택</td>
+                <td>
+                  <SelectGender />
+                </td>
                 <th>시즌</th>
                 <td>일자 선택</td>
               </tr>
 
               <tr>
                 <th>주소</th>
-                <td>주소 입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>구분</th>
-                <td>구분 선택</td>
+                <td>
+                  <SelectDivision />
+                </td>
               </tr>
 
               <tr>
                 <th>연고지</th>
-                <td>연고지 입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>홈구장</th>
-                <td>홈구장 입력</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
 
               <tr>
                 <th>창단일</th>
                 <td>날짜 선택</td>
                 <th>구단주명</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
 
               <tr>
                 <th>단장명</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>감독명</th>
-                <td>감독명입력</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
 
               <tr>
                 <th>홈페이지</th>
-                <td>www.</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>전화</th>
-                <td>010</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
 
               <tr>
                 <th>팀 코드</th>
                 <td>a1000</td>
                 <th>모기업</th>
-                <td>모기업 입력</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
             </tbody>
           </table>
@@ -110,12 +139,12 @@ const ModalBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
-  height: 60%;
+  /* height: 60%; */
   padding: 10px;
   background-color: white;
   border: 1px solid black;
   z-index: 200;
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -123,7 +152,7 @@ const ModalBox = styled.div`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   h3 {
     border-bottom: 1px solid black;
     width: 80%;
@@ -135,11 +164,13 @@ const Header = styled.div`
 `;
 const Body = styled.div`
   display: flex;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  justify-content: center;
   table {
     flex-direction: column;
     border: 1px solid black;
     border-collapse: collapse;
+    width: 90%;
     tr {
       border-top: 1px solid black;
       border-bottom: 1px solid black;

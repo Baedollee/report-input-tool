@@ -1,3 +1,5 @@
+import SelectGender from 'components/Common/inputSelector/SelectGender';
+import InputText from 'components/Common/inputTextBox/InputText';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,15 +12,23 @@ const RefereeRegisterInputTable = () => {
             <tbody>
               <tr>
                 <th>이름</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>성별</th>
-                <td>선택</td>
+                <td>
+                  <SelectGender />
+                </td>
               </tr>
               <tr>
                 <th>소속</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>보직구분</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
             </tbody>
           </table>

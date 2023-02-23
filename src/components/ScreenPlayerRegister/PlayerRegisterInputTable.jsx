@@ -1,3 +1,7 @@
+import SelectGender from 'components/Common/inputSelector/SelectGender';
+import SelectIdentity from 'components/Common/inputSelector/SelectIdentity';
+import SelectTeam from 'components/Common/inputSelector/SelectTeam';
+import InputText from 'components/Common/inputTextBox/InputText';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,23 +14,37 @@ const PlayerRegisterInputTable = () => {
             <tbody>
               <tr>
                 <th>이름</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>성별</th>
-                <td>선택</td>
+                <td>
+                  <SelectGender />
+                </td>
                 <th>소속팀</th>
-                <td>입력</td>
+                <td>
+                  <SelectTeam />
+                </td>
                 <th style={{ backgroundColor: 'white', border: 'none' }}></th>
                 <td></td>
               </tr>
               <tr>
                 <th>포지션</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>배번</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
                 <th>신분</th>
-                <td>선택</td>
+                <td>
+                  <SelectIdentity />
+                </td>
                 <th>국적</th>
-                <td>입력</td>
+                <td>
+                  <InputText />
+                </td>
               </tr>
             </tbody>
           </table>
@@ -89,4 +107,5 @@ const ButtonBox = styled.div`
     background-color: #13136b;
   }
 `;
+
 export default PlayerRegisterInputTable;
