@@ -72,7 +72,6 @@ const ButtonBox = styled.div`
   width: 100px;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 10px;
   button {
     width: 60px;
     height: 30px;

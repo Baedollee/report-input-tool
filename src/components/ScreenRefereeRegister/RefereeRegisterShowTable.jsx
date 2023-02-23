@@ -19,16 +19,14 @@ const RefereeRegisterShowTable = () => {
   }, []);
 
   return (
-    <div>
-      <Wrap>
-        <BootstrapTable
-          bootstrap4
-          keyField='num'
-          data={gameData}
-          columns={refereeManagementColumn}
-        />
-      </Wrap>
-    </div>
+    <Wrap>
+      <BootstrapTable
+        bootstrap4
+        keyField='num'
+        data={gameData}
+        columns={refereeManagementColumn}
+      />
+    </Wrap>
   );
 };
 const Wrap = styled.div`

@@ -31,7 +31,7 @@ const TeamRegisterInputTable = () => {
     }
   };
 
-  console.log(tableDataInput);
+  // console.log(tableDataInput);
 
   const monthCnt = [];
   for (let i = 1; i < 13; i++) {
@@ -135,7 +135,8 @@ const Container = styled.div`
 
 const TableBox = styled.div`
   display: flex;
-  /* width: 100%; */
+  width: 100%;
+  justify-content: space-between;
 `;
 const ButtonBox = styled.div`
   display: flex;

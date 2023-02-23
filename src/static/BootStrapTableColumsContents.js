@@ -168,18 +168,22 @@ export const mainCodeColumn = [
   {
     dataField: 'num',
     text: '#',
+    headerAlign: 'center',
   },
   {
     dataField: 'section',
     text: '주 코드',
+    headerAlign: 'center',
   },
   {
     dataField: 'code',
     text: '코드 이름',
+    headerAlign: 'center',
   },
   {
     dataField: 'fine',
     text: '수정 삭제',
+    headerAlign: 'center',
   },
 ];
 
@@ -187,42 +191,52 @@ export const teamManagementColumn = [
   {
     dataField: 'num',
     text: '#',
+    headerAlign: 'center',
   },
   {
     dataField: 'seperate',
     text: '구분',
+    headerAlign: 'center',
   },
   {
     dataField: 'season',
     text: '시즌',
+    headerAlign: 'center',
   },
   {
     dataField: 'teamName',
     text: '팀명',
+    headerAlign: 'center',
   },
   {
     dataField: 'x',
     text: '',
+    headerAlign: 'center',
   },
   {
     dataField: 'teamCode',
     text: '팀코드',
+    headerAlign: 'center',
   },
   {
     dataField: 'gender',
     text: '성별',
+    headerAlign: 'center',
   },
   {
     dataField: 'home',
     text: '홈구장',
+    headerAlign: 'center',
   },
   {
     dataField: 'y',
     text: '연고지',
+    headerAlign: 'center',
   },
   {
     dataField: 'delete',
     text: '수정/삭제',
+    headerAlign: 'center',
   },
 ];
 
@@ -230,50 +244,62 @@ export const playerManagementColumn = [
   {
     dataField: 'num',
     text: '#',
+    headerAlign: 'center',
   },
   {
     dataField: 'name',
     text: '이름',
+    headerAlign: 'center',
   },
   {
     dataField: 'gender',
     text: '성별',
+    headerAlign: 'center',
   },
   {
     dataField: 'teamName',
     text: '소속팀',
+    headerAlign: 'center',
   },
   {
     dataField: 'position',
     text: '포지션',
+    headerAlign: 'center',
   },
   {
     dataField: 'backNum',
     text: '배번',
+    headerAlign: 'center',
   },
   {
     dataField: 'sin',
     text: '신분',
+    headerAlign: 'center',
   },
   {
     dataField: 'birth',
     text: '생년월일',
+    headerAlign: 'center',
   },
   {
     dataField: 'x',
     text: '',
+    headerAlign: 'center',
   },
   {
     dataField: 'y',
     text: '',
+    headerAlign: 'center',
   },
   {
     dataField: 'national',
     text: '국적',
+    headerAlign: 'center',
   },
   {
     dataField: 'delete',
     text: '수정/삭제',
+    headerAlign: 'center',
   },
 ];
 
@@ -281,37 +307,46 @@ export const refereeManagementColumn = [
   {
     dataField: 'num',
     text: '#',
+    headerAlign: 'center',
   },
   {
     dataField: 'name',
     text: '이름',
+    headerAlign: 'center',
   },
   {
     dataField: 'gender',
     text: '성별',
+    headerAlign: 'center',
   },
   {
     dataField: 'teamName',
     text: '소속',
+    headerAlign: 'center',
   },
   {
     dataField: 'position',
     text: '보직구분',
+    headerAlign: 'center',
   },
   {
     dataField: 'birth',
     text: '생년월일',
+    headerAlign: 'center',
   },
   {
     dataField: 'x',
     text: '주 부심 출장경기',
+    headerAlign: 'center',
   },
   {
     dataField: 'y',
     text: '출전 기록심판 출장경기',
+    headerAlign: 'center',
   },
   {
     dataField: 'delete',
     text: '수정/삭제',
+    headerAlign: 'center',
   },
 ];

@@ -9,17 +9,17 @@ const SelectManageMenu = ({ onClickPageTextHandler }) => {
       <div>관리</div>
       <button onClick={() => navigate('/')}>홈으로</button>
       <button onClick={onClickPageTextHandler} value='teamRegister'>
-        팀등록 관리
+        팀 등록 관리
       </button>
       <button onClick={onClickPageTextHandler} value='playerRegister'>
-        선수관리
+        선수 관리
       </button>
       <button onClick={onClickPageTextHandler} value='refereeRegister'>
-        심판관리
+        심판 관리
       </button>
-      <button>대회/기타등록</button>
+      <button>대회/기타 등록 관리</button>
       <button onClick={onClickPageTextHandler} value='codeManagement'>
-        코드관리
+        코드 관리
       </button>
     </SelectMenuBox>
   );

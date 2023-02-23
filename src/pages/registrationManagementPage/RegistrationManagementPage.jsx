@@ -2,13 +2,13 @@ import ScreenCodeManagement from 'components/ScreenCodeManagement/ScreenCodeMana
 import ScreenPlayerRegister from 'components/ScreenPlayerRegister/ScreenPlayerRegister';
 import ScreenRefereeRegister from 'components/ScreenRefereeRegister/ScreenRefereeRegister';
 import ScreenTeamRegister from 'components/ScreenTeamRegister/ScreenTeamRegister';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import SelectManageMenu from './SelectManageMenu';
 
 const RegistrationManagementPage = () => {
-  const [selectMenu, setSelectMenu] = useState('codeManagement');
+  const [selectMenu, setSelectMenu] = useState('teamRegister');
 
   const onClickPageTextHandler = (e) => {
     const { value } = e.target;

@@ -8,17 +8,17 @@ const ScreenLogin = () => {
   const navigate = useNavigate();
   return (
     <Wrap>
-      <div>
-        <button onClick={() => navigate('/gameInfo')}>
+      <SelectBox>
+        <SelectBtn onClick={() => navigate('/gameInfo')}>
           엔트리 선택 페이지 이동
-        </button>
-        <button onClick={() => navigate('/gameSelect')}>
+        </SelectBtn>
+        <SelectBtn onClick={() => navigate('/gameSelect')}>
           게임 입력 페이지 이동
-        </button>
-        <button onClick={() => navigate('/RegistrationManagement')}>
+        </SelectBtn>
+        <SelectBtn onClick={() => navigate('/RegistrationManagement')}>
           관리 페이지 이동
-        </button>
-      </div>
+        </SelectBtn>
+      </SelectBox>
       <Box>
         <LoginImgBox />
         <LoginInputBox />
@@ -33,6 +33,30 @@ const Wrap = styled.div`
   width: 90%;
   height: 90%;
   background-color: white;
+  padding: 5px;
+`;
+const SelectBox = styled.div`
+  display: flex;
+  width: 100%;
+  height: 60px;
+`;
+const SelectBtn = styled.button`
+  margin-right: 5px;
+  color: white;
+  background-color: #13136b;
+  border: none;
+
+  padding: 10px;
+  height: 40px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  :hover {
+    background-color: orange;
+    color: white;
+    border: none;
+    font-weight: 700;
+  }
 `;
 const Box = styled.div`
   display: flex;

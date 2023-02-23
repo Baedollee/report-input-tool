@@ -1,12 +1,12 @@
-import React, { useCallback } from 'react';
-import BootstrapTable from 'react-bootstrap-table-next';
-import cellEditFactory from 'react-bootstrap-table2-editor';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import { teamManagementColumn } from 'static/BootStrapTableColumsContents';
 import { GameDataThunk } from 'redux/modules/gameInformSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
+import cellEditFactory from 'react-bootstrap-table2-editor';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const TeamRegisterShowTable = () => {
   const dispatch = useDispatch();
@@ -21,6 +21,24 @@ const TeamRegisterShowTable = () => {
     getGameData();
   }, []);
 
+  const pageListRenderer = ({ pages, onPageChange }) => {
+    const pageWithoutIndication = pages.filter(
+      (p) => typeof p.page !== 'string'
+    );
+    return (
+      <div>
+        {pageWithoutIndication.map((p) => {
+          <button
+            className='btn btn-success'
+            onClick={() => onPageChange(p.page)}></button>;
+        })}
+      </div>
+    );
+  };
+  const options = {
+    pageListRenderer,
+  };
+
   return (
     <Wrap>
       <BootstrapTable
@@ -28,6 +46,7 @@ const TeamRegisterShowTable = () => {
         keyField='num'
         data={gameData}
         columns={teamManagementColumn}
+        pagination={paginationFactory(options)}
       />
     </Wrap>
   );

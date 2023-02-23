@@ -73,7 +73,8 @@ const Container = styled.div`
 
 const TableBox = styled.div`
   display: flex;
-  /* width: 100%; */
+  width: 100%;
+  justify-content: space-between;
 `;
 const ButtonBox = styled.div`
   display: flex;
