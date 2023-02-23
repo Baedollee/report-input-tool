@@ -166,22 +166,22 @@ export const gameDataColumn = [
 
 export const mainCodeColumn = [
   {
-    dataField: 'num',
+    dataField: 'codeOrder',
     text: '#',
     headerAlign: 'center',
   },
   {
-    dataField: 'section',
+    dataField: 'mainCode',
     text: '주 코드',
     headerAlign: 'center',
   },
   {
-    dataField: 'code',
+    dataField: 'codeName',
     text: '코드 이름',
     headerAlign: 'center',
   },
   {
-    dataField: 'fine',
+    dataField: 'statColumn',
     text: '수정 삭제',
     headerAlign: 'center',
   },

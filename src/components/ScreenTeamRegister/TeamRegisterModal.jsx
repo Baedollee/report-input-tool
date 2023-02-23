@@ -2,12 +2,21 @@ import SelectDivision from 'components/Common/inputSelector/SelectDivision';
 import SelectGender from 'components/Common/inputSelector/SelectGender';
 import InputText from 'components/Common/inputTextBox/InputText';
 import UploadImage from 'components/Common/uploadImageBox/UploadImage';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const TeamRegisterModal = ({ setShowModal }) => {
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const [fileInfo, setFileInfo] = useState([]);
+
+  const handleUploadImage = (e) => {
+    setFileInfo({
+      ...fileInfo,
+      [e.target.id]: e.target.files[0],
+    });
   };
 
   return (
@@ -23,7 +32,12 @@ const TeamRegisterModal = ({ setShowModal }) => {
               <tr>
                 <th>팀로고</th>
                 <td>
-                  <UploadImage />
+                  <UploadImage
+                    text={'앞면 업로드'}
+                    extension={'.png , .jpeg, .jpg'}
+                    id={'front'}
+                    handleFile={(e) => handleUploadImage}
+                  />
                 </td>
                 <th>
                   <tr>

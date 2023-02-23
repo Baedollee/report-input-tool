@@ -1,5 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { GetCodeDataThunk } from 'redux/modules/codeManagementDataSlice';
 import styled from 'styled-components';
 import CodeSearchTable from './CodeSearchTable';
 import DetailCodeTable from './DetailCodeTable';
@@ -7,7 +8,12 @@ import MainCodeTable from './MainCodeTable';
 
 const ScreenCodeManagement = () => {
   const { codeDataList } = useSelector((state) => state.codeManagementSlice);
-  console.log(codeDataList);
+  const dispatch = useDispatch();
+  console.log('1111', codeDataList);
+  useEffect(() => {
+    dispatch(GetCodeDataThunk());
+  }, []);
+
   return (
     <Wrap>
       <h3>코드관리</h3>

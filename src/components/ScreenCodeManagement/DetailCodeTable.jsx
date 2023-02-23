@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { mainCodeColumn } from 'static/BootStrapTableColumsContents';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const DetailCodeTable = ({ codeDataList }) => {
   const dispatch = useDispatch();
@@ -16,9 +17,10 @@ const DetailCodeTable = ({ codeDataList }) => {
       </ButtonBox>
       <BootstrapTable
         bootstrap4
-        keyField='num'
+        keyField='codeOrder'
         data={codeDataList}
         columns={mainCodeColumn}
+        pagination={paginationFactory()}
       />
     </Wrap>
   );

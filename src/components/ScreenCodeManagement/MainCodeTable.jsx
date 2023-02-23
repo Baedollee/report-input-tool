@@ -4,6 +4,7 @@ import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { mainCodeColumn } from 'static/BootStrapTableColumsContents';
 import styled from 'styled-components';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const MainCodeTable = ({ codeDataList }) => {
   return (
@@ -11,12 +12,15 @@ const MainCodeTable = ({ codeDataList }) => {
       <ButtonBox>
         <button>등록</button>
       </ButtonBox>
-      <BootstrapTable
-        bootstrap4
-        keyField='num'
-        data={codeDataList}
-        columns={mainCodeColumn}
-      />
+      <TableText>
+        <BootstrapTable
+          bootstrap4
+          keyField='codeOrder'
+          data={codeDataList}
+          columns={mainCodeColumn}
+          // pagination={paginationFactory()}
+        />
+      </TableText>
     </Wrap>
   );
 };
@@ -26,7 +30,6 @@ const Wrap = styled.div`
   flex-direction: column;
   border: 1px solid black;
   padding: 5px;
-  height: 100%;
 `;
 const ButtonBox = styled.div`
   display: flex;
@@ -38,6 +41,11 @@ const ButtonBox = styled.div`
     border: none;
     width: 100px;
   }
+`;
+const TableText = styled.div`
+  display: flex;
+  overflow: auto;
+  height: 500px;
 `;
 
 export default MainCodeTable;

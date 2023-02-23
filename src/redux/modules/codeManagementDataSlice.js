@@ -23,10 +23,10 @@ export const MockCodeDataThunk = createAsyncThunk(
 export const GetCodeDataThunk = createAsyncThunk(
   'CodeDataThunk/get',
   async (payload, thunkApi) => {
-    // console.log('get', payload);
+    console.log('get', payload);
     try {
       const response = await axios.get('/api/code/selectActionCodeList');
-      // console.log('서버 get data', response);
+      console.log('서버 get data', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -52,7 +52,7 @@ const codeSlice = createSlice({
       console.log(action);
     },
     [GetCodeDataThunk.fulfilled]: (state, action) => {
-      state.CodeDataList = action.payload;
+      state.codeDataList = action.payload;
     },
     [GetCodeDataThunk.rejected]: (state, action) => {
       console.log(action);
