@@ -8,6 +8,7 @@ import { gameDataColumn } from 'static/BootStrapTableColumsContents';
 
 const GameDataTable = ({ gameData }) => {
   const dispatch = useDispatch();
+  let data = '';
 
   const getGameData = useCallback(() => {
     dispatch(GameDataThunk(`/api/game/selectGame`));
@@ -17,7 +18,27 @@ const GameDataTable = ({ gameData }) => {
     getGameData();
   }, []);
 
+  window.open(`http://localhost:3000/record/${data}`);
+
+  const selectBtn = (cell, row, rowIndex, formatExtraData) => {
+    const handleChange = () => {
+      data = `${row.gameDate}${row.gender}${row.gameNum}`;
+      console.log(data);
+    };
+
+    return (
+      <>
+        <button onClick={handleChange}>선택</button>
+      </>
+    );
+  };
+
   const columns = gameDataColumn;
+  const copyColumns = [...columns];
+  copyColumns[10] = {
+    ...copyColumns[10],
+    formatter: selectBtn,
+  };
 
   const columnStyle = (column, columnIndex) => {};
 
@@ -50,10 +71,17 @@ const GameDataTable = ({ gameData }) => {
   const hiddenRowKeys = [`2023-02-06T09:19:42.459+00:11`];
   return (
     <>
-      <MovePageDiv></MovePageDiv>
+      <MovePageDiv>
+        <button
+          onClick={() => {
+            window.open(`http://localhost:3000/record/${data}`);
+          }}>
+          saddassad
+        </button>
+      </MovePageDiv>
       <BootstrapTable
         bootstrap4
-        columns={columns}
+        columns={copyColumns}
         keyField='gameDate'
         data={gameData}
         cellEdit={cellEdit}

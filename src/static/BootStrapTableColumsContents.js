@@ -1,4 +1,4 @@
-export const columns = [
+export const PlaySelectColumns = [
   {
     dataField: 'participantName',
     text: '선수명',
@@ -158,10 +158,11 @@ export const gameDataColumn = [
   //   dataField: '',
   //   text: '경기정보 설정',
   // },
-  // {
-  //   dataField: '',
-  //   text: '경기선택',
-  // },
+  {
+    dataField: 'select',
+    text: '경기선택',
+    editable: false,
+  },
 ];
 
 export const mainCodeColumn = [
@@ -175,16 +176,24 @@ export const mainCodeColumn = [
   {
     dataField: 'mainCode',
     text: '주 코드',
+    sort: true,
     headerStyle: () => {
-      return { width: '50px', textAlign: 'center', backgroundColor: 'skyblue' };
+      return {
+        minWidth: '60px',
+        width: '70px',
+        textAlign: 'center',
+        backgroundColor: 'skyblue',
+      };
     },
   },
   {
     dataField: 'codeName',
     text: '코드 이름',
+    sort: true,
     headerStyle: () => {
       return {
         width: '200px',
+        minWidth: '150px',
         textAlign: 'center',
         backgroundColor: 'skyblue',
       };
@@ -193,9 +202,11 @@ export const mainCodeColumn = [
   {
     dataField: 'statColumn',
     text: '수정 삭제',
+    sort: true,
     headerStyle: () => {
       return {
         width: '100px',
+        minWidth: '80px',
         textAlign: 'center',
         backgroundColor: 'skyblue',
       };
@@ -366,3 +377,12 @@ export const refereeManagementColumn = [
     headerAlign: 'center',
   },
 ];
+
+export const editFollow = (cell, row, rowIndex, formatExtraData) => {
+  return (
+    <>
+      <button>수정</button>
+      <button>삭제</button>
+    </>
+  );
+};

@@ -17,7 +17,6 @@ export const GameDataThunk = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await axios.get(payload);
-      console.log('3333', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

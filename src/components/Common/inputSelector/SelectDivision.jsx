@@ -21,6 +21,18 @@ const SelectDivision = ({ isClearable, setIsClearable }) => {
   //     }
   //   };
 
+  const selectStyle = {
+    control: (baseStyles, state) =>
+      // console.log('baseStyles', baseStyles),
+      // console.log('state', state),
+      ({
+        ...baseStyles,
+        borderColor: state.isFocused ? 'grey' : 'red',
+        // backgroundColor: 'yellow',
+        // height: '100%',
+      }),
+  };
+
   return (
     <>
       <Select
@@ -31,6 +43,7 @@ const SelectDivision = ({ isClearable, setIsClearable }) => {
         isSearchable={false}
         placeholder='선택하세요'
         // onChange={onChangeHandler}
+        styles={selectStyle}
         width='100'
         height='50'
       />

@@ -20,9 +20,6 @@ const GameSelectTable = () => {
 
   const [tableDataInput, setTableDataInput] = useState(dataValue);
 
-  console.log('리그리그', tableDataInput);
-  console.log('비져블', isClearable);
-
   const leagueName = [
     { value: 'leagueName', label: 'v-리그' },
     { value: 'leagueName', label: 'j-리그' },

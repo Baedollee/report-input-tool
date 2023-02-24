@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { columns } from 'static/BootStrapTableColumsContents';
+import { PlaySelectColumns } from 'static/BootStrapTableColumsContents';
 
 const RosterListTable = ({ rosterList }) => {
   const dispatch = useDispatch();
@@ -125,7 +125,7 @@ const RosterListTable = ({ rosterList }) => {
           bootstrap4
           keyField='participantName'
           data={products}
-          columns={columns}
+          columns={PlaySelectColumns}
           selectRow={selectRow}
           defaultSorted={defaultSorted}
           cellEdit={cellEdit}

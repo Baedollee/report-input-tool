@@ -7,6 +7,21 @@ import styled from 'styled-components';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const MainCodeTable = ({ codeDataList }) => {
+  const editDeleteBtn = (cell, row, rowIndex, formatExtraData) => {
+    console.log('1111111', row);
+    return (
+      <EditButtonBox>
+        <ButtonStyle onClick={() => console.log(row)}>수정</ButtonStyle>
+        <ButtonStyle>삭제</ButtonStyle>
+      </EditButtonBox>
+    );
+  };
+  const copyMainCodeColumn = [...mainCodeColumn];
+  copyMainCodeColumn[3] = {
+    ...copyMainCodeColumn[3],
+    formatter: editDeleteBtn,
+  };
+
   return (
     <Wrap>
       <ButtonBox>
@@ -17,7 +32,7 @@ const MainCodeTable = ({ codeDataList }) => {
           bootstrap4
           keyField='codeOrder'
           data={codeDataList}
-          columns={mainCodeColumn}
+          columns={copyMainCodeColumn}
           // pagination={paginationFactory()}
         />
       </TableText>
@@ -46,6 +61,21 @@ const TableText = styled.div`
   display: flex;
   overflow: auto;
   height: 500px;
+`;
+const EditButtonBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+`;
+const ButtonStyle = styled.button`
+  display: flex;
+  background-color: #13136b;
+  color: white;
+  border: none;
+  width: 50px;
+  justify-content: center;
 `;
 
 export default MainCodeTable;
