@@ -168,22 +168,38 @@ export const mainCodeColumn = [
   {
     dataField: 'codeOrder',
     text: '#',
-    headerAlign: 'center',
+    headerStyle: () => {
+      return { width: '30px', textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
     dataField: 'mainCode',
     text: '주 코드',
-    headerAlign: 'center',
+    headerStyle: () => {
+      return { width: '50px', textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
     dataField: 'codeName',
     text: '코드 이름',
-    headerAlign: 'center',
+    headerStyle: () => {
+      return {
+        width: '200px',
+        textAlign: 'center',
+        backgroundColor: 'skyblue',
+      };
+    },
   },
   {
     dataField: 'statColumn',
     text: '수정 삭제',
-    headerAlign: 'center',
+    headerStyle: () => {
+      return {
+        width: '100px',
+        textAlign: 'center',
+        backgroundColor: 'skyblue',
+      };
+    },
   },
 ];
 
