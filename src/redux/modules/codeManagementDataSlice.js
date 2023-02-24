@@ -6,7 +6,7 @@ const initialState = {
   codeDataList: [],
   getCodeDataList: [],
 };
-export const MockCodeDataThunk = createAsyncThunk(
+export const PostCodeDataThunk = createAsyncThunk(
   'MockCodeDataThunk/post',
   async (payload, thunkApi) => {
     console.log('코드 포스트 post', payload);
@@ -23,10 +23,8 @@ export const MockCodeDataThunk = createAsyncThunk(
 export const GetCodeDataThunk = createAsyncThunk(
   'CodeDataThunk/get',
   async (payload, thunkApi) => {
-    console.log('get', payload);
     try {
       const response = await axios.get('/api/code/selectActionCodeList');
-      console.log('서버 get data', response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -44,11 +42,11 @@ const codeSlice = createSlice({
     },
   },
   extraReducers: {
-    [MockCodeDataThunk.fulfilled]: (state, action) => {
+    [PostCodeDataThunk.fulfilled]: (state, action) => {
       console.log(action);
       state.codeDataList = [...action.payload, state.codeDataList];
     },
-    [MockCodeDataThunk.rejected]: (state, action) => {
+    [PostCodeDataThunk.rejected]: (state, action) => {
       console.log(action);
     },
     [GetCodeDataThunk.fulfilled]: (state, action) => {

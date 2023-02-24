@@ -13,7 +13,6 @@ const GetData = () => {
   );
   useEffect(() => {
     getData();
-    console.log('111111');
   }, []);
   return (
     <>

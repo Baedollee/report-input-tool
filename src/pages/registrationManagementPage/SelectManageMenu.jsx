@@ -30,6 +30,7 @@ const SelectMenuBox = styled.div`
   flex-direction: column;
   background-color: skyblue;
   margin-left: 5px;
+  min-width: 80px;
   width: 100px;
   div {
     display: flex;

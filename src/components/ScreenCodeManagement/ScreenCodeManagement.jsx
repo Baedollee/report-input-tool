@@ -9,7 +9,6 @@ import MainCodeTable from './MainCodeTable';
 const ScreenCodeManagement = () => {
   const { codeDataList } = useSelector((state) => state.codeManagementSlice);
   const dispatch = useDispatch();
-  console.log('1111', codeDataList);
   useEffect(() => {
     dispatch(GetCodeDataThunk());
   }, []);

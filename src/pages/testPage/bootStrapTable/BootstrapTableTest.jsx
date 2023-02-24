@@ -57,7 +57,6 @@ const BootstrapTableTest = () => {
   };
 
   const handleOnSelectAll = (isSelect, rows) => {
-    // console.log('1111', rows, isSelect);
     const ids = rows.map((r) => r);
     if (isSelect) {
       setSelectList(ids);

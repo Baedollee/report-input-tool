@@ -189,7 +189,7 @@ export const mainCodeColumn = [
 
 export const teamManagementColumn = [
   {
-    dataField: 'num',
+    dataField: 'gameNum',
     text: '#',
     headerAlign: 'center',
   },
@@ -242,12 +242,12 @@ export const teamManagementColumn = [
 
 export const playerManagementColumn = [
   {
-    dataField: 'num',
+    dataField: 'gameNum',
     text: '#',
     headerAlign: 'center',
   },
   {
-    dataField: 'name',
+    dataField: 'participantName',
     text: '이름',
     headerAlign: 'center',
   },
@@ -262,12 +262,12 @@ export const playerManagementColumn = [
     headerAlign: 'center',
   },
   {
-    dataField: 'position',
+    dataField: 'role',
     text: '포지션',
     headerAlign: 'center',
   },
   {
-    dataField: 'backNum',
+    dataField: 'participantBIB',
     text: '배번',
     headerAlign: 'center',
   },
@@ -305,7 +305,7 @@ export const playerManagementColumn = [
 
 export const refereeManagementColumn = [
   {
-    dataField: 'num',
+    dataField: 'gameNum',
     text: '#',
     headerAlign: 'center',
   },

@@ -22,7 +22,7 @@ const RefereeRegisterShowTable = () => {
     <Wrap>
       <BootstrapTable
         bootstrap4
-        keyField='num'
+        keyField='gameDate'
         data={gameData}
         columns={refereeManagementColumn}
       />

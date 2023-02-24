@@ -1,17 +1,20 @@
 import React, { useCallback, useEffect } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { useDispatch, useSelector } from 'react-redux';
-import { GameDataThunk } from 'redux/modules/gameInformSlice';
+import {
+  GameDataThunk,
+  GetRosterDataThunk,
+} from 'redux/modules/gameInformSlice';
 import { playerManagementColumn } from 'static/BootStrapTableColumsContents';
 import styled from 'styled-components';
 
 const PlayerRegisterShowTable = () => {
   const dispatch = useDispatch();
 
-  const { gameData } = useSelector((state) => state.gameInformSlice);
+  const { rosterList } = useSelector((state) => state.gameInformSlice);
 
   const getGameData = useCallback(() => {
-    dispatch(GameDataThunk(`/api/game/selectGame`));
+    dispatch(GetRosterDataThunk());
   }, [dispatch]);
 
   useEffect(() => {
@@ -22,8 +25,8 @@ const PlayerRegisterShowTable = () => {
     <Wrap>
       <BootstrapTable
         bootstrap4
-        keyField='num'
-        data={gameData}
+        keyField='gameDate'
+        data={rosterList}
         columns={playerManagementColumn}
       />
     </Wrap>

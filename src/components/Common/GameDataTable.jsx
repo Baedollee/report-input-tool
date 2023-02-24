@@ -54,7 +54,7 @@ const GameDataTable = ({ gameData }) => {
       <BootstrapTable
         bootstrap4
         columns={columns}
-        keyField='gameNum'
+        keyField='gameDate'
         data={gameData}
         cellEdit={cellEdit}
         hiddenRows={hiddenRowKeys}

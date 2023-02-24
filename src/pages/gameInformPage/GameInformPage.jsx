@@ -49,17 +49,17 @@ const GameInformPage = () => {
 
   const onClickAddLinUpHandler = async () => {
     const copyArr = [...rosterSelectList];
-    const copyArrRoster = [...copyArr];
+    // const copyArrRoster = [...copyArr];
     for (let i = 0; i < copyArr.length; i++) {
       if (menuSelect === 'Home') {
         copyArr[i] = {
           ...copyArr[i],
           // participation: 'Y',
-          competitionCode: gameData[0]?.competitionCode,
-          gender: gameData[0]?.gender,
-          homeAway: 'home',
-          gameCode: gameData[0]?.gameCode,
-          startingReserve: 'STR',
+          // competitionCode: gameData[0]?.competitionCode,
+          // gender: gameData[0]?.gender,
+          // homeAway: 'home',
+          // gameCode: gameData[0]?.gameCode,
+          // startingReserve: 'STR',
         };
 
         delete copyArr[i].lineupStatus;
@@ -70,11 +70,11 @@ const GameInformPage = () => {
         copyArr[i] = {
           ...copyArr[i],
           // participation: 'Y',
-          competitionCode: gameData[0]?.competitionCode,
-          gender: gameData[0]?.gender,
-          homeAway: 'away',
-          gameCode: gameData[0]?.gameCode,
-          startingReserve: 'STR',
+          // competitionCode: gameData[0]?.competitionCode,
+          // gender: gameData[0]?.gender,
+          // homeAway: 'away',
+          // gameCode: gameData[0]?.gameCode,
+          // startingReserve: 'STR',
         };
         delete copyArr[i].lineupStatus;
         // delete copyArr[i].role;

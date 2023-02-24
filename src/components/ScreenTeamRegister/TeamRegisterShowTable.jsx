@@ -43,7 +43,7 @@ const TeamRegisterShowTable = () => {
     <Wrap>
       <BootstrapTable
         bootstrap4
-        keyField='num'
+        keyField='gameDate'
         data={gameData}
         columns={teamManagementColumn}
         pagination={paginationFactory(options)}
