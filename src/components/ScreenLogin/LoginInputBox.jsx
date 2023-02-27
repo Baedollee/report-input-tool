@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LoginInputBox = () => {
+  const navigate = useNavigate();
   const loginValue = {
     id: '',
     pw: '',
@@ -65,7 +67,9 @@ const LoginInputBox = () => {
               </div>
             </InputBox>
             <ButtonBox>
-              <button onClick={obSubmitHandler}>로그인</button>
+              <button onClick={() => navigate('/RegistrationManagement')}>
+                로그인
+              </button>
             </ButtonBox>
           </BodyBox>
           <FooterBox></FooterBox>

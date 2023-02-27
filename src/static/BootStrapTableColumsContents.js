@@ -378,6 +378,49 @@ export const refereeManagementColumn = [
   },
 ];
 
+export const PlaySelectColumn = [
+  {
+    dataField: 'competitionCode',
+    text: '시즌',
+    hidden: true,
+  },
+  {
+    dataField: 'competitionName',
+    text: '리그',
+  },
+  {
+    dataField: 'gender',
+    text: '성별',
+  },
+  { dataField: 'totalRoundNum', text: '라운드' },
+  {
+    dataField: 'homeTeam',
+    text: 'Home',
+  },
+  {
+    dataField: 'awayTeam',
+    text: 'Away',
+  },
+  {
+    dataField: 'teamId',
+    text: '경기고유번호',
+  },
+  {
+    dataField: 'createdTime',
+    text: '경기시작',
+  },
+  {
+    dataField: 'gameLocation',
+    text: '경기장',
+    // hidden: true,
+  },
+  {
+    dataField: 'select',
+    text: '경기선택',
+    editable: false,
+  },
+];
+
 export const editFollow = (cell, row, rowIndex, formatExtraData) => {
   return (
     <>

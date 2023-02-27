@@ -10,7 +10,21 @@ const initialState = {
   tableLineUpSelectList: [],
   gameData: [],
   Select: true,
+  competitionDataList: [],
 };
+
+export const GetCompetitionDataThunk = createAsyncThunk(
+  'CompetitionDataThunk/get',
+
+  async (payload, thunkApi) => {
+    try {
+      const response = await axios.get('/api/competition/selectCompetition');
+      return thunkApi.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
 
 export const GameDataThunk = createAsyncThunk(
   'GameDataThunk/get',
@@ -134,6 +148,12 @@ const gameInformSlice = createSlice({
     },
   },
   extraReducers: {
+    [GetCompetitionDataThunk.fulfilled]: (state, action) => {
+      state.competitionDataList = action.payload;
+    },
+    [GetCompetitionDataThunk.rejected]: (state, action) => {
+      console.log(action);
+    },
     [GameDataThunk.fulfilled]: (state, action) => {
       state.gameData = [action.payload];
     },

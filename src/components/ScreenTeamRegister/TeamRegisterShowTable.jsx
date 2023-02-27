@@ -14,7 +14,7 @@ const TeamRegisterShowTable = () => {
   const { gameData } = useSelector((state) => state.gameInformSlice);
 
   const getGameData = useCallback(() => {
-    dispatch(GameDataThunk(`/api/game/selectGame`));
+    dispatch(GameDataThunk(`/api/game/selectSet`));
   }, [dispatch]);
 
   useEffect(() => {

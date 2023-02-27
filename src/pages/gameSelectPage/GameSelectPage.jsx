@@ -12,22 +12,27 @@ const GameSelectPage = () => {
   const { gameData } = useSelector((state) => state.gameInformSlice);
 
   return (
-    <WrapDiv>
-      <div>
-        <button onClick={() => navigate('/')}>홈 이동</button>
-      </div>
+    <Wrap>
       <GameSelectTable />
-      <GameDataTable gameData={gameData} />
-      {/* <DropDown /> */}
-    </WrapDiv>
+      <Container>
+        <GameDataTable gameData={gameData} />
+      </Container>
+    </Wrap>
   );
 };
 
-const WrapDiv = styled.div`
+const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding: 10px;
+  height: 100vh;
+`;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 5px;
+  height: 100%;
 `;
 
 export default GameSelectPage;
-//

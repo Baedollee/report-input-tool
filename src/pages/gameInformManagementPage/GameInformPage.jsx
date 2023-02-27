@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import GameDataTable from 'components/Common/GameDataTable';
 import styled from 'styled-components';
-import LineUpListTable from 'components/ScreenGameInform/LineUpListTable';
-import RosterListTable from 'components/ScreenGameInform/RosterListTable';
+import LineUpListTable from 'components/ScreenGameInformManagement/LineUpListTable';
+import RosterListTable from 'components/ScreenGameInformManagement/RosterListTable';
 import {
   DeleteRosterDataThunk,
   PostLineUpListDataThunk,
@@ -16,7 +16,7 @@ import {
   isSelect,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
-import SelectMenu from 'components/ScreenGameInform/SelectMenu';
+import SelectMenu from 'components/ScreenGameInformManagement/SelectMenu';
 import Arrow from '../../assets/icons/Arrow.png';
 const GameInformPage = () => {
   const navigate = useNavigate();
@@ -27,8 +27,12 @@ const GameInformPage = () => {
     lineUpList,
     lineUpSelectList,
     rosterSelectList,
+    competitionDataList,
   } = useSelector((state) => state?.gameInformSlice);
-
+  console.log('게임 정보');
+  console.log(gameData);
+  console.log('선수 리스트');
+  console.log(rosterList);
   const [menuSelect, setMenuSelect] = useState('Home');
 
   const homeAwayRosterList = () => {
@@ -138,7 +142,10 @@ const GameInformPage = () => {
       <HomeBtn onClick={() => navigate('/')}>홈으로 이동</HomeBtn>
 
       <div>
-        <GameDataTable gameData={gameData} />
+        <GameDataTable
+          gameData={gameData}
+          competitionDataList={competitionDataList}
+        />
       </div>
       <SelectMenu menuSelect={menuSelect} setMenuSelect={setMenuSelect} />
       <BoxWrap>

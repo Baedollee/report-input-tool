@@ -49,7 +49,6 @@ const GameSelectTable = () => {
 
   return (
     <Wrap>
-      <h1>경기선택</h1>
       <table>
         {/* <thead></thead> */}
         <tbody>

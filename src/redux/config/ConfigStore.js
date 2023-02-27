@@ -4,6 +4,7 @@ import codeManagementSlice from '../modules/codeManagementDataSlice';
 import gameInformSlice from 'redux/modules/gameInformSlice';
 import TeamRegisterSlice from 'redux/modules/TeamRegisterSlice';
 import PlayerRegisterSlice from 'redux/modules/PlayerRegisterSlice';
+import MenuSelectSlice from 'redux/modules/MenuSelectSlice';
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     gameInformSlice,
     TeamRegisterSlice,
     PlayerRegisterSlice,
+    MenuSelectSlice,
   },
 });

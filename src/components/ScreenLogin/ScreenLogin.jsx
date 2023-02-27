@@ -8,7 +8,7 @@ const ScreenLogin = () => {
   const navigate = useNavigate();
   return (
     <Wrap>
-      <SelectBox>
+      {/* <SelectBox>
         <SelectBtn onClick={() => navigate('/gameInfo')}>
           엔트리 선택 페이지 이동
         </SelectBtn>
@@ -18,7 +18,7 @@ const ScreenLogin = () => {
         <SelectBtn onClick={() => navigate('/RegistrationManagement')}>
           관리 페이지 이동
         </SelectBtn>
-      </SelectBox>
+      </SelectBox> */}
       <Box>
         <LoginImgBox />
         <LoginInputBox />

@@ -8,7 +8,6 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const MainCodeTable = ({ codeDataList }) => {
   const editDeleteBtn = (cell, row, rowIndex, formatExtraData) => {
-    console.log('1111111', row);
     return (
       <EditButtonBox>
         <ButtonStyle onClick={() => console.log(row)}>수정</ButtonStyle>

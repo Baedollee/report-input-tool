@@ -3,22 +3,32 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import cellEditFactory from 'react-bootstrap-table2-editor';
-import { GameDataThunk } from 'redux/modules/gameInformSlice';
+import {
+  GameDataThunk,
+  GetCompetitionDataThunk,
+} from 'redux/modules/gameInformSlice';
 import { gameDataColumn } from 'static/BootStrapTableColumsContents';
 
-const GameDataTable = ({ gameData }) => {
+const GameDataTable = ({ gameData, competitionDataList }) => {
   const dispatch = useDispatch();
   let data = '';
 
-  const getGameData = useCallback(() => {
-    dispatch(GameDataThunk(`/api/game/selectGame`));
-  }, [dispatch]);
+  // const getGameData = useCallback(() => {
+  //   dispatch(GameDataThunk(`/api/game/selectGame`));
+  // }, [dispatch]);
 
+  // useEffect(() => {
+  //   getGameData();
+  // }, []);
+
+  const getCompetitionData = useCallback(() => {
+    dispatch(GetCompetitionDataThunk());
+  }, [dispatch]);
   useEffect(() => {
-    getGameData();
+    getCompetitionData();
   }, []);
 
-  window.open(`http://localhost:3000/record/${data}`);
+  // window.open(`http://localhost:3000/record/${data}`);
 
   const selectBtn = (cell, row, rowIndex, formatExtraData) => {
     const handleChange = () => {
@@ -72,18 +82,18 @@ const GameDataTable = ({ gameData }) => {
   return (
     <>
       <MovePageDiv>
-        <button
+        {/* <button
           onClick={() => {
             window.open(`http://localhost:3000/record/${data}`);
           }}>
           saddassad
-        </button>
+        </button> */}
       </MovePageDiv>
       <BootstrapTable
         bootstrap4
         columns={copyColumns}
-        keyField='gameDate'
-        data={gameData}
+        keyField='createdTime'
+        data={competitionDataList}
         cellEdit={cellEdit}
         hiddenRows={hiddenRowKeys}
         row={row}
