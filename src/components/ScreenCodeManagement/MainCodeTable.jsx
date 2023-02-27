@@ -41,6 +41,7 @@ const MainCodeTable = ({ codeDataList }) => {
 
 const Wrap = styled.div`
   display: flex;
+  height: 100vh;
   flex-direction: column;
   border: 1px solid black;
   padding: 5px;
@@ -59,7 +60,6 @@ const ButtonBox = styled.div`
 const TableText = styled.div`
   display: flex;
   overflow: auto;
-  height: 500px;
 `;
 const EditButtonBox = styled.div`
   display: flex;

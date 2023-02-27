@@ -9,13 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onChangeMenuName } from 'redux/modules/MenuSelectSlice';
 import styled from 'styled-components';
 import SelectManageMenu from './SelectManageMenu';
+import ScreenGameInformManagement from 'components/ScreenGameInformManagement/ScreenGameInformManagement';
 
 const RegistrationManagementPage = () => {
   const dispatch = useDispatch();
   const { menuName } = useSelector((state) => state.MenuSelectSlice);
   // const [selectMenu, setSelectMenu] = useState(menuName);
-  console.log('리덕스 스토어');
-  console.log(menuName);
 
   // console.log('스테이트');
   // console.log(selectMenu);
@@ -46,6 +45,9 @@ const RegistrationManagementPage = () => {
     if (menuName === 'gameSelect') {
       return <ScreenGameSelect />;
     }
+    if (menuName === 'gameInformManagement') {
+      return <ScreenGameInformManagement />;
+    }
   };
 
   return (
@@ -60,11 +62,13 @@ const RegistrationManagementPage = () => {
 };
 const Wrap = styled.div`
   display: flex;
+  height: 100vh;
 `;
 
 const ViewBox = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
   width: 100%;
 `;
 

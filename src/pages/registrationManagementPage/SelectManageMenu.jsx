@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const SelectManageMenu = ({ onClickPageTextHandler, selectMenu }) => {
   const navigate = useNavigate();
@@ -13,22 +13,24 @@ const SelectManageMenu = ({ onClickPageTextHandler, selectMenu }) => {
       <ButtonStyled onClick={onClickPageTextHandler} value='teamRegister'>
         관리
       </ButtonStyled>
-      {selectMenu !== 'gameSelect' ? (
-        <>
-          <SubBtn onClick={onClickPageTextHandler} value='teamRegister'>
-            팀 등록 관리
-          </SubBtn>
-          <SubBtn onClick={onClickPageTextHandler} value='playerRegister'>
-            선수 관리
-          </SubBtn>
-          <SubBtn onClick={onClickPageTextHandler} value='refereeRegister'>
-            심판 관리
-          </SubBtn>
-          <SubBtn>대회/기타 등록 관리</SubBtn>
-          <SubBtn onClick={onClickPageTextHandler} value='codeManagement'>
-            코드 관리
-          </SubBtn>
-        </>
+      {selectMenu !== 'gameSelect' && selectMenu !== 'gameInformManagement' ? (
+        <SubBtnWrap>
+          <SubBtnBox>
+            <SubBtn onClick={onClickPageTextHandler} value='teamRegister'>
+              팀 등록 관리
+            </SubBtn>
+            <SubBtn onClick={onClickPageTextHandler} value='playerRegister'>
+              선수 관리
+            </SubBtn>
+            <SubBtn onClick={onClickPageTextHandler} value='refereeRegister'>
+              심판 관리
+            </SubBtn>
+            <SubBtn>대회/기타 등록 관리</SubBtn>
+            <SubBtn onClick={onClickPageTextHandler} value='codeManagement'>
+              코드 관리
+            </SubBtn>
+          </SubBtnBox>
+        </SubBtnWrap>
       ) : (
         <></>
       )}
@@ -36,7 +38,26 @@ const SelectManageMenu = ({ onClickPageTextHandler, selectMenu }) => {
     </SelectMenuBox>
   );
 };
-
+const animation_Out = keyframes`
+  0%{
+    /* opacity: 0; */
+    transform: translateY(-100%);
+  }
+  100%{
+    /* opacity: 1; */
+    transform: translateY(0);
+  }
+`;
+const animation_In = keyframes`
+    0%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+`;
 const SelectMenuBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,6 +94,16 @@ const ButtonStyled = styled.button`
     background-color: orange;
   }
 `;
+const SubBtnWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+const SubBtnBox = styled.div`
+  position: relative;
+  animation: ${animation_Out} 0.3s ease-in;
+  /* animation: ${animation_In} 0.4s ease-out; */
+`;
 const SubBtn = styled.button`
   display: flex;
   border: none;
@@ -87,6 +118,14 @@ const SubBtn = styled.button`
   :hover {
     background-color: orange;
   }
+`;
+// const LogOutBtnWrap = styled.div`
+//   display: flex;
+//   overflow: hidden;
+// `;
+const LogOutBtnBox = styled.div`
+  display: flex;
+  width: 100%;
 `;
 
 export default SelectManageMenu;

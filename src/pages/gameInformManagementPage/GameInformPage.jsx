@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import GameDataTable from 'components/Common/GameDataTable';
+import GameDataTable from 'components/Common/gameDataTable/GameDataTable';
 import styled from 'styled-components';
 import LineUpListTable from 'components/ScreenGameInformManagement/LineUpListTable';
 import RosterListTable from 'components/ScreenGameInformManagement/RosterListTable';
@@ -16,8 +16,9 @@ import {
   isSelect,
 } from 'redux/modules/gameInformSlice';
 import { useNavigate } from 'react-router-dom';
-import SelectMenu from 'components/ScreenGameInformManagement/SelectMenu';
+import SelectMenu from 'components/ScreenGameInformManagement/GameInformSelectMenu';
 import Arrow from '../../assets/icons/Arrow.png';
+
 const GameInformPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

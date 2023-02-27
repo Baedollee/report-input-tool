@@ -1,4 +1,4 @@
-import GameDataTable from 'components/Common/GameDataTable';
+import GameDataTable from 'components/Common/gameDataTable/GameDataTable';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -29,6 +29,8 @@ const ScreenGameSelect = () => {
   );
 };
 
+export default ScreenGameSelect;
+
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,5 +44,3 @@ const Container = styled.div`
   padding: 5px;
   height: 100%;
 `;
-
-export default ScreenGameSelect;

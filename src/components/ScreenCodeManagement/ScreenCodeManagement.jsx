@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import CodeSearchTable from './CodeSearchTable';
 import DetailCodeTable from './DetailCodeTable';
 import MainCodeTable from './MainCodeTable';
+import CodeHeader from './CodeHeader';
 
 const ScreenCodeManagement = () => {
   const { codeDataList } = useSelector((state) => state.codeManagementSlice);
@@ -15,11 +16,9 @@ const ScreenCodeManagement = () => {
 
   return (
     <Wrap>
-      <h3>코드관리</h3>
-      <Box>
-        <Header>
-          <CodeSearchTable codeDataList={codeDataList} />
-        </Header>
+      <CodeHeader />
+      <Container>
+        <CodeSearchTable codeDataList={codeDataList} />
         <TableContainer>
           <Left>
             <MainCodeTable codeDataList={codeDataList} />
@@ -28,7 +27,7 @@ const ScreenCodeManagement = () => {
             <DetailCodeTable codeDataList={codeDataList} />
           </Right>
         </TableContainer>
-      </Box>
+      </Container>
     </Wrap>
   );
 };
@@ -36,35 +35,30 @@ const ScreenCodeManagement = () => {
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 10px;
   height: 100vh;
 `;
-const Box = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  width: 100%;
   padding: 5px;
-  height: 100%;
+  height: calc(100% - 40px);
 `;
-const Header = styled.div`
-  display: flex;
-  padding: 5px;
-`;
+
 const TableContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
   gap: 5px;
-  margin-top: 20px;
 `;
 const Left = styled.div`
   display: flex;
   width: 50%;
-  height: 100%;
 `;
 const Right = styled.div`
   display: flex;
   width: 50%;
-  height: 100%;
 `;
 export default ScreenCodeManagement;

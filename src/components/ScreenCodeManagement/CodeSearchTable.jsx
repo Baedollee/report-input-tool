@@ -61,7 +61,7 @@ const CodeSearchTable = ({ codeDataList }) => {
                 </td>
                 <th style={{ backgroundColor: 'white', border: 'none' }}></th>
                 <td></td>
-                <th>
+                <th style={{ backgroundColor: 'white', border: 'none' }}>
                   <button>검색</button>
                 </th>
               </tr>
@@ -75,9 +75,10 @@ const CodeSearchTable = ({ codeDataList }) => {
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 5px;
   table {
     /* display: flex; */
-
+    width: 100%;
     flex-direction: column;
     border: 1px solid black;
     border-collapse: collapse;
@@ -108,11 +109,16 @@ const Wrap = styled.div`
 `;
 const TableBox = styled.div`
   display: flex;
+  form {
+    display: flex;
+    width: 100%;
+  }
 `;
 const SelectBox = styled.div`
   display: flex;
 `;
 const SelectButton = styled.button`
+  display: flex;
   border: 1px solid black;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -120,10 +126,12 @@ const SelectButton = styled.button`
     props.type === props.value ? 'gray' : 'white'};
 
   :hover {
+    display: flex;
     font-weight: 700;
   }
 `;
 const InputStyle = styled.input`
+  display: flex;
   width: 100%;
   border: none;
 `;

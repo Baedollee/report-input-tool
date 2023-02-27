@@ -80,39 +80,39 @@ const GameDataTable = ({ gameData, competitionDataList }) => {
   };
   const hiddenRowKeys = [`2023-02-06T09:19:42.459+00:11`];
   return (
-    <>
-      <MovePageDiv>
-        {/* <button
+    <Wrap>
+      {/* <MovePageDiv>
+        <button
           onClick={() => {
             window.open(`http://localhost:3000/record/${data}`);
           }}>
           saddassad
-        </button> */}
-      </MovePageDiv>
+        </button>
+      </MovePageDiv> */}
       <BootstrapTable
         bootstrap4
         columns={copyColumns}
         keyField='createdTime'
-        data={competitionDataList}
+        data={gameData}
         cellEdit={cellEdit}
         hiddenRows={hiddenRowKeys}
         row={row}
       />
-    </>
+    </Wrap>
   );
 };
 
-const MovePageDiv = styled.div`
-  display: flex;
-  height: 100px;
-  padding: 0px 20px;
-  align-items: center;
-  button {
-  }
-`;
 const Wrap = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 5px;
+`;
+const MovePageDiv = styled.div`
+  display: flex;
+
+  align-items: center;
+  button {
+  }
 `;
 const TitleDiv = styled.div`
   display: flex;

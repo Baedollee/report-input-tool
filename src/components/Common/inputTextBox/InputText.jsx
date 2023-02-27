@@ -1,10 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const InputText = () => {
+const InputText = ({ InputText, setInputText, name, value }) => {
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setInputText({ ...InputText, [name]: value });
+  };
+
   return (
     <>
-      <InputStyled type='text' />
+      <InputStyled
+        type='text'
+        name={name}
+        value={value}
+        onChange={onChangeHandler}
+      />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import GameDataTable from 'components/Common/GameDataTable';
+import GameDataTable from 'components/Common/gameDataTable/GameDataTable';
 import GameSelectTable from 'components/ScreenGameSelect/GameSelectTable';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
