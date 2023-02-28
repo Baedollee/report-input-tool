@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import SelectDivision from 'components/Common/inputSelector/SelectDivision';
 import SelectGender from 'components/Common/inputSelector/SelectGender';
-import SelectIdentity from 'components/Common/inputSelector/SelectIdentity';
 import SelectSeason from 'components/Common/inputSelector/SelectSeason';
 import SelectTeam from 'components/Common/inputSelector/SelectTeam';
-import InputText from 'components/Common/inputTextBox/InputText';
+import SelectDate from 'components/Common/inputSelector/SelectDate';
+import SelectMonth from 'components/Common/inputSelector/SelectMonth';
 
 const GameSelectInputTable = () => {
-  const [season, setSeason] = useState('');
+  const gameSelectValue = {};
+  const [gameInput, setGameInput] = useState(gameSelectValue);
+  console.log('게임 데이터');
+  console.log(gameInput);
 
   return (
     <Wrap>
@@ -19,26 +22,33 @@ const GameSelectInputTable = () => {
               <tr>
                 <th>대회명</th>
                 <td>
-                  <SelectDivision />
+                  <SelectDivision data={gameInput} setData={setGameInput} />
                 </td>
                 <th>시즌</th>
                 <td>
-                  <SelectSeason />
+                  <SelectSeason data={gameInput} setData={setGameInput} />
                 </td>
                 <th>경기일정</th>
-                <td></td>
+                <td style={{ flexDirection: 'row', display: 'flex' }}>
+                  <SelectMonth data={gameInput} setData={setGameInput} />
+                  <SelectDate data={gameInput} setData={setGameInput} />
+                </td>
                 <th style={{ backgroundColor: 'white', border: 'none' }}></th>
                 <td></td>
               </tr>
               <tr>
                 <th>성별</th>
                 <td>
-                  <SelectGender />
+                  <SelectGender data={gameInput} setData={setGameInput} />
                 </td>
                 <th>홈팀</th>
-                <td></td>
+                <td>
+                  <SelectTeam data={gameInput} setData={setGameInput} />
+                </td>
                 <th>어웨이팀</th>
-                <td></td>
+                <td>
+                  <SelectTeam data={gameInput} setData={setGameInput} />
+                </td>
                 <th style={{ backgroundColor: 'white', border: 'none' }}></th>
                 <td></td>
               </tr>

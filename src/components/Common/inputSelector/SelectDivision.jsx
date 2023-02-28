@@ -1,25 +1,26 @@
 import React from 'react';
 import Select from 'react-select';
 
-const SelectDivision = ({ isClearable, setIsClearable }) => {
+const SelectDivision = ({ isClearable, setIsClearable, data, setData }) => {
   const divisionOptions = [
     { value: 'division', label: '프로배구' },
     { value: 'division', label: '아마추어' },
   ];
-  //   const onChangeHandler = (e, isClearable) => {
-  //     console.log(isClearable);
-  //     if (isClearable.action === 'select-option') {
-  //       const { value, label } = e;
-  //       setTableDataInput({ ...tableDataInput, [value]: label });
-  //     } else {
-  //       console.log(isClearable.removedValues[0]);
-  //       const { value, label } = isClearable.removedValues[0];
-  //       setTableDataInput({
-  //         ...tableDataInput,
-  //         [value]: '',
-  //       });
-  //     }
-  //   };
+  const onChangeHandler = (e, isClearable) => {
+    console.log(isClearable);
+    console.log(e);
+    if (isClearable.action === 'select-option') {
+      const { value, label } = e;
+      setData({ ...data, [value]: label });
+    } else {
+      console.log(isClearable.removedValues[0]);
+      const { value, label } = isClearable.removedValues[0];
+      setData({
+        ...data,
+        [value]: '',
+      });
+    }
+  };
 
   const selectStyle = {
     control: (baseStyles, state) =>
@@ -42,7 +43,7 @@ const SelectDivision = ({ isClearable, setIsClearable }) => {
         isClearable={isClearable}
         isSearchable={false}
         placeholder='선택하세요'
-        // onChange={onChangeHandler}
+        onChange={onChangeHandler}
         styles={selectStyle}
         width='100'
         height='50'

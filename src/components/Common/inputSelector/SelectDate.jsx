@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
-
-const SelectGender = ({ isClearable, setIsClearable, data, setData }) => {
-  //   const [isClearable, setIsClearable] = useState(true);
-  const genderOptions = [
-    { value: 'gender', label: '남자' },
-    { value: 'gender', label: '여자' },
-  ];
-
+const SelectDate = ({ isClearable, setIsClearable, data, setData }) => {
+  const dateCnt = [];
+  for (let i = 1; i < 13; i++) {
+    let dateData = {};
+    dateData.value = 'month';
+    dateData.label = i + '일';
+    dateCnt.push(dateData);
+  }
+  const dataOption = [...dateCnt];
   const onChangeHandler = (e, isClearable) => {
     console.log(isClearable);
     console.log(e);
@@ -23,10 +24,11 @@ const SelectGender = ({ isClearable, setIsClearable, data, setData }) => {
       });
     }
   };
+
   return (
     <>
       <Select
-        options={genderOptions}
+        options={dataOption}
         className='basic-single'
         classNamePrefix='select'
         isClearable={isClearable}
@@ -40,4 +42,4 @@ const SelectGender = ({ isClearable, setIsClearable, data, setData }) => {
   );
 };
 
-export default SelectGender;
+export default SelectDate;

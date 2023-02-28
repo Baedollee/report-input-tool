@@ -13,9 +13,10 @@ const SelectManageMenu = ({ onClickPageTextHandler, selectMenu }) => {
       <ButtonStyled onClick={onClickPageTextHandler} value='teamRegister'>
         관리
       </ButtonStyled>
-      {selectMenu !== 'gameSelect' && selectMenu !== 'gameInformManagement' ? (
-        <SubBtnWrap>
-          <SubBtnBox select={selectMenu}>
+      <SubBtnWrap>
+        {selectMenu !== 'gameSelect' &&
+        selectMenu !== 'gameInformManagement' ? (
+          <SubBtnBox onSelect={selectMenu}>
             <SubBtn onClick={onClickPageTextHandler} value='teamRegister'>
               팀 등록 관리
             </SubBtn>
@@ -30,10 +31,10 @@ const SelectManageMenu = ({ onClickPageTextHandler, selectMenu }) => {
               코드 관리
             </SubBtn>
           </SubBtnBox>
-        </SubBtnWrap>
-      ) : (
-        <></>
-      )}
+        ) : (
+          <></>
+        )}
+      </SubBtnWrap>
       <ButtonStyled onClick={() => navigate('/')}>로그아웃</ButtonStyled>
     </SelectMenuBox>
   );
@@ -50,11 +51,11 @@ const animation_Out = keyframes`
 `;
 const animation_In = keyframes`
     0%{
-    opacity: 1;
+    /* opacity: 1; */
     transform: translateY(0);
   }
   100%{
-    opacity: 0;
+    /* opacity: 0; */
     transform: translateY(-100%);
   }
 `;
@@ -102,7 +103,7 @@ const SubBtnWrap = styled.div`
 const SubBtnBox = styled.div`
   position: relative;
   ${(props) =>
-    props.select !== 'gameSelect' && props.select !== 'gameInformManagement'
+    props.onSelect !== 'gameSelect' && props.onSelect !== 'gameInformManagement'
       ? css`
           animation: ${animation_Out} 0.3s ease-in;
         `
