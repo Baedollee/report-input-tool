@@ -269,6 +269,7 @@ const Wrap = styled.div`
       background-color: #bab6b6;
       border: 1px solid black;
       min-width: 100px;
+      width: 100px;
     }
     td {
       background-color: white;

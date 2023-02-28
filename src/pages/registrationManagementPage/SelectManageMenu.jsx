@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const SelectManageMenu = ({ onClickPageTextHandler, selectMenu }) => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const SelectManageMenu = ({ onClickPageTextHandler, selectMenu }) => {
       </ButtonStyled>
       {selectMenu !== 'gameSelect' && selectMenu !== 'gameInformManagement' ? (
         <SubBtnWrap>
-          <SubBtnBox>
+          <SubBtnBox select={selectMenu}>
             <SubBtn onClick={onClickPageTextHandler} value='teamRegister'>
               팀 등록 관리
             </SubBtn>
@@ -101,8 +101,14 @@ const SubBtnWrap = styled.div`
 `;
 const SubBtnBox = styled.div`
   position: relative;
-  animation: ${animation_Out} 0.3s ease-in;
-  /* animation: ${animation_In} 0.4s ease-out; */
+  ${(props) =>
+    props.select !== 'gameSelect' && props.select !== 'gameInformManagement'
+      ? css`
+          animation: ${animation_Out} 0.3s ease-in;
+        `
+      : css`
+          animation: ${animation_In} 0.3s ease-in;
+        `};
 `;
 const SubBtn = styled.button`
   display: flex;
