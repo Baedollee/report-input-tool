@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 
 const SelectIdentity = ({ isClearable, setIsClearable }) => {
   const identityOption = [
@@ -24,7 +25,7 @@ const SelectIdentity = ({ isClearable, setIsClearable }) => {
 
   return (
     <>
-      <Select
+      <StyledSelect
         options={identityOption}
         className='basic-single'
         classNamePrefix='select'
@@ -38,5 +39,9 @@ const SelectIdentity = ({ isClearable, setIsClearable }) => {
     </>
   );
 };
+const StyledSelect = styled(Select)`
+  width: 100%;
+  height: 100%;
+`;
 
 export default SelectIdentity;

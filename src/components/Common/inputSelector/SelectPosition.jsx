@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 
 const SelectPosition = ({ isClearable, setIsClearable }) => {
   const positionOptions = [
@@ -23,7 +24,7 @@ const SelectPosition = ({ isClearable, setIsClearable }) => {
   //   };
   return (
     <>
-      <Select
+      <StyledSelect
         options={positionOptions}
         className='basic-single'
         classNamePrefix='select'
@@ -37,5 +38,9 @@ const SelectPosition = ({ isClearable, setIsClearable }) => {
     </>
   );
 };
+const StyledSelect = styled(Select)`
+  width: 100%;
+  height: 100%;
+`;
 
 export default SelectPosition;

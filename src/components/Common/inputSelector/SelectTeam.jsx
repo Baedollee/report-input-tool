@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 const SelectTeam = ({ isClearable, setIsClearable, data, setData }) => {
   const teamOptions = [
     { value: 'team', label: '대한항공' },
@@ -24,7 +25,7 @@ const SelectTeam = ({ isClearable, setIsClearable, data, setData }) => {
 
   return (
     <>
-      <Select
+      <StyledSelect
         options={teamOptions}
         className='basic-single'
         classNamePrefix='select'
@@ -39,4 +40,8 @@ const SelectTeam = ({ isClearable, setIsClearable, data, setData }) => {
   );
 };
 
+const StyledSelect = styled(Select)`
+  width: 100%;
+  height: 100%;
+`;
 export default SelectTeam;

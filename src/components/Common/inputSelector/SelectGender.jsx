@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 
 const SelectGender = ({ isClearable, setIsClearable, data, setData }) => {
   //   const [isClearable, setIsClearable] = useState(true);
@@ -25,7 +26,7 @@ const SelectGender = ({ isClearable, setIsClearable, data, setData }) => {
   };
   return (
     <>
-      <Select
+      <StyledSelect
         options={genderOptions}
         className='basic-single'
         classNamePrefix='select'
@@ -33,11 +34,13 @@ const SelectGender = ({ isClearable, setIsClearable, data, setData }) => {
         isSearchable={false}
         placeholder='선택하세요'
         onChange={onChangeHandler}
-        width='100'
-        height='50'
       />
     </>
   );
 };
 
+const StyledSelect = styled(Select)`
+  width: 100%;
+  height: 100%;
+`;
 export default SelectGender;

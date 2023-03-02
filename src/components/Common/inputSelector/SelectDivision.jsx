@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 
 const SelectDivision = ({ isClearable, setIsClearable, data, setData }) => {
   const divisionOptions = [
@@ -36,7 +37,7 @@ const SelectDivision = ({ isClearable, setIsClearable, data, setData }) => {
 
   return (
     <>
-      <Select
+      <StyledSelect
         options={divisionOptions}
         className='basic-single'
         classNamePrefix='select'
@@ -52,4 +53,8 @@ const SelectDivision = ({ isClearable, setIsClearable, data, setData }) => {
   );
 };
 
+const StyledSelect = styled(Select)`
+  width: 100%;
+  height: 100%;
+`;
 export default SelectDivision;

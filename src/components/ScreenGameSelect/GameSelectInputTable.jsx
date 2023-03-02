@@ -6,12 +6,29 @@ import SelectSeason from 'components/Common/inputSelector/SelectSeason';
 import SelectTeam from 'components/Common/inputSelector/SelectTeam';
 import SelectDate from 'components/Common/inputSelector/SelectDate';
 import SelectMonth from 'components/Common/inputSelector/SelectMonth';
+import SelectDatePicker from 'components/Common/inputSelector/SelectDatePicker';
+import { useDispatch } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const GameSelectInputTable = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [startDate, setStartDate] = useState(new Date());
   const gameSelectValue = {};
   const [gameInput, setGameInput] = useState(gameSelectValue);
   console.log('게임 데이터');
   console.log(gameInput);
+  const move = () => {
+    navigate('/RegistrationManagement', {
+      state: {
+        competitioncode: '22-23V',
+        gamedate: '2023-02-02',
+      },
+    });
+  };
+  const location = useLocation();
+  const gameData = location.state.id;
+  console.log(gameData);
 
   return (
     <Wrap>
@@ -29,12 +46,20 @@ const GameSelectInputTable = () => {
                   <SelectSeason data={gameInput} setData={setGameInput} />
                 </td>
                 <th>경기일정</th>
-                <td style={{ flexDirection: 'row', display: 'flex' }}>
+                <td
+                  style={{
+                    flexDirection: 'row',
+                    display: 'flex',
+                  }}>
                   <SelectMonth data={gameInput} setData={setGameInput} />
                   <SelectDate data={gameInput} setData={setGameInput} />
                 </td>
-                <th style={{ backgroundColor: 'white', border: 'none' }}></th>
-                <td></td>
+                <td>
+                  <SelectDatePicker
+                    startDate={startDate}
+                    setStartDate={setStartDate}
+                  />
+                </td>
               </tr>
               <tr>
                 <th>성별</th>
@@ -49,14 +74,15 @@ const GameSelectInputTable = () => {
                 <td>
                   <SelectTeam data={gameInput} setData={setGameInput} />
                 </td>
-                <th style={{ backgroundColor: 'white', border: 'none' }}></th>
-                <td></td>
+                <td style={{ backgroundColor: 'white', border: 'none' }}>
+                  <button onClick={move}>조회</button>
+                </td>
               </tr>
             </tbody>
           </table>
-          <ButtonBox>
+          {/* <ButtonBox>
             <button>조회</button>
-          </ButtonBox>
+          </ButtonBox> */}
         </TableBox>
       </Container>
     </Wrap>

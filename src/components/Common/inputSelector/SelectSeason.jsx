@@ -1,9 +1,10 @@
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 
 const SelectSeason = ({ isClearable, setIsClearable, data, setData }) => {
   const seasonOptions = [
-    { value: 'season', label: '2022-2023' },
+    { value: 'season', label: '22-23V' },
     { value: 'season', label: '2023-2024' },
   ];
   const onChangeHandler = (e, isClearable) => {
@@ -23,7 +24,7 @@ const SelectSeason = ({ isClearable, setIsClearable, data, setData }) => {
   };
   return (
     <>
-      <Select
+      <StyledSelect
         options={seasonOptions}
         className='basic-single'
         classNamePrefix='select'
@@ -38,5 +39,9 @@ const SelectSeason = ({ isClearable, setIsClearable, data, setData }) => {
     </>
   );
 };
+const StyledSelect = styled(Select)`
+  width: 100%;
+  height: 100%;
+`;
 
 export default SelectSeason;
