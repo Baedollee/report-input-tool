@@ -37,18 +37,23 @@ const SelectDivision = ({ isClearable, setIsClearable, data, setData }) => {
 
   return (
     <>
-      <StyledSelect
-        options={divisionOptions}
-        className='basic-single'
-        classNamePrefix='select'
-        isClearable={isClearable}
-        isSearchable={false}
-        placeholder='선택하세요'
-        onChange={onChangeHandler}
-        styles={selectStyle}
-        width='100'
-        height='50'
-      />
+      <th>
+        대회명
+        <td>
+          <StyledSelect
+            options={divisionOptions}
+            className='basic-single'
+            classNamePrefix='select'
+            isClearable={isClearable}
+            isSearchable={false}
+            placeholder='선택하세요'
+            onChange={onChangeHandler}
+            styles={selectStyle}
+            width='100'
+            height='50'
+          />
+        </td>
+      </th>
     </>
   );
 };

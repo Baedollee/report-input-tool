@@ -1,3 +1,9 @@
+export const hederStyle = {
+  headerStyle: () => {
+    return { textAlign: 'center', backgroundColor: 'skyblue' };
+  },
+};
+
 export const PlaySelectColumns = [
   {
     dataField: 'participantName',
@@ -382,42 +388,91 @@ export const PlaySelectColumn = [
   {
     dataField: 'competitionCode',
     text: '시즌',
-    hidden: true,
+    // hidden: true,
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
     dataField: 'competitionName',
     text: '리그',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
     dataField: 'gender',
     text: '성별',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
-  { dataField: 'totalRoundNum', text: '라운드' },
+  {
+    dataField: 'roundSeq',
+    text: '라운드',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
+  },
   {
     dataField: 'homeTeam',
     text: 'Home',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
     dataField: 'awayTeam',
     text: 'Away',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
-    dataField: 'teamId',
+    dataField: 'gameCode',
     text: '경기고유번호',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
-    dataField: 'createdTime',
+    dataField: 'gameTime',
     text: '경기시작',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
     dataField: 'gameLocation',
     text: '경기장',
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
     // hidden: true,
+  },
+  {
+    dataField: 'inputStatus',
+    text: '기록 입력 상태',
+    editable: false,
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
+  },
+  {
+    dataField: 'gameInformSetting',
+    text: '경기정보 설정',
+    editable: false,
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
   {
     dataField: 'select',
     text: '경기선택',
     editable: false,
+    headerStyle: () => {
+      return { textAlign: 'center', backgroundColor: 'skyblue' };
+    },
   },
 ];
 

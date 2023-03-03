@@ -15,11 +15,13 @@ const ScreenGameSelect = () => {
   return (
     <Wrap>
       <GameSelectHeader />
-
       {/* <GameSelectTable /> */}
       <Container>
         <GameSelectInputTable />
-        <GameSelectShowTable competitionDataList={competitionDataList} />
+        <GameSelectShowTable
+          competitionDataList={competitionDataList}
+          gameData={gameData}
+        />
         {/* <GameDataTable
           gameData={gameData}
           competitionDataList={competitionDataList}

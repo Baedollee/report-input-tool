@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 const SelectSeason = ({ isClearable, setIsClearable, data, setData }) => {
   const seasonOptions = [
-    { value: 'season', label: '22-23V' },
-    { value: 'season', label: '2023-2024' },
+    { value: 'season', label: '22-23V', name: '시즌' },
+    { value: 'season', label: '2023-2024', name: '시즌' },
   ];
   const onChangeHandler = (e, isClearable) => {
-    console.log(isClearable);
+    // console.log(isClearable);
     console.log(e);
     if (isClearable.action === 'select-option') {
       const { value, label } = e;
@@ -24,18 +24,23 @@ const SelectSeason = ({ isClearable, setIsClearable, data, setData }) => {
   };
   return (
     <>
-      <StyledSelect
-        options={seasonOptions}
-        className='basic-single'
-        classNamePrefix='select'
-        isClearable={isClearable}
-        isSearchable={false}
-        placeholder='선택하세요'
-        defaultValue={{ value: 'season', label: '2022-2023' }}
-        onChange={onChangeHandler}
-        width='100'
-        height='50'
-      />
+      <th>
+        시즌
+        <td>
+          <StyledSelect
+            options={seasonOptions}
+            className='basic-single'
+            classNamePrefix='select'
+            isClearable={isClearable}
+            isSearchable={false}
+            placeholder='선택하세요'
+            defaultValue={{ value: 'season', label: '2022-2023' }}
+            onChange={onChangeHandler}
+            width='100'
+            height='50'
+          />
+        </td>
+      </th>
     </>
   );
 };

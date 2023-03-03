@@ -8,27 +8,42 @@ import SelectDate from 'components/Common/inputSelector/SelectDate';
 import SelectMonth from 'components/Common/inputSelector/SelectMonth';
 import SelectDatePicker from 'components/Common/inputSelector/SelectDatePicker';
 import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
+import { GameDataThunk } from 'redux/modules/gameInformSlice';
 
 const GameSelectInputTable = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [startDate, setStartDate] = useState(new Date());
   const gameSelectValue = {};
   const [gameInput, setGameInput] = useState(gameSelectValue);
-  console.log('게임 데이터');
-  console.log(gameInput);
-  const move = () => {
-    navigate('/RegistrationManagement', {
-      state: {
-        competitioncode: '22-23V',
-        gamedate: '2023-02-02',
-      },
-    });
+  // console.log('게임 데이터');
+  // console.log(gameInput);
+  const move = async () => {
+    // navigate({
+    //   pathname: '/RegistrationManagement',
+    //   search: `?competitioncode=23-24V&gamedate=2023-02-02`,
+    // });
+    navigate(
+      '/RegistrationManagement?competitioncode=22-23V&gamedate=2023-02-02'
+    );
+
+    // console.log('222222', location.search);
+    // dispatch(GameDataThunk(`?competitioncode=23-24V&gamedate=2023-02-02`));
   };
-  const location = useLocation();
-  const gameData = location.state.id;
-  console.log(gameData);
+
+  console.log(location);
+
+  // const location = useLocation();
+  // const gameData = location.state.id;
+  // console.log(gameData);
 
   return (
     <Wrap>
@@ -37,21 +52,13 @@ const GameSelectInputTable = () => {
           <table>
             <tbody>
               <tr>
-                <th>대회명</th>
-                <td>
-                  <SelectDivision data={gameInput} setData={setGameInput} />
-                </td>
-                <th>시즌</th>
-                <td>
-                  <SelectSeason data={gameInput} setData={setGameInput} />
-                </td>
+                <SelectDivision data={gameInput} setData={setGameInput} />
+                <SelectSeason data={gameInput} setData={setGameInput} />
                 <th>경기일정</th>
-                <td
-                  style={{
-                    flexDirection: 'row',
-                    display: 'flex',
-                  }}>
+                <td style={{ backgroundColor: '' }}>
                   <SelectMonth data={gameInput} setData={setGameInput} />
+                </td>
+                <td>
                   <SelectDate data={gameInput} setData={setGameInput} />
                 </td>
                 <td>
@@ -60,6 +67,7 @@ const GameSelectInputTable = () => {
                     setStartDate={setStartDate}
                   />
                 </td>
+                <td></td>
               </tr>
               <tr>
                 <th>성별</th>
@@ -74,7 +82,13 @@ const GameSelectInputTable = () => {
                 <td>
                   <SelectTeam data={gameInput} setData={setGameInput} />
                 </td>
-                <td style={{ backgroundColor: 'white', border: 'none' }}>
+                <td></td>
+                <td></td>
+                <td
+                  style={{
+                    backgroundColor: 'white',
+                    border: 'none',
+                  }}>
                   <button onClick={move}>조회</button>
                 </td>
               </tr>

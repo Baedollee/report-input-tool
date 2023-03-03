@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const initialState = {
   rosterList: [],
@@ -30,7 +31,9 @@ export const GameDataThunk = createAsyncThunk(
   'GameDataThunk/get',
   async (payload, thunkApi) => {
     try {
-      const response = await axios.get(payload);
+      console.log(payload);
+      const response = await axios.get(`/api/game/selectGame${payload}`);
+      console.log(response);
       return thunkApi.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -155,7 +158,7 @@ const gameInformSlice = createSlice({
       console.log(action);
     },
     [GameDataThunk.fulfilled]: (state, action) => {
-      state.gameData = [action.payload];
+      state.gameData = action.payload;
     },
     [GameDataThunk.rejected]: (state, action) => {
       console.log(action);

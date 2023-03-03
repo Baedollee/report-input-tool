@@ -11,7 +11,7 @@ const RefereeRegisterShowTable = () => {
   const { gameData } = useSelector((state) => state.gameInformSlice);
 
   const getGameData = useCallback(() => {
-    dispatch(GameDataThunk(`/api/game/selectSet`));
+    dispatch(GameDataThunk(``));
   }, [dispatch]);
 
   useEffect(() => {

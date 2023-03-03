@@ -2,10 +2,11 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
+import styled from 'styled-components';
 const SelectDatePicker = ({ startDate, setStartDate }) => {
   return (
     <>
-      <DatePicker
+      <StyledDatePicker
         showIcon
         selected={startDate}
         onChange={(date) => {
@@ -19,4 +20,8 @@ const SelectDatePicker = ({ startDate, setStartDate }) => {
   );
 };
 
+const StyledDatePicker = styled(DatePicker)`
+  width: 100%;
+  height: 100%;
+`;
 export default SelectDatePicker;
