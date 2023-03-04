@@ -1,7 +1,9 @@
+import { EnumRegistrationManagementScreen } from 'types/EnumRegistrationManagementScreen';
+
 const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
-  menuName: 'gameSelect',
+  menuName: EnumRegistrationManagementScreen.ScreenGameSelect,
 };
 
 const MenuSelectSlice = createSlice({
