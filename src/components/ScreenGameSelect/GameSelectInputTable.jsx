@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import SelectDivision from 'components/Common/inputSelector/SelectDivision';
-import SelectGender from 'components/Common/inputSelector/SelectGender';
-import SelectSeason from 'components/Common/inputSelector/SelectSeason';
-import SelectTeam from 'components/Common/inputSelector/SelectTeam';
-import SelectDate from 'components/Common/inputSelector/SelectDate';
-import SelectMonth from 'components/Common/inputSelector/SelectMonth';
-import SelectDatePicker from 'components/Common/inputSelector/SelectDatePicker';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import styled from "styled-components";
+import SelectDivision from "components/Common/inputSelector/SelectDivision";
+import SelectGender from "components/Common/inputSelector/SelectGender";
+import SelectSeason from "components/Common/inputSelector/SelectSeason";
+import SelectTeam from "components/Common/inputSelector/SelectTeam";
+import SelectDate from "components/Common/inputSelector/SelectDate";
+import SelectMonth from "components/Common/inputSelector/SelectMonth";
+import SelectDatePicker from "components/Common/inputSelector/SelectDatePicker";
+import { useDispatch } from "react-redux";
 import {
   useLocation,
   useNavigate,
   useParams,
   useSearchParams,
-} from 'react-router-dom';
-import { GameDataThunk } from 'redux/modules/gameInformSlice';
+} from "react-router-dom";
+import { GameDataThunk } from "redux/modules/gameInformSlice";
 
 const GameSelectInputTable = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const GameSelectInputTable = () => {
     //   search: `?competitioncode=23-24V&gamedate=2023-02-02`,
     // });
     navigate(
-      '/RegistrationManagement?competitioncode=22-23V&gamedate=2023-02-02'
+      "/RegistrationManagement?competitioncode=22-23V&gamedate=2023-02-02"
     );
 
     // console.log('222222', location.search);
@@ -55,7 +55,7 @@ const GameSelectInputTable = () => {
                 <SelectDivision data={gameInput} setData={setGameInput} />
                 <SelectSeason data={gameInput} setData={setGameInput} />
                 <th>경기일정</th>
-                <td style={{ backgroundColor: '' }}>
+                <td style={{ backgroundColor: "" }}>
                   <SelectMonth data={gameInput} setData={setGameInput} />
                 </td>
                 <td>
@@ -86,8 +86,8 @@ const GameSelectInputTable = () => {
                 <td></td>
                 <td
                   style={{
-                    backgroundColor: 'white',
-                    border: 'none',
+                    backgroundColor: "white",
+                    border: "none",
                   }}>
                   <button onClick={move}>조회</button>
                 </td>
